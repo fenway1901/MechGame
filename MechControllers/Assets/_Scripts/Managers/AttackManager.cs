@@ -23,16 +23,38 @@ public class AttackManager : MonoBehaviour
 
     #region AttackSequence
 
-    public void AttackEnemy(GameObject target, BaseWeapons weapon)
+    public void AttackEnemy(GameObject target, BaseWeapons weapon, WeaponDisplay display = null)
     {
-        StartCoroutine(Attack(weapon.GetAttackSpeed(), target, weapon));
+        Debug.Log("attacking " + target.name + " with " + weapon.displayName);
+
+        if (display != null)
+        {
+            Debug.Log("turing on attack timer");
+            display.SetTimer(weapon.GetAttackSpeed());
+            display.timerTxt.color = Color.white;
+        }
+
+        StartCoroutine(Attack(target, weapon, display));
     }
 
-    private IEnumerator Attack(float time, GameObject target, BaseWeapons weapon)
+    private IEnumerator Attack(GameObject target, BaseWeapons weapon, WeaponDisplay display = null)
     {
-        yield return new WaitForSeconds(time);
+        weapon.SetIsAttacking(true);
+
+        yield return new WaitForSeconds(weapon.GetAttackSpeed());
+
+        if(display != null)
+        {
+            Debug.Log("turning on cooldown timer");
+            display.SetTimer(weapon.GetCoolDown());
+            display.timerTxt.color = Color.darkRed;
+        }
 
         target.GetComponent<BaseHealthComponent>().TakeDamage(weapon.GetDamage());
+
+        yield return new WaitForSeconds(weapon.GetCoolDown());
+
+        weapon.SetIsAttacking(false);
     }
 
     #endregion

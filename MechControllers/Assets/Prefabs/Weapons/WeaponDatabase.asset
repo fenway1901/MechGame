@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903ceebab00093c46a34810e157ef91d, type: 3}
+  m_Name: WeaponDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponDatabase
+  weapons:
+  - id: BasicGun
+    prefab: {fileID: 7131973759617290397, guid: 3e71d030c16c6f2409d702f260b1c9ad, type: 3}
+  - id: BasicLaser
+    prefab: {fileID: 3554341894055207921, guid: 8931fbd27b9cbac4c946348818522ffe, type: 3}
+  - id: BasicMissile
+    prefab: {fileID: 5439625688542587019, guid: b282eec8685ef0d48af31ba847dc9226, type: 3}

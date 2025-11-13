@@ -1,48 +1,30 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class BaseMech : MonoBehaviour
 {
-    public List<BaseWeapons> weapons;
-    public List<BaseLimb> parts;
+    public List<string> weaponIDs = new List<string>();
+    protected List<BaseWeapons> weapons;
+    public List<BaseLimb> limbs;
     public BaseWeapons activeWeapon;
-
-    [Header("Inputs")]
-    [SerializeField] private InputAction selectWeapon1;
-    [SerializeField] private InputAction selectWeapon2;
-    [SerializeField] private InputAction selectWeapon3;
+    public GameObject layout;
 
 
-    private void Awake()
+    public virtual void Init()
     {
-        selectWeapon1.Enable();
-        selectWeapon2.Enable();
-        selectWeapon3.Enable();
+        GetWeapons();
+
+        if (layout == null)
+            Debug.LogError(gameObject.name + " layout is null, nothing will show!");
     }
 
     private void Update()
     {
-        // Weapon 1
-        if (selectWeapon1.WasPressedThisFrame())
-            SelectWeapon(weapons[0]);
 
-        // Weapon 2
-        if (selectWeapon2.WasPressedThisFrame())
-            SelectWeapon(weapons[1]);
-
-        // Weapon 3
-        if (selectWeapon3.WasPressedThisFrame())
-            SelectWeapon(weapons[2]);
-
-        if(Mouse.current.leftButton.wasReleasedThisFrame && activeWeapon != null && LimbHighlighter.instance.currentLimb != null)
-        {
-            if (LimbHighlighter.instance.currentLimb.gameObject.CompareTag("Enemy"))
-                AttackManager.instance.AttackEnemy(LimbHighlighter.instance.currentLimb.gameObject, activeWeapon);
-        }
     }
-
 
     #region Get Info
 
@@ -60,13 +42,24 @@ public class BaseMech : MonoBehaviour
 
     #region Weapon Management
 
-    private void SelectWeapon(BaseWeapons weapon)
+    public virtual void GetWeapons()
     {
-        Debug.Log(weapon.name + " is Selected!!!");
-        activeWeapon = weapon;
+        if (weaponIDs.Count == 0)
+        {
+            Debug.LogWarning(gameObject.name + " does not have any weapons in weaponsIDs, none will be loaded");
+            return;
+        }
+
+        List<BaseWeapons> foundWeapons = GameManager.singleton.GetWeapons(weaponIDs);
+        weapons = new List<BaseWeapons>();
+
+        for(int i = 0; i < foundWeapons.Count; ++i)
+        {
+            weapons.Add(Instantiate(foundWeapons[i], transform));
+        }
     }
 
-    private void TargetSelected(GameObject target)
+    protected virtual void TargetSelected(GameObject target)
     {
         AttackManager.instance.AttackEnemy(target, activeWeapon);
     }

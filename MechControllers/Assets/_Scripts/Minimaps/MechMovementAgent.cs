@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class MechMovementAgent : MonoBehaviour
 {
     [SerializeField] Transform visual2D;   // your 2D sprite root
-    [SerializeField] float visualZ = 0f;   // constant Z for 2D world
     [SerializeField] float navPlaneY = 0f; // Y-height of your baked NavMesh
 
     NavMeshAgent agent;
@@ -26,7 +25,6 @@ public class MechMovementAgent : MonoBehaviour
     {
         // Agent moves on XZ at ~Y = navPlaneY. Mirror to XY.
         Vector3 p = agent.nextPosition;
-        //visual2D.position = new Vector3(p.x, p.z, visualZ);
     }
 
     // Call this with XY world coords
