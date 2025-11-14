@@ -10,14 +10,14 @@ public class BaseMech : MonoBehaviour
     protected List<BaseWeapons> weapons;
     public List<BaseLimb> limbs;
     public BaseWeapons activeWeapon;
-    public GameObject layout;
-
+    public GameObject layoutPrefab;
+    public GameObject spawnedLayout;
 
     public virtual void Init()
     {
         GetWeapons();
 
-        if (layout == null)
+        if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
     }
 

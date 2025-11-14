@@ -4,6 +4,8 @@ public class BaseLimb : MonoBehaviour
 {
     public bool isDestroyed;
 
+    public BaseMech attachedMech;
+
     // public varibles
     [Header("Stat Varibles")]
     public string limbName;

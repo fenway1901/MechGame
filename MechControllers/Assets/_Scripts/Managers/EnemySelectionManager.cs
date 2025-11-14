@@ -26,13 +26,14 @@ public class EnemySelectionManager : MonoBehaviour
         if (target == null) return;
         if (target == targetMech) return;
 
+        if(mechLayout != target.spawnedLayout && mechLayout != null)
+            targetMech.spawnedLayout.SetActive(false);
+
         Debug.Log("setting current target to " + target.gameObject.name);
 
         targetMech = target;
         
-        if (mechLayout != null)
-            Destroy(mechLayout);
-        
-        mechLayout = Instantiate(targetMech.layout, targetPanel);
+        mechLayout = targetMech.spawnedLayout;
+        mechLayout.SetActive(true);
     }
 }

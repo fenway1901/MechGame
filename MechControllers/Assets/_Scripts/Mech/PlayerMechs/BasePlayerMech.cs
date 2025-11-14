@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BasePlayerMech : BaseMech
 {
+    public GameObject physicalMech;
+
     [Header("Inputs")]
     [SerializeField] private InputAction selectWeapon1;
     [SerializeField] private InputAction selectWeapon2;
@@ -55,6 +58,12 @@ public class BasePlayerMech : BaseMech
                 Debug.Log("Weapon " + activeWeapon.displayName + " currently attacking");
                 return;
             }
+            else if (activeWeapon.GetRange() < GameUtils.GetDistance(physicalMech.transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position))
+            {
+                Debug.Log(GameUtils.GetDistance(physicalMech.transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position));
+                Debug.Log("Weapon of " + gameObject.name + " not in range");
+                return;
+            }
 
             if (LimbHighlighter.instance.currentLimb.gameObject.CompareTag("Enemy"))
                 AttackManager.instance.AttackEnemy(LimbHighlighter.instance.currentLimb.gameObject, activeWeapon, activeDisplay);
@@ -65,18 +74,19 @@ public class BasePlayerMech : BaseMech
 
     #region Limb Management
 
-    private void SetUpLimbs()
+    protected void SetUpLimbs()
     {
-        Instantiate(layout, transform);
+        spawnedLayout = Instantiate(layoutPrefab, transform);
 
         limbs = new List<BaseLimb>();
 
-        for (int i = 0; i < layout.transform.childCount; ++i)
+        for (int i = 0; i < layoutPrefab.transform.childCount; ++i)
         {
             // Just incase i will add things that arn't limbs to this prefab
-            if (layout.transform.GetChild(i).GetComponent<BaseLimb>())
+            if (layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>())
             {
-                limbs.Add(layout.transform.GetChild(i).GetComponent<BaseLimb>());
+                limbs.Add(layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>());
+                limbs[i].attachedMech = this;
             }
         }
     }
