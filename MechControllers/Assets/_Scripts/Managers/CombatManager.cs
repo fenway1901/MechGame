@@ -34,14 +34,21 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
+        List<EnemyBaseMech> temp = new List<EnemyBaseMech>();
+
         for(int i = 0; i < mechsInCombat.Count; ++i)
         {
             if (mechsInCombat[i].gameObject.CompareTag("Player"))
             {
                 playerMech = mechsInCombat[i];
-                break;
+            }
+            else
+            {
+                temp.Add(mechsInCombat[i] as EnemyBaseMech);
             }
         }
+
+        EnemyCombatDirector.instance.GetEnemyMech(temp);
     }
 
     public void StartCombat()

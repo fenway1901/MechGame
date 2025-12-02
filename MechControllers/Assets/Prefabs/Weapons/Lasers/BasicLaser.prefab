@@ -47,7 +47,7 @@ MonoBehaviour:
   displayName: Laser
   damage: 10
   maxAmmo: 5
-  range: 1
+  range: 8
   attackSpeed: 5
   cooldown: 10
   isAttacking: 0

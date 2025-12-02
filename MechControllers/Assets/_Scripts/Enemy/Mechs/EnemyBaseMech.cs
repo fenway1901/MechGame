@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBaseMech : BaseMech
 {
     public GameObject target; // keep GameObject incase I want to make them target freindlies
+
+    public Objective CurrentObjective;
+
 
     private void Awake()
     {
@@ -39,4 +43,8 @@ public class EnemyBaseMech : BaseMech
 
     // Basic attack sequence
 
+    public void SetObjective(Objective obj)
+    {
+        CurrentObjective = obj;
+    }
 }

@@ -13,6 +13,8 @@ public class BaseMech : MonoBehaviour
     public GameObject layoutPrefab;
     public GameObject spawnedLayout;
 
+    public bool isDead = false;
+
     public virtual void Init()
     {
         GetWeapons();
@@ -26,6 +28,7 @@ public class BaseMech : MonoBehaviour
 
     }
 
+
     #region Get Info
 
 
@@ -37,7 +40,6 @@ public class BaseMech : MonoBehaviour
 
 
     #endregion
-
 
 
     #region Weapon Management
