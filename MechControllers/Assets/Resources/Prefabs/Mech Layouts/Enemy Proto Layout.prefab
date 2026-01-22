@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3650193580581456687}
   - component: {fileID: 910537493680101802}
   - component: {fileID: 5412707636198967253}
-  - component: {fileID: 4836416401189142935}
+  - component: {fileID: 4222216091793619561}
   m_Layer: 6
   m_Name: Head
   m_TagString: Enemy
@@ -106,8 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Head
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -151,7 +152,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.00000011920929}
   m_Radius: 0.49999997
---- !u!114 &4836416401189142935
+--- !u!114 &4222216091793619561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,10 +161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 452854826404602729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 0
+  killLimbKillsMech: 1
+  leakToHullPercent: 0.5
+  overkillToHullPercent: 0
 --- !u!1 &1125744571560385840
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +181,7 @@ GameObject:
   - component: {fileID: 5018401333518955317}
   - component: {fileID: 4815502377766848031}
   - component: {fileID: 4835244051170515029}
-  - component: {fileID: 5381801077292494756}
+  - component: {fileID: 4449769119526692780}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Enemy
@@ -270,8 +275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Chest
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -325,7 +331,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5381801077292494756
+--- !u!114 &4449769119526692780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,10 +340,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1125744571560385840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 80
+  killLimbKillsMech: 0
+  leakToHullPercent: 0.35
+  overkillToHullPercent: 0.8
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +360,7 @@ GameObject:
   - component: {fileID: 3105109060268225934}
   - component: {fileID: 5687577684273443438}
   - component: {fileID: 1769736371964790080}
-  - component: {fileID: 3022173019341009099}
+  - component: {fileID: 6164145871046960234}
   m_Layer: 6
   m_Name: Left Leg
   m_TagString: Enemy
@@ -444,8 +454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Left Leg
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -499,7 +510,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3022173019341009099
+--- !u!114 &6164145871046960234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,10 +519,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2481776505768732721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 20
+  killLimbKillsMech: 0
+  leakToHullPercent: 0.15
+  overkillToHullPercent: 0.4
 --- !u!1 &3040214340326169676
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +576,7 @@ GameObject:
   - component: {fileID: 1261793901959870668}
   - component: {fileID: 6558681552639297120}
   - component: {fileID: 7794294974089471146}
-  - component: {fileID: 6210784900410828117}
+  - component: {fileID: 7695254523406097312}
   m_Layer: 6
   m_Name: Right Leg
   m_TagString: Enemy
@@ -655,8 +670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Right Leg
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -710,7 +726,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6210784900410828117
+--- !u!114 &7695254523406097312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -719,10 +735,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3536687926203196233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 20
+  killLimbKillsMech: 0
+  leakToHullPercent: 0.15
+  overkillToHullPercent: 0.4
 --- !u!1 &4988710182775261688
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +755,7 @@ GameObject:
   - component: {fileID: 904488844557338095}
   - component: {fileID: 599907133407541442}
   - component: {fileID: 7461954448256441002}
-  - component: {fileID: 602079467144384884}
+  - component: {fileID: 5592665041562632273}
   m_Layer: 6
   m_Name: Left Arm
   m_TagString: Enemy
@@ -829,8 +849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Left Arm
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -884,7 +905,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &602079467144384884
+--- !u!114 &5592665041562632273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -893,10 +914,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4988710182775261688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 20
+  killLimbKillsMech: 0
+  leakToHullPercent: 0.15
+  overkillToHullPercent: 0.4
 --- !u!1 &5416419350101463734
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +934,7 @@ GameObject:
   - component: {fileID: 1175999258479038854}
   - component: {fileID: 2187659173674263638}
   - component: {fileID: 2259734424155150896}
-  - component: {fileID: 674770124306124467}
+  - component: {fileID: 7306669982294410213}
   m_Layer: 6
   m_Name: Right Arm
   m_TagString: Enemy
@@ -1003,8 +1028,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
+  attachedMech: {fileID: 0}
   limbName: Right Arm
-  armor: 0
+  armor: 10
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -1058,7 +1084,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &674770124306124467
+--- !u!114 &7306669982294410213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1067,7 +1093,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416419350101463734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
+  deathDamage: 20
+  killLimbKillsMech: 0
+  leakToHullPercent: 0.15
+  overkillToHullPercent: 0.4

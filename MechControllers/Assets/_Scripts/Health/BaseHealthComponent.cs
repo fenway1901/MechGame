@@ -1,9 +1,10 @@
 using UnityEngine;
 using System;
+using UnityEngine.Video;
 
 public class BaseHealthComponent : MonoBehaviour
 {
-    [SerializeField] float maxHealth = 100f;
+    [SerializeField] protected float maxHealth = 100f;
     public float MaxHealth => maxHealth;
     public float CurrentHealth { get; private set; }
 
@@ -12,12 +13,13 @@ public class BaseHealthComponent : MonoBehaviour
     public event Action<BaseHealthComponent, float, float> Healed;
     public event Action<BaseHealthComponent> Died;
 
-    void Awake()
+    protected virtual void Awake()
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth <= 0 ? maxHealth : CurrentHealth, 0, maxHealth);
+        Died += Death;
     }
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount)
     {
         if (amount <= 0f || CurrentHealth <= 0f) return;
 
@@ -32,12 +34,17 @@ public class BaseHealthComponent : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public virtual void Heal(float amount)
     {
         if (amount <= 0f || CurrentHealth <= 0f) return;
 
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0f, maxHealth);
         Healed?.Invoke(this, amount, CurrentHealth);
+    }
+
+    protected virtual void Death(BaseHealthComponent sender)
+    {
+        Debug.Log(name + " has died!");
     }
 
     public float Normalized => maxHealth > 0f ? CurrentHealth / maxHealth : 0f;

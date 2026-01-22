@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 278496279}
   - component: {fileID: 278496278}
   - component: {fileID: 278496277}
+  - component: {fileID: 278496282}
   - component: {fileID: 278496280}
   - component: {fileID: 278496281}
   - component: {fileID: 278496276}
@@ -1164,6 +1165,19 @@ MonoBehaviour:
   desiredPosition: {x: 0, y: 0, z: 0}
   thinkInterval: 0.5
   mech: {fileID: 0}
+--- !u!114 &278496282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278496273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  maxHealth: 100
 --- !u!1 &316072428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1189,7 @@ GameObject:
   - component: {fileID: 316072434}
   - component: {fileID: 316072433}
   - component: {fileID: 316072432}
+  - component: {fileID: 316072436}
   - component: {fileID: 316072435}
   - component: {fileID: 316072431}
   - component: {fileID: 316072430}
@@ -1393,6 +1408,19 @@ MonoBehaviour:
   weapon1: {fileID: 1881120724}
   weapon2: {fileID: 2097507598}
   weapon3: {fileID: 1031748065}
+--- !u!114 &316072436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316072428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
+  maxHealth: 100
 --- !u!1 &441528496
 GameObject:
   m_ObjectHideFlags: 0
