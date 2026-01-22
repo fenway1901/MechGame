@@ -19,12 +19,19 @@ public class EnemyBaseMech : BaseMech
         base.Init();
 
         SetUpLimbs();
+
+        brain = GetComponent<MechBrain>();
+
+        if (brain == null)
+            Debug.LogError(name + " can not find or does not have MechBrain on same object");
+
+        brain.mech = this;
     }
 
 
     protected void SetUpLimbs()
     {
-        Debug.Log("setting up enemy layout");
+        //Debug.Log("setting up enemy layout");
 
         spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
 
@@ -46,5 +53,6 @@ public class EnemyBaseMech : BaseMech
     public void SetObjective(Objective obj)
     {
         CurrentObjective = obj;
+        brain.currentObjective = obj;
     }
 }

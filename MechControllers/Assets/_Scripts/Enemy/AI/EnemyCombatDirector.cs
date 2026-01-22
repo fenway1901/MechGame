@@ -7,10 +7,8 @@ public class EnemyCombatDirector : MonoBehaviour
 {
     public static EnemyCombatDirector instance { get; private set; }
 
-    private List<EnemyBaseMech> enemyMechs = new List<EnemyBaseMech>();
-
-    [Header("PROTO Varibles")]
-    public Objective protoObjective;
+    [SerializeField] private List<EnemyBaseMech> enemyMechs = new List<EnemyBaseMech>();
+    [SerializeField] private List<Objective> objectives = new List<Objective>(); // for prototyping will only use Objective 1
 
     private void Awake()
     {
@@ -20,13 +18,21 @@ public class EnemyCombatDirector : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void GetReadyForCombat()
+    {
+        for(int i = 0; i < objectives.Count; ++i)
+        {
+            objectives[i].SetUpForCombat();
+        }
+    }
+
 
     // For prototyping
     public void StartCombat()
     {
         foreach(EnemyBaseMech mech in enemyMechs)
         {
-            mech.SetObjective(protoObjective);
+            mech.SetObjective(objectives[0]);
         }
     }
 
@@ -55,8 +61,9 @@ public class EnemyCombatDirector : MonoBehaviour
         foreach (EnemyBaseMech mech in enemyMechs)
         {
             // Simplified example: prioritize nearest objective
-            var objective = FindBestObjectiveForSquad(mech);
-            mech.CurrentObjective = objective;
+            Objective objective = FindBestObjectiveForSquad(mech);
+            if(objective != null)
+                mech.SetObjective(objective);
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MechBrain : MonoBehaviour
 {
@@ -10,6 +11,25 @@ public class MechBrain : MonoBehaviour
     public Vector3 desiredPosition;
 
     [SerializeField] float thinkInterval = 0.5f;
+
+    private NavMeshAgent agent;
+
+    public BaseMech mech;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+
+        if (agent == null)
+        {
+            Debug.Log(name + " MechBrain is not on the same object as the MoveAgent component!!!");
+            return;
+        }
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+    }
 
     void Start()
     {
@@ -27,6 +47,8 @@ public class MechBrain : MonoBehaviour
 
     void Think()
     {
+        Debug.Log("Enemy thinking");
+
         // 1. Update perception
         UpdatePerception();
 
@@ -77,15 +99,130 @@ public class MechBrain : MonoBehaviour
         }
     }
 
-    // Stub: call your existing movement system
-    public void MoveTowards(Vector2 worldPos, float stopAtRange)
+    #region Attack Functions
+
+    public void AttackWithDesiredWeapon(BaseWeapons weapon, Transform target, bool stopMovement = false)
     {
-        // plug into your tactical movement / MechMovementAgent here
+        if (weapon == null || target == null || mech == null)
+            return;
+
+        if (stopMovement)
+            StopMovement();
+
+        // Set active weapon so BaseMech/AttackManager can use it
+        mech.activeWeapon = weapon;
+
+        // Use your existing attack flow; equivalent to BaseMech.TargetSelected(target)
+        AttackManager.instance.AttackEnemy(target.gameObject, weapon);
     }
 
-    public void TryFireWeaponsAt(Transform target)
+
+    public BaseWeapons GetBestWeapon(Transform target)
     {
-        // call into your weapon system
+        if (mech == null || mech.Weapons == null || mech.Weapons.Count == 0)
+            return null;
+
+        // Simple: first weapon
+        return (BaseWeapons)mech.Weapons[0];
+
+        // Later: pick by range/damage, or based on the specific target.
     }
+
+    // Returns a limb on the target mech, or null if none found
+    public BaseLimb GetTargetLimb(Transform mechRoot)
+    {
+        if (mechRoot == null) return null;
+
+        // 1) If we were given a limb directly, just use it
+        BaseLimb limb = mechRoot.GetComponent<BaseLimb>();
+        if (limb != null && !limb.isDestroyed)
+            return limb;
+
+        // 2) Otherwise, treat this as a mech root and look for child limbs
+        BaseLimb[] limbs = mechRoot.GetComponentsInChildren<BaseLimb>();
+        if (limbs == null || limbs.Length == 0)
+            return null;
+
+        // Simple prototype: first non-destroyed limb
+        foreach (var l in limbs)
+        {
+            if (!l.isDestroyed)
+                return l;
+        }
+
+        // All limbs destroyed; return any as fallback (or null if you want to stop)
+        return limbs[0];
+    }
+
+    #endregion
+
+
+    #region Movement Functions
+
+
+    // Called by your AIActions
+    public void MoveTowards(Vector2 worldPos, float stopAtRange)
+    {
+        if (agent == null)
+        {
+            Debug.Log(name + " does not have an assigned Move Agent!!!");
+            return;
+        }
+
+        // Convert Vector2 to Vector3 for NavMesh
+        // Assuming X/Y = horizontal plane; keep current Z (or Y depending on setup)
+        Vector3 destination = new Vector3(worldPos.x, transform.position.y, worldPos.y);
+
+        agent.stoppingDistance = stopAtRange;
+        agent.isStopped = false;
+        agent.SetDestination(destination);
+    }
+
+    // Overload if I have 3D world Position
+    public void MoveTowards(Vector3 worldPos, float stopAtRange)
+    {
+        if (agent == null)
+        {
+            Debug.Log(name + " does not have an assigned Move Agent!!!");
+            return;
+        }
+
+        agent.stoppingDistance = stopAtRange;
+        agent.isStopped = false;
+        agent.SetDestination(worldPos);
+    }
+
+    // Overload if I have a Transform
+    public void MoveTowards(Transform target, float stopAtRange)
+    {
+        if (agent == null)
+        {
+            Debug.Log(name + " does not have an assigned Move Agent!!!");
+            return;
+        }
+
+        if (target == null) return;
+        MoveTowards(new Vector2(target.position.x, target.position.z), stopAtRange);
+    }
+
+    public bool HasReachedDestination(float extraTolerance = 0.1f)
+    {
+        if (!agent.pathPending &&
+            agent.remainingDistance <= agent.stoppingDistance + extraTolerance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void StopMovement()
+    {
+        if (agent == null) return;
+        agent.isStopped = true;
+        agent.ResetPath();
+    }
+
+    #endregion
 }
 

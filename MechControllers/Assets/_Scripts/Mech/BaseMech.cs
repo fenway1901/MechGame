@@ -15,6 +15,10 @@ public class BaseMech : MonoBehaviour
 
     public bool isDead = false;
 
+    // AI variables
+    public IReadOnlyList<BaseWeapons> Weapons => weapons;
+    protected MechBrain brain;
+
     public virtual void Init()
     {
         GetWeapons();

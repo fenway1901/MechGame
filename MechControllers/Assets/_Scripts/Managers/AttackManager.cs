@@ -50,6 +50,9 @@ public class AttackManager : MonoBehaviour
             display.timerTxt.color = Color.darkRed;
         }
 
+        Debug.Log(target + " " + name + " has a target");
+        Debug.Log(weapon + " " + name + " has a weapon");
+        Debug.Log(target.GetComponent<BaseHealthComponent>());
         target.GetComponent<BaseHealthComponent>().TakeDamage(weapon.GetDamage());
 
         yield return new WaitForSeconds(weapon.GetCoolDown());

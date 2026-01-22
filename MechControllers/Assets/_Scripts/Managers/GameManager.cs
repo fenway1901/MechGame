@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public WeaponDatabase _weaponDatabase;
 
+    // PROTO: UI shit
+    public GameObject uiPanel;
+
     private void Awake()
     {
         if(singleton == null)
@@ -18,14 +21,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+        //StartGame();
+        CombatManager.instance.SetUpForCombat();
     }
 
     // PROTO: change this when ready to start true sequence
     public void StartGame()
     {
-        CombatManager.instance.SetUpForCombat();
+        //CombatManager.instance.SetUpForCombat();
         CombatManager.instance.StartCombat();
+        uiPanel.SetActive(false);
     }
 
 

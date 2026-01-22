@@ -49,22 +49,25 @@ public class CombatManager : MonoBehaviour
         }
 
         EnemyCombatDirector.instance.GetEnemyMech(temp);
-    }
+        EnemyCombatDirector.instance.GetReadyForCombat();
 
-    public void StartCombat()
-    {
-        for(int i = 0; i < mechsInCombat.Count; ++i)
+        for (int i = 0; i < mechsInCombat.Count; ++i)
         {
             mechsInCombat[i].Init();
         }
 
         // Disable all layouts in TargetPanel
-        if(enemyPanel.transform.childCount >= 2)
+        if (enemyPanel.transform.childCount >= 2)
         {
-            for(int i = 1; i < enemyPanel.transform.childCount; ++i)
+            for (int i = 1; i < enemyPanel.transform.childCount; ++i)
             {
                 enemyPanel.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
+    }
+
+    public void StartCombat()
+    {
+        EnemyCombatDirector.instance.StartCombat();
     }
 }

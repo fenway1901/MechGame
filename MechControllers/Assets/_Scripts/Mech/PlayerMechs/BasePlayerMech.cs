@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BasePlayerMech : BaseMech
 {
-    public GameObject physicalMech;
+    private GameObject panel;
 
     [Header("Inputs")]
     [SerializeField] private InputAction selectWeapon1;
@@ -29,6 +29,8 @@ public class BasePlayerMech : BaseMech
     public override void Init()
     {
         base.Init();
+
+        panel = GameObject.Find("Player Panel");
 
         SetUpLimbs();
     }
@@ -58,9 +60,9 @@ public class BasePlayerMech : BaseMech
                 Debug.Log("Weapon " + activeWeapon.displayName + " currently attacking");
                 return;
             }
-            else if (activeWeapon.GetRange() < GameUtils.GetDistance(physicalMech.transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position))
+            else if (activeWeapon.GetRange() < GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position))
             {
-                Debug.Log(GameUtils.GetDistance(physicalMech.transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position));
+                Debug.Log(GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position));
                 Debug.Log("Weapon of " + gameObject.name + " not in range");
                 return;
             }
@@ -76,7 +78,9 @@ public class BasePlayerMech : BaseMech
 
     protected void SetUpLimbs()
     {
-        spawnedLayout = Instantiate(layoutPrefab, transform);
+        Debug.Log("setting up players layout");
+
+        spawnedLayout = Instantiate(layoutPrefab, panel.transform);
 
         limbs = new List<BaseLimb>();
 
