@@ -29,7 +29,7 @@ public class AttackManager : MonoBehaviour
 
         if (display != null)
         {
-            Debug.Log("turing on attack timer");
+            Debug.Log("turing on attack timer!");
             display.SetTimer(weapon.GetAttackSpeed());
             display.timerTxt.color = Color.white;
         }

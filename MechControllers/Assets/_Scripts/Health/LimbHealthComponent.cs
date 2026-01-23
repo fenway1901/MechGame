@@ -53,7 +53,7 @@ public class LimbHealthComponent : BaseHealthComponent
                 mechHealthComponent.TakeDamage(extraHull);
         }
 
-        //Debug.Log("limb damaged " + CurrentHealth);
+        Debug.Log("limb damaged " + CurrentHealth);
     }
 
     public override void Heal(float amount)

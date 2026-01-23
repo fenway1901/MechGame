@@ -52,6 +52,9 @@ public class MoveAndShootAction : AIAction
         if (weapon == null)
             return;
 
+        if (weapon.isAttacking)
+            return;
+
         float weaponRange = weapon.GetRange();
         float desiredStop = weaponRange * 0.9f; // stand slightly inside max range
 
