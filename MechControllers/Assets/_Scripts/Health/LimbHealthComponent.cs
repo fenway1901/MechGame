@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LimbHealthComponent : BaseHealthComponent
 {
-    private MechHealthComponent mechHealthComponent;
+    [SerializeField] private MechHealthComponent mechHealthComponent;
 
     [Tooltip("Damage to the main mech on limb death")]
     public float deathDamage;
@@ -20,7 +20,7 @@ public class LimbHealthComponent : BaseHealthComponent
         base.Awake();
 
         limb = GetComponent<BaseLimb>();
-        transform.parent.gameObject.GetComponent<MechHealthComponent>();
+        mechHealthComponent = transform.parent.gameObject.GetComponent<MechHealthComponent>();
     } 
 
 
@@ -52,6 +52,8 @@ public class LimbHealthComponent : BaseHealthComponent
             if(extraHull > 0f)
                 mechHealthComponent.TakeDamage(extraHull);
         }
+
+        //Debug.Log("limb damaged " + CurrentHealth);
     }
 
     public override void Heal(float amount)
@@ -69,5 +71,7 @@ public class LimbHealthComponent : BaseHealthComponent
 
         if (killLimbKillsMech)
             mechHealthComponent.Kill();
+
+        limb.DestroyedLimb(true);
     }
 }

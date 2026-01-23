@@ -59,12 +59,13 @@ public class MoveAndShootAction : AIAction
         ctx.self.MoveTowards(ctx.target, desiredStop);
 
         // 2) Choose which limb to actually shoot
-        BaseLimb targetLimb = ctx.self.GetTargetLimb(ctx.target);
+        BaseLimb targetLimb = ctx.self.GetTargetLimb(ctx.target.GetComponent<BasePlayerMech>().spawnedLayout.transform);
+        Debug.Log(targetLimb + " target limb!!");
         Transform aimTransform = targetLimb != null ? targetLimb.transform : ctx.target;
 
         // 3) If close enough, shoot at that limb
         float distance = Vector3.Distance(ctx.self.transform.position,
-                                          aimTransform.position);
+                                          ctx.target.position);
 
         if (distance <= weaponRange)
         {

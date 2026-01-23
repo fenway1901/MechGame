@@ -1189,7 +1189,6 @@ GameObject:
   - component: {fileID: 316072434}
   - component: {fileID: 316072433}
   - component: {fileID: 316072432}
-  - component: {fileID: 316072436}
   - component: {fileID: 316072435}
   - component: {fileID: 316072431}
   - component: {fileID: 316072430}
@@ -1408,19 +1407,6 @@ MonoBehaviour:
   weapon1: {fileID: 1881120724}
   weapon2: {fileID: 2097507598}
   weapon3: {fileID: 1031748065}
---- !u!114 &316072436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316072428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93490d2ba2aa4544f8d9574e4ea82571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
-  maxHealth: 100
 --- !u!1 &441528496
 GameObject:
   m_ObjectHideFlags: 0

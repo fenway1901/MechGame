@@ -47,7 +47,7 @@ public class MechBrain : MonoBehaviour
 
     void Think()
     {
-        Debug.Log("Enemy thinking");
+        //Debug.Log("Enemy thinking");
 
         // 1. Update perception
         UpdatePerception();
@@ -149,6 +149,7 @@ public class MechBrain : MonoBehaviour
             if (!l.isDestroyed)
                 return l;
         }
+
 
         // All limbs destroyed; return any as fallback (or null if you want to stop)
         return limbs[0];

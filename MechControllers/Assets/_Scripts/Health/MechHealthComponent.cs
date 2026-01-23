@@ -19,6 +19,13 @@ public class MechHealthComponent : BaseHealthComponent
         base.Death(sender);
     }
 
+    public override void TakeDamage(float amount)
+    {
+        base.TakeDamage(amount);
+
+        Debug.Log(CurrentHealth + " " + name + " current heatlh");
+    }
+
     public void Kill()
     {
         Death(this);

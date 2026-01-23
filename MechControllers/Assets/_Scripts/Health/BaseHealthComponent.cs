@@ -26,7 +26,7 @@ public class BaseHealthComponent : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0f, maxHealth);
         Damaged?.Invoke(this, amount, CurrentHealth);
 
-        Debug.Log(name + " " + CurrentHealth);
+        //Debug.Log(name + " " + CurrentHealth);
 
         if (CurrentHealth <= 0f)
         {

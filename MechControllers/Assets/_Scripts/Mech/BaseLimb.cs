@@ -57,6 +57,7 @@ public class BaseLimb : MonoBehaviour
     {
         // your destruction logic
         isDestroyed = true;
+        sr.color = destroyColor;
         //Destroy(gameObject);
     }
 
@@ -70,8 +71,13 @@ public class BaseLimb : MonoBehaviour
             sr.color = destroyColor;
     }
 
-    public void DestroyedLimb()
+    public void DestroyedLimb(bool state)
     {
-        isDestroyed = true;
+        isDestroyed = state;
+
+        if (isDestroyed)
+            sr.color = destroyColor;
+        else
+            sr.color = normalColor;
     }
 }
