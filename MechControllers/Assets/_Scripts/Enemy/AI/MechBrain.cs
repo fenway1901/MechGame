@@ -36,6 +36,7 @@ public class MechBrain : MonoBehaviour
         StartCoroutine(ThinkLoop());
     }
 
+    // TO DO update this do be in Update() so  a lag spike dosnt slow down the thinking time (or maybe not, might make lag worse)
     IEnumerator ThinkLoop()
     {
         while (true)
@@ -113,7 +114,8 @@ public class MechBrain : MonoBehaviour
         mech.activeWeapon = weapon;
 
         // Use your existing attack flow; equivalent to BaseMech.TargetSelected(target)
-        AttackManager.instance.AttackEnemy(target.gameObject, weapon);
+        weapon.Attack(target.gameObject);
+        //AttackManager.instance.AttackEnemy(target.gameObject, weapon);
     }
 
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7854632667985969037
+--- !u!1 &6976564571992886175
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5527021764938944808}
-  - component: {fileID: 7131973759617290397}
+  - component: {fileID: 4995334327057599559}
+  - component: {fileID: 5714444719683885495}
   m_Layer: 0
-  m_Name: BasicGun
+  m_Name: BasicMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5527021764938944808
+--- !u!4 &4995334327057599559
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7854632667985969037}
+  m_GameObject: {fileID: 6976564571992886175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,26 +32,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7131973759617290397
+--- !u!114 &5714444719683885495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7854632667985969037}
+  m_GameObject: {fileID: 6976564571992886175}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e68b072edfeaf4f8f94d15621e1423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
-  displayName: Gun
-  baseDamage: 20
-  baseRange: 1
-  baseAttackSpeed: 1
-  baseCooldown: 5
-  _AttachedMech: {fileID: 0}
+  displayName: Slash
+  damage: 50
+  maxAmmo: 0
+  range: 1
+  attackSpeed: 1
+  cooldown: 3
   isAttacking: 0
-  usesAmmo: 1
-  maxAmmo: 5
-  ammoUsedPerShot: 1
-  reloadTime: 2

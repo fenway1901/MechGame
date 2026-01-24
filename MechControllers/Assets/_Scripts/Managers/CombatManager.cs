@@ -9,7 +9,7 @@ public class CombatManager : MonoBehaviour
     public GameObject enemyPanel;
 
     public List<BaseMech> mechsInCombat;
-    public BaseMech playerMech;
+    public BasePlayerMech playerMech;
 
 
     private void Awake()
@@ -40,7 +40,7 @@ public class CombatManager : MonoBehaviour
         {
             if (mechsInCombat[i].gameObject.CompareTag("Player"))
             {
-                playerMech = mechsInCombat[i];
+                playerMech = mechsInCombat[i] as BasePlayerMech;
             }
             else
             {

@@ -108,7 +108,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Head
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -278,7 +278,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Chest
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -458,7 +458,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Left Leg
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -689,7 +689,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Right Leg
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -869,7 +869,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Left Arm
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   isDestroyed: 0
   attachedMech: {fileID: 0}
   limbName: Right Arm
-  armor: 10
+  armor: 0
   moveSpeed: 0
   weight: 0
   sr: {fileID: 0}

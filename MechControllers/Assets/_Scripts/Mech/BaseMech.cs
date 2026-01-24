@@ -67,7 +67,8 @@ public class BaseMech : MonoBehaviour
 
     protected virtual void TargetSelected(GameObject target)
     {
-        AttackManager.instance.AttackEnemy(target, activeWeapon);
+        activeWeapon.Attack(target);
+        //AttackManager.instance.AttackEnemy(target, activeWeapon);
     }
 
     #endregion

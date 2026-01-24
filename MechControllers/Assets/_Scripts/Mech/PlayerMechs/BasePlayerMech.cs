@@ -68,7 +68,7 @@ public class BasePlayerMech : BaseMech
             }
 
             if (LimbHighlighter.instance.currentLimb.gameObject.CompareTag("Enemy"))
-                AttackManager.instance.AttackEnemy(LimbHighlighter.instance.currentLimb.gameObject, activeWeapon, activeDisplay);
+                activeWeapon.Attack(LimbHighlighter.instance.currentLimb.gameObject); //AttackManager.instance.AttackEnemy(LimbHighlighter.instance.currentLimb.gameObject, activeWeapon, activeDisplay);
         }
 
     }

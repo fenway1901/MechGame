@@ -52,9 +52,19 @@ public class MoveAndShootAction : AIAction
         if (weapon == null)
             return;
 
-        if (weapon.isAttacking)
+        if (weapon.GetIsAttacking())
             return;
 
+        if (weapon.GetCurrentAmmo() < weapon.GetAmmoUsedPerShot() || weapon.GetCurrentAmmo() == 0)
+        {
+            Debug.Log(ctx.self.name + " is reloading " + weapon.name);
+
+            if(!weapon.GetIsReloading())
+                weapon.Reload();
+
+            return;
+        }
+            
         float weaponRange = weapon.GetRange();
         float desiredStop = weaponRange * 0.9f; // stand slightly inside max range
 
