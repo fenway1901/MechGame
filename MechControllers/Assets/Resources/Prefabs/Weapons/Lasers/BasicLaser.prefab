@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Laser
   baseDamage: 10
-  baseRange: 0
-  baseAttackSpeed: 0
-  baseCooldown: 0
+  baseRange: 5
+  baseAttackSpeed: 1
+  baseCooldown: 3
   _AttachedMech: {fileID: 0}
   isAttacking: 0
   usesAmmo: 0
-  maxAmmo: 5
-  ammoUsedPerShot: 0
+  maxAmmo: 1
+  ammoUsedPerShot: 1
   reloadTime: 0

@@ -48,10 +48,10 @@ MonoBehaviour:
   baseDamage: 20
   baseRange: 1
   baseAttackSpeed: 1
-  baseCooldown: 5
+  baseCooldown: 3
   _AttachedMech: {fileID: 0}
   isAttacking: 0
   usesAmmo: 1
   maxAmmo: 5
   ammoUsedPerShot: 1
-  reloadTime: 2
+  reloadTime: 5

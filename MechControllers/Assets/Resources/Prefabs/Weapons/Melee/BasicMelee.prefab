@@ -45,9 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Slash
-  damage: 50
-  maxAmmo: 0
-  range: 1
-  attackSpeed: 1
-  cooldown: 3
+  baseDamage: 50
+  baseRange: 1
+  baseAttackSpeed: 1
+  baseCooldown: 4
+  _AttachedMech: {fileID: 0}
   isAttacking: 0
+  usesAmmo: 0
+  maxAmmo: 1
+  ammoUsedPerShot: 1
+  reloadTime: 0
