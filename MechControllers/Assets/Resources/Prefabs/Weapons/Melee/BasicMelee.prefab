@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4995334327057599559}
   - component: {fileID: 5714444719683885495}
+  - component: {fileID: -600576507808417107}
   m_Layer: 0
   m_Name: BasicMelee
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Slash
+  hitEffectBehaviour: {fileID: 5714444719683885495}
   baseDamage: 50
   baseRange: 1
   baseAttackSpeed: 1
@@ -55,3 +57,15 @@ MonoBehaviour:
   maxAmmo: 1
   ammoUsedPerShot: 1
   reloadTime: 0
+--- !u!114 &-600576507808417107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976564571992886175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa330e2e170ae704dbadfafb1eeb0016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTargetHitEffect

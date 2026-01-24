@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5527021764938944808}
   - component: {fileID: 7131973759617290397}
+  - component: {fileID: -7005926294392009980}
   m_Layer: 0
   m_Name: BasicGun
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Gun
+  hitEffectBehaviour: {fileID: 7131973759617290397}
   baseDamage: 20
   baseRange: 1
   baseAttackSpeed: 1
@@ -55,3 +57,15 @@ MonoBehaviour:
   maxAmmo: 5
   ammoUsedPerShot: 1
   reloadTime: 5
+--- !u!114 &-7005926294392009980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854632667985969037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa330e2e170ae704dbadfafb1eeb0016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTargetHitEffect

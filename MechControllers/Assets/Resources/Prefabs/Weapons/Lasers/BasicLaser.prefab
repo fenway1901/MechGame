@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6195641580685276904}
   - component: {fileID: 3554341894055207921}
+  - component: {fileID: 9036273903472067507}
   m_Layer: 0
   m_Name: BasicLaser
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Laser
+  hitEffectBehaviour: {fileID: 3554341894055207921}
   baseDamage: 10
   baseRange: 5
   baseAttackSpeed: 1
@@ -55,3 +57,15 @@ MonoBehaviour:
   maxAmmo: 1
   ammoUsedPerShot: 1
   reloadTime: 0
+--- !u!114 &9036273903472067507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478597863718520347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa330e2e170ae704dbadfafb1eeb0016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTargetHitEffect

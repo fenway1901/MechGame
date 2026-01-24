@@ -8,6 +8,8 @@ public class BaseWeapons : MonoBehaviour
 {
     [Header("General Variables")]
     [SerializeField] public string displayName;
+    [SerializeField] MonoBehaviour hitEffectBehaviour;
+    protected IHitEffect hitEffect;
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseRange;
     [SerializeField] protected float baseAttackSpeed;
@@ -42,6 +44,8 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Awake()
     {
+        hitEffect = hitEffectBehaviour as IHitEffect;
+
         // PROTO: until I get the buff stuff added
         totalDamage = baseDamage;
         totalAttackSpeed = baseAttackSpeed;
@@ -82,11 +86,18 @@ public class BaseWeapons : MonoBehaviour
 
                     if (usesAmmo)
                     {
+                        if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
+                        {
+                            StopAttack("Not enough ammo to shoot");
+                            return;
+                        }
 
+                        FiredWeapon();
                     }
 
                     Debug.Log(name + " finished charging and applying damage");
-                    target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
+                    //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
+                    hitEffect?.Apply(this, target, target.transform.position);
                     isCharging = false;
                     isCoolingDown = true;
                     AttackManager.instance.CooldownDisplay(totalCooldown);
@@ -140,10 +151,10 @@ public class BaseWeapons : MonoBehaviour
     #region Get Functions
 
     // float gets
-    public float GetDamage() { return baseDamage; }
-    public float GetRange() { return baseRange; }
-    public float GetAttackSpeed() { return baseAttackSpeed; }
-    public float GetCoolDown() {  return baseCooldown; }
+    public float GetDamage() { return totalDamage; }
+    public float GetRange() { return totalRange; }
+    public float GetAttackSpeed() { return totalAttackSpeed; }
+    public float GetCoolDown() {  return totalCooldown; }
     
     // int gets
     public int GetMaxAmmo() { return maxAmmo; }
@@ -169,10 +180,13 @@ public class BaseWeapons : MonoBehaviour
             return;
         }
 
-        if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
+        if (usesAmmo)
         {
-            Debug.LogWarning(_AttachedMech.name + " is trying to fire " + name + " with not enough ammo");
-            return;
+            if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
+            {
+                Debug.LogWarning(_AttachedMech.name + " is trying to fire " + name + " with not enough ammo");
+                return;
+            }            
         }
 
         Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
@@ -181,6 +195,10 @@ public class BaseWeapons : MonoBehaviour
         chargeEndTime = Time.time + totalAttackSpeed;
         cooldownEndTime = Time.time + totalCooldown;
         AttackManager.instance.ChargeDisplay(totalAttackSpeed);
+        
+        isAttacking = true;
+        isCharging = true;
+        isCoolingDown = false;
     }
 
     public virtual void StopAttack(string reason = "No reason given")
