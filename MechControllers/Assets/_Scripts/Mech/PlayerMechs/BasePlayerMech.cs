@@ -50,8 +50,8 @@ public class BasePlayerMech : BaseMech
         if (selectWeapon3.WasPressedThisFrame())
             SelectWeapon(weapons[2], weapon3);
 
-        if (activeWeapon != null)
-            Debug.Log(activeWeapon.GetIsAttacking());
+        //if (activeWeapon != null)
+        //    Debug.Log(activeWeapon.GetIsAttacking());
 
         if (Mouse.current.leftButton.wasReleasedThisFrame && activeWeapon != null && LimbHighlighter.instance.currentLimb != null && !activeWeapon.GetIsAttacking())
         {

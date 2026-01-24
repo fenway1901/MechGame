@@ -123,7 +123,7 @@ public class MechBrain : MonoBehaviour
             return null;
 
         // Simple: first weapon
-        return (BaseWeapons)mech.Weapons[0];
+        return mech.Weapons[0];
 
         // Later: pick by range/damage, or based on the specific target.
     }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Laser
-  damage: 10
+  damage: 20
   maxAmmo: 5
   range: 2
   attackSpeed: 5
