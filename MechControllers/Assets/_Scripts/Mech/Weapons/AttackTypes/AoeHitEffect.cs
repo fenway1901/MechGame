@@ -14,6 +14,12 @@ public class AoeHitEffect : MonoBehaviour, IHitEffect
         // PROTO: make sure there is a radius
         if(totalRadius == 0) { totalRadius = baseRadius; }
 
+        // Check if limb was selected as target point
+        if(primaryTarget.layer == 6)
+        {
+            impactPoint = primaryTarget.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform.position;
+        }
+
         Collider[] hits = Physics.OverlapSphere(impactPoint, totalRadius, damageMask);
 
 

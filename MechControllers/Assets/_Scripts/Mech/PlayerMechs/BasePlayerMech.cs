@@ -81,6 +81,7 @@ public class BasePlayerMech : BaseMech
         Debug.Log("setting up players layout");
 
         spawnedLayout = Instantiate(layoutPrefab, panel.transform);
+        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
 
         limbs = new List<BaseLimb>();
 

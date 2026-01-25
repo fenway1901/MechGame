@@ -34,13 +34,16 @@ public class LimbHealthComponent : BaseHealthComponent
         float hullDamage = amount * leak;
         float limbDamage = amount - hullDamage;
 
-        // leak damage to hull
-        if (hullDamage > 0f)
-            mechHealthComponent.TakeDamage(hullDamage);
 
         // apply damage to limb
         float before = CurrentHealth;
         base.TakeDamage(limbDamage);
+
+        Debug.Log("limb damaged " + CurrentHealth);
+
+        // leak damage to hull
+        if (hullDamage > 0f)
+            mechHealthComponent.TakeDamage(hullDamage);
 
         // if overkill happens
         if (CurrentHealth <= 0f && overkillToHullPercent > 0f)
@@ -52,8 +55,6 @@ public class LimbHealthComponent : BaseHealthComponent
             if(extraHull > 0f)
                 mechHealthComponent.TakeDamage(extraHull);
         }
-
-        Debug.Log("limb damaged " + CurrentHealth);
     }
 
     public override void Heal(float amount)

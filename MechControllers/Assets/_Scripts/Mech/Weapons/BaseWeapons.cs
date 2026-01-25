@@ -26,7 +26,9 @@ public class BaseWeapons : MonoBehaviour
     protected bool isCoolingDown;
     protected float chargeEndTime;
     protected float cooldownEndTime;
+
     protected GameObject target;
+    protected Transform targetTrans;
 
     [Header("Ranged Variables (usesAmmo REMEMBER usesAmmo)")]
     [SerializeField] protected bool usesAmmo;
@@ -44,7 +46,17 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Awake()
     {
+        currentAmmo = maxAmmo;
+
         hitEffect = hitEffectBehaviour as IHitEffect;
+
+        if (hitEffect == null)
+        {
+            Debug.LogError(
+                $"{name}: hitEffectBehaviour is assigned but does NOT implement IHitEffect. " +
+                $"Assigned type: {hitEffectBehaviour?.GetType().Name}"
+            );
+        }
 
         // PROTO: until I get the buff stuff added
         totalDamage = baseDamage;
@@ -78,9 +90,9 @@ public class BaseWeapons : MonoBehaviour
                 // Time to damage enemy
                 if(Time.time >= chargeEndTime)
                 {
-                    if(GameUtils.GetDistance(_AttachedMech.transform.position, target.transform.position) > totalRange)
+                    if(GameUtils.GetDistance(_AttachedMech.transform.position, targetTrans.position) > totalRange)
                     {
-                        StopAttack("Distance to far");
+                        StopAttack("Distance to far: " + GameUtils.GetDistance(_AttachedMech.transform.position, targetTrans.position));
                         return;
                     }
 
@@ -88,7 +100,7 @@ public class BaseWeapons : MonoBehaviour
                     {
                         if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
                         {
-                            StopAttack("Not enough ammo to shoot");
+                            StopAttack("Not enough ammo to shoot " + currentAmmo);
                             return;
                         }
 
@@ -97,7 +109,7 @@ public class BaseWeapons : MonoBehaviour
 
                     Debug.Log(name + " finished charging and applying damage");
                     //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
-                    hitEffect?.Apply(this, target, target.transform.position);
+                    hitEffect.Apply(this, target, targetTrans.position);
                     isCharging = false;
                     isCoolingDown = true;
                     AttackManager.instance.CooldownDisplay(totalCooldown);
@@ -109,6 +121,7 @@ public class BaseWeapons : MonoBehaviour
                 if(Time.time >= cooldownEndTime)
                 {
                     Debug.Log(name + " finshed attack");
+                    AttackManager.instance.TurnOffDisplay();
                     FinishedAttack();
                 }
             }
@@ -180,13 +193,24 @@ public class BaseWeapons : MonoBehaviour
             return;
         }
 
+        // Layer 6 is limb layer
+        if(target.layer == 6)
+        {
+            Debug.Log("Target a limb");
+            targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
+        }
+        else
+        {
+            targetTrans = target.transform;
+        }
+
         if (usesAmmo)
         {
             if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
             {
                 Debug.LogWarning(_AttachedMech.name + " is trying to fire " + name + " with not enough ammo");
                 return;
-            }            
+            }
         }
 
         Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
@@ -209,6 +233,7 @@ public class BaseWeapons : MonoBehaviour
         isAttacking = false;
         isCharging = false;
         isCoolingDown = false;
+        AttackManager.instance.TurnOffDisplay();
     }
 
     protected virtual void FinishedAttack()

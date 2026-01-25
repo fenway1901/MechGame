@@ -62,6 +62,7 @@ public class BaseMech : MonoBehaviour
         for(int i = 0; i < foundWeapons.Count; ++i)
         {
             weapons.Add(Instantiate(foundWeapons[i], transform));
+            weapons[i]._AttachedMech = gameObject;
         }
     }
 

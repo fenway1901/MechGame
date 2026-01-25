@@ -34,6 +34,7 @@ public class EnemyBaseMech : BaseMech
         //Debug.Log("setting up enemy layout");
 
         spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
+        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
 
         limbs = new List<BaseLimb>();
 

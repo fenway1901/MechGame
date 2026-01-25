@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Laser
-  hitEffectBehaviour: {fileID: 3554341894055207921}
+  hitEffectBehaviour: {fileID: 9036273903472067507}
   baseDamage: 10
   baseRange: 5
   baseAttackSpeed: 1

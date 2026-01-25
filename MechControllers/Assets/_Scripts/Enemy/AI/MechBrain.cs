@@ -152,7 +152,6 @@ public class MechBrain : MonoBehaviour
                 return l;
         }
 
-
         // All limbs destroyed; return any as fallback (or null if you want to stop)
         return limbs[0];
     }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Missile
-  hitEffectBehaviour: {fileID: 5439625688542587019}
+  hitEffectBehaviour: {fileID: 6977666785638617726}
   baseDamage: 10000
   baseRange: 10000
   baseAttackSpeed: 0.5
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feab46faaa1c4fc43a3d8c4d22ea1bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AoeHitEffect
-  baseRadius: 5
+  baseRadius: 10
   damageMask:
     serializedVersion: 2
     m_Bits: 8

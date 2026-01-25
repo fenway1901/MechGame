@@ -29,6 +29,7 @@ public class AttackManager : MonoBehaviour
     {
         WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
 
+        display.timerTxt.gameObject.SetActive(true);
         display.SetTimer(time);
         display.timerTxt.color = Color.white;
     }
@@ -37,8 +38,15 @@ public class AttackManager : MonoBehaviour
     {
         WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
 
+        display.timerTxt.gameObject.SetActive(true);
         display.SetTimer(time);
         display.timerTxt.color = Color.darkRed;
+    }
+
+    public void TurnOffDisplay()
+    {
+        WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
+        display.timerTxt.gameObject.SetActive(false);
     }
 
     public void AttackEnemy(GameObject target, BaseWeapons weapon, WeaponDisplay display = null)

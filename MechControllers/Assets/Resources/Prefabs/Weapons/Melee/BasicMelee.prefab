@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Slash
-  hitEffectBehaviour: {fileID: 5714444719683885495}
+  hitEffectBehaviour: {fileID: -600576507808417107}
   baseDamage: 50
   baseRange: 1
   baseAttackSpeed: 1
