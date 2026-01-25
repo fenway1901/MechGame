@@ -107,12 +107,16 @@ public class BaseWeapons : MonoBehaviour
                         FiredWeapon();
                     }
 
-                    Debug.Log(name + " finished charging and applying damage");
+                    //Debug.Log(name + " finished charging and applying damage");
                     //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
                     hitEffect.Apply(this, target, targetTrans.position);
                     isCharging = false;
                     isCoolingDown = true;
-                    AttackManager.instance.CooldownDisplay(totalCooldown);
+
+                    // PROTO: Display controled like this for a minute
+                    // In future make it a unity event the UI is subcribed to
+                    if (transform.parent.tag == "Player")
+                        AttackManager.instance.CooldownDisplay(totalCooldown);
                 }
             }
             else if (isCoolingDown)
@@ -120,8 +124,13 @@ public class BaseWeapons : MonoBehaviour
                 // Cooling off weapon
                 if(Time.time >= cooldownEndTime)
                 {
-                    Debug.Log(name + " finshed attack");
-                    AttackManager.instance.TurnOffDisplay();
+                    //Debug.Log(name + " finshed attack");
+                    
+                    // PROTO: Display controled like this for a minute
+                    // In future make it a unity event the UI is subcribed to
+                    if (transform.parent.tag == "Player")
+                        AttackManager.instance.TurnOffDisplay();
+                    
                     FinishedAttack();
                 }
             }
@@ -196,7 +205,7 @@ public class BaseWeapons : MonoBehaviour
         // Layer 6 is limb layer
         if(target.layer == 6)
         {
-            Debug.Log("Target a limb");
+            //Debug.Log("Target a limb");
             targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
         }
         else
@@ -218,11 +227,15 @@ public class BaseWeapons : MonoBehaviour
         this.target = target;
         chargeEndTime = Time.time + totalAttackSpeed;
         cooldownEndTime = Time.time + totalCooldown;
-        AttackManager.instance.ChargeDisplay(totalAttackSpeed);
         
         isAttacking = true;
         isCharging = true;
         isCoolingDown = false;
+
+        // PROTO: Display controled like this for a minute
+        // In future make it a unity event the UI is subcribed to
+        if (transform.parent.tag == "Player")
+            AttackManager.instance.ChargeDisplay(totalAttackSpeed);
     }
 
     public virtual void StopAttack(string reason = "No reason given")
