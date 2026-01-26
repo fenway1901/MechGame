@@ -14,10 +14,14 @@ public class BaseWeapons : MonoBehaviour
     [SerializeField] protected float baseRange;
     [SerializeField] protected float baseAttackSpeed;
     [SerializeField] protected float baseCooldown;
-    protected float totalDamage;
+
+    // probably delete
+    /*protected float totalDamage;
     protected float totalAttackSpeed;
     protected float totalCooldown;
-    protected float totalRange;
+    protected float totalRange;*/
+
+
 
     public GameObject _AttachedMech;
 
@@ -31,13 +35,26 @@ public class BaseWeapons : MonoBehaviour
     protected Transform targetTrans;
 
     [Header("Ranged Variables (usesAmmo REMEMBER usesAmmo)")]
-    [SerializeField] protected bool usesAmmo;
+    public bool usesAmmo;
     protected bool reloading;
     [SerializeField] protected int maxAmmo;
     protected int currentAmmo;
     [SerializeField] protected int ammoUsedPerShot;
     [SerializeField] protected float reloadTime;
+    [SerializeField] protected int baseReloadAmount;
     protected float reloadEndTime;
+
+    public float BaseDamage => baseDamage;
+    public float BaseRange => baseRange;
+    public float BaseAttackSpeed => baseAttackSpeed;
+    public float BaseCooldown => baseCooldown;
+    public float BaseReloadTime => reloadTime;
+    public int BaseMaxAmmo => maxAmmo;
+    public int BaseAmmoUsedPerShot => ammoUsedPerShot;
+    public int BaseReloadAmount => baseReloadAmount;
+
+    protected BaseWeaponStats weaponStats;
+
 
     //[Header("Melee Variables")]
 
@@ -46,7 +63,8 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Awake()
     {
-        currentAmmo = maxAmmo;
+        // Might cause problems in future keep an eye on this
+        currentAmmo = weaponStats.MaxAmmo;
 
         hitEffect = hitEffectBehaviour as IHitEffect;
 
@@ -58,11 +76,19 @@ public class BaseWeapons : MonoBehaviour
             );
         }
 
+        weaponStats = GetComponent<BaseWeaponStats>();
+        if(weaponStats == null)
+        {
+            Debug.LogError("The weapon " + name + " did not have a WeaponStat Component!");
+            weaponStats = gameObject.AddComponent<BaseWeaponStats>();
+        }
+
+
         // PROTO: until I get the buff stuff added
-        totalDamage = baseDamage;
+        /*totalDamage = baseDamage;
         totalAttackSpeed = baseAttackSpeed;
         totalCooldown = baseCooldown;
-        totalRange = baseRange;
+        totalRange = baseRange;*/
     }
 
     protected virtual void Update()
@@ -90,7 +116,7 @@ public class BaseWeapons : MonoBehaviour
                 // Time to damage enemy
                 if(Time.time >= chargeEndTime)
                 {
-                    if(GameUtils.GetDistance(_AttachedMech.transform.position, targetTrans.position) > totalRange)
+                    if(GameUtils.GetDistance(_AttachedMech.transform.position, targetTrans.position) > weaponStats.Range)
                     {
                         StopAttack("Distance to far: " + GameUtils.GetDistance(_AttachedMech.transform.position, targetTrans.position));
                         return;
@@ -116,7 +142,7 @@ public class BaseWeapons : MonoBehaviour
                     // PROTO: Display controled like this for a minute
                     // In future make it a unity event the UI is subcribed to
                     if (transform.parent.tag == "Player")
-                        AttackManager.instance.CooldownDisplay(totalCooldown);
+                        AttackManager.instance.CooldownDisplay(weaponStats.Cooldown);
                 }
             }
             else if (isCoolingDown)
@@ -142,21 +168,17 @@ public class BaseWeapons : MonoBehaviour
 
     #region Stat Controls
 
+    // If i want a permanent upgrade to a weapon
     public virtual void AddToDamage(float add)
     {
         baseDamage += add;
+        weaponStats.Stats.SetBase(StatType.Weapon_Damage, baseDamage);
     }
 
     public virtual void ReduceFromDamage(float reduce)
     {
         baseDamage -= reduce;
         baseDamage = Mathf.Clamp(baseDamage, 0, Mathf.Infinity);
-    }
-
-    // Come back to how to handle buff system
-    public virtual void ApplyBuff(BaseBuff buff)
-    {
-        // can effet total damage here
     }
 
     #endregion
@@ -173,13 +195,13 @@ public class BaseWeapons : MonoBehaviour
     #region Get Functions
 
     // float gets
-    public float GetDamage() { return totalDamage; }
-    public float GetRange() { return totalRange; }
-    public float GetAttackSpeed() { return totalAttackSpeed; }
-    public float GetCoolDown() {  return totalCooldown; }
-    
+    public float GetDamage() { return weaponStats.Damage; }
+    public float GetRange() { return weaponStats.Range; }
+    public float GetAttackSpeed() { return weaponStats.AttackSpeed; }
+    public float GetCoolDown() { return weaponStats.Cooldown; }
+
     // int gets
-    public int GetMaxAmmo() { return maxAmmo; }
+    //public int GetMaxAmmo() { return weaponStats.; }
     public int GetCurrentAmmo() { return currentAmmo; }
     public int GetAmmoUsedPerShot() { return ammoUsedPerShot; }
 
@@ -188,6 +210,8 @@ public class BaseWeapons : MonoBehaviour
     public bool GetIsReloading() { return reloading; }
     public bool GetIsCharging() { return isCharging; }
     public bool GetIsCoolingDown() { return isCoolingDown; }
+
+
 
     #endregion
 
@@ -222,11 +246,11 @@ public class BaseWeapons : MonoBehaviour
             }
         }
 
-        Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
+        //Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
 
         this.target = target;
-        chargeEndTime = Time.time + totalAttackSpeed;
-        cooldownEndTime = Time.time + totalCooldown;
+        chargeEndTime = Time.time + weaponStats.AttackSpeed;
+        cooldownEndTime = Time.time + weaponStats.Cooldown;
         
         isAttacking = true;
         isCharging = true;
@@ -235,7 +259,7 @@ public class BaseWeapons : MonoBehaviour
         // PROTO: Display controled like this for a minute
         // In future make it a unity event the UI is subcribed to
         if (transform.parent.tag == "Player")
-            AttackManager.instance.ChargeDisplay(totalAttackSpeed);
+            AttackManager.instance.ChargeDisplay(weaponStats.AttackSpeed);
     }
 
     public virtual void StopAttack(string reason = "No reason given")
@@ -265,7 +289,7 @@ public class BaseWeapons : MonoBehaviour
     public virtual void FiredWeapon()
     {
         if (usesAmmo)
-            currentAmmo = currentAmmo - ammoUsedPerShot;
+            currentAmmo -= weaponStats.AmmoUsedPerShot;
     }
 
     public virtual void Reload()
@@ -278,13 +302,15 @@ public class BaseWeapons : MonoBehaviour
         }
 
         reloading = true;
-        reloadEndTime = Time.time + reloadTime;
+        reloadEndTime = Time.time + weaponStats.ReloadTime;
     }
 
     protected virtual void FinishedReload()
     {
         reloading = false;
-        currentAmmo = maxAmmo;
+        // FUTURE: when I want to set up a partial reload system right now I will just do max ammo
+        //currentAmmo = Mathf.Min(weaponStats.MaxAmmo, currentAmmo + weaponStats.ReloadAmount);
+        currentAmmo = weaponStats.MaxAmmo;
     }
 
     #endregion
