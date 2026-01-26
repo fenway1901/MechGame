@@ -28,27 +28,6 @@ public class EnemyBaseMech : BaseMech
         brain.mech = this;
     }
 
-
-    protected void SetUpLimbs()
-    {
-        //Debug.Log("setting up enemy layout");
-
-        spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
-        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
-
-        limbs = new List<BaseLimb>();
-
-        for (int i = 0; i < layoutPrefab.transform.childCount; ++i)
-        {
-            // Just incase i will add things that arn't limbs to this prefab
-            if (layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>())
-            {
-                limbs.Add(layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>());
-                limbs[i].attachedMech = this;
-            }
-        }
-    }
-
     // Basic attack sequence
 
     public void SetObjective(Objective obj)

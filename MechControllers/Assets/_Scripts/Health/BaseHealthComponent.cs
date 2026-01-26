@@ -47,5 +47,15 @@ public class BaseHealthComponent : MonoBehaviour
         Debug.Log(name + " has died!");
     }
 
+    public virtual void SetMaxHealth(float health)
+    {
+        maxHealth = health;
+    }
+
+    public virtual void FullHeal()
+    {
+        CurrentHealth = maxHealth;
+    }
+
     public float Normalized => maxHealth > 0f ? CurrentHealth / maxHealth : 0f;
 }

@@ -1,8 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MechHealthComponent : BaseHealthComponent
 {
     public GameObject _AttachedMech;
+
+    protected virtual void Start()
+    {
+        //SetMaxHealth(_AttachedMech.GetComponent<StatsComponent>().Get(StatType.Mech_MaxHealth));
+    }
 
     protected override void Death(BaseHealthComponent sender)
     {

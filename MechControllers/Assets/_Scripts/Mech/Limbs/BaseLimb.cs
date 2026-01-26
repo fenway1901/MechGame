@@ -19,7 +19,8 @@ public class BaseLimb : MonoBehaviour
     [SerializeField] protected Color hoverColor;
     [SerializeField] protected Color destroyColor;
 
-    [SerializeField] BaseHealthComponent health;
+    [SerializeField] protected BaseHealthComponent health;
+    [SerializeField] protected BaseLimbStats stats;
 
     private void Awake()
     {
@@ -80,4 +81,10 @@ public class BaseLimb : MonoBehaviour
         else
             sr.color = normalColor;
     }
+
+    #region Get Functions
+
+    public BaseLimbStats GetLimbStats() { return stats; }
+
+    #endregion
 }

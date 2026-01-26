@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 910537493680101802}
   - component: {fileID: 5412707636198967253}
   - component: {fileID: 4222216091793619561}
+  - component: {fileID: 1227999559124888374}
+  - component: {fileID: 5081588334178253422}
   m_Layer: 6
   m_Name: Head
   m_TagString: Enemy
@@ -116,6 +118,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!58 &5412707636198967253
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +173,34 @@ MonoBehaviour:
   killLimbKillsMech: 1
   leakToHullPercent: 0.5
   overkillToHullPercent: 0
+--- !u!114 &1227999559124888374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452854826404602729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &5081588334178253422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452854826404602729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Head
+  slot: 0
 --- !u!1 &1125744571560385840
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +214,8 @@ GameObject:
   - component: {fileID: 4815502377766848031}
   - component: {fileID: 4835244051170515029}
   - component: {fileID: 4449769119526692780}
+  - component: {fileID: 7304978596123953365}
+  - component: {fileID: 308796170203332438}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Enemy
@@ -286,6 +319,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!61 &4835244051170515029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -350,6 +384,34 @@ MonoBehaviour:
   killLimbKillsMech: 0
   leakToHullPercent: 0.35
   overkillToHullPercent: 0.8
+--- !u!114 &7304978596123953365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125744571560385840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &308796170203332438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125744571560385840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Chest
+  slot: 1
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +425,8 @@ GameObject:
   - component: {fileID: 5687577684273443438}
   - component: {fileID: 1769736371964790080}
   - component: {fileID: 6164145871046960234}
+  - component: {fileID: 3821662473171111784}
+  - component: {fileID: 1266756063552960579}
   m_Layer: 6
   m_Name: Left Leg
   m_TagString: Enemy
@@ -466,6 +530,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!61 &1769736371964790080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -530,6 +595,34 @@ MonoBehaviour:
   killLimbKillsMech: 0
   leakToHullPercent: 0.15
   overkillToHullPercent: 0.4
+--- !u!114 &3821662473171111784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481776505768732721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &1266756063552960579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481776505768732721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Leg
+  slot: 4
 --- !u!1 &3040214340326169676
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MechHealthComponent
   maxHealth: 100
+  _AttachedMech: {fileID: 0}
 --- !u!1 &3536687926203196233
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +688,8 @@ GameObject:
   - component: {fileID: 6558681552639297120}
   - component: {fileID: 7794294974089471146}
   - component: {fileID: 7695254523406097312}
+  - component: {fileID: 6808640885824997159}
+  - component: {fileID: 7544959363242827429}
   m_Layer: 6
   m_Name: Right Leg
   m_TagString: Enemy
@@ -697,6 +793,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!61 &7794294974089471146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -761,6 +858,34 @@ MonoBehaviour:
   killLimbKillsMech: 0
   leakToHullPercent: 0.15
   overkillToHullPercent: 0.4
+--- !u!114 &6808640885824997159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536687926203196233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &7544959363242827429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536687926203196233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Leg
+  slot: 5
 --- !u!1 &4988710182775261688
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +899,8 @@ GameObject:
   - component: {fileID: 599907133407541442}
   - component: {fileID: 7461954448256441002}
   - component: {fileID: 5592665041562632273}
+  - component: {fileID: 8503984404295703735}
+  - component: {fileID: 3821252833988450829}
   m_Layer: 6
   m_Name: Left Arm
   m_TagString: Enemy
@@ -877,6 +1004,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!61 &7461954448256441002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -941,6 +1069,34 @@ MonoBehaviour:
   killLimbKillsMech: 0
   leakToHullPercent: 0.15
   overkillToHullPercent: 0.4
+--- !u!114 &8503984404295703735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988710182775261688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &3821252833988450829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988710182775261688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Arm
+  slot: 2
 --- !u!1 &5416419350101463734
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1110,8 @@ GameObject:
   - component: {fileID: 2187659173674263638}
   - component: {fileID: 2259734424155150896}
   - component: {fileID: 7306669982294410213}
+  - component: {fileID: 3549940681362438854}
+  - component: {fileID: 5608421112938852492}
   m_Layer: 6
   m_Name: Right Arm
   m_TagString: Enemy
@@ -1057,6 +1215,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!61 &2259734424155150896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1121,3 +1280,31 @@ MonoBehaviour:
   killLimbKillsMech: 0
   leakToHullPercent: 0.15
   overkillToHullPercent: 0.4
+--- !u!114 &3549940681362438854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416419350101463734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []
+--- !u!114 &5608421112938852492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416419350101463734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a71a30bee78f6448a7f57bb69cfc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseLimbStats
+  tags:
+  - Arm
+  slot: 3

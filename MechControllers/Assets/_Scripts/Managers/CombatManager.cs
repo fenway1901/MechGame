@@ -69,5 +69,8 @@ public class CombatManager : MonoBehaviour
     public void StartCombat()
     {
         EnemyCombatDirector.instance.StartCombat();
+
+        // Test Apply Buff
+        GetComponent<BuffTestScript>().ApplyBuff();
     }
 }

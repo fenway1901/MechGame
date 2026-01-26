@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// PUT ON MECH ROOT
 public class BuffController : MonoBehaviour
 {
     private int _nextInstanceId = 1;
@@ -39,6 +40,31 @@ public class BuffController : MonoBehaviour
         ListPool<int>.Release(toRemove);
     }
 
+    #region Set and Get functions
+
+    public void SetLimbs(List<BaseLimbStats> limbs) { this.limbs = limbs; }
+    public void SetLimbs(List<BaseLimb> limbs)
+    {
+        this.limbs.Clear();
+        foreach(BaseLimb l in limbs)
+        {
+            this.limbs.Add(l.GetLimbStats());
+        }
+    }
+    public void SetWeapons(List<BaseWeaponStats> weapons) { this.weapons = weapons; }
+    public void SetWeapons(List<BaseWeapons> weapons)
+    {
+        this.weapons.Clear();
+        foreach(BaseWeapons w in weapons)
+        {
+            this.weapons.Add(w.GetWeaponStats());
+        }
+    }
+
+
+    #endregion
+
+
     public int Apply(BuffDefinition def, Object source)
     {
         // Optional: if you want “reapply refreshes duration” behavior, search existing by def+source.
@@ -55,9 +81,42 @@ public class BuffController : MonoBehaviour
 
         foreach (var spec in def.statMods)
         {
-            foreach (var targetStats in ResolveTargets(spec))
+            foreach (var targetStats in ResolveTargets(spec, null))
             {
                 var mod = new StatModifier
+                {
+                    stat = spec.stat,
+                    mode = spec.mod,
+                    value = spec.value,
+                    priority = spec.priority,
+                    instanceId = id,
+                    source = source
+                };
+                targetStats.AddModifier(mod);
+            }
+        }
+
+        return id;
+    }
+
+    public int Apply(BuffDefinition def, Object source, Object target = null)
+    {
+        int id = _nextInstanceId++;
+        BuffInstance inst = new BuffInstance
+        {
+            instanceId = id,
+            definition = def,
+            source = source,
+            remaining = def.durationSeconds <= 0f ? -1f : def.durationSeconds
+        };
+
+        _active[id] = inst;
+
+        foreach (BuffDefinition.StatModSpec spec in def.statMods)
+        {
+            foreach (StatsComponent targetStats in ResolveTargets(spec, target))
+            {
+                StatModifier mod = new StatModifier
                 {
                     stat = spec.stat,
                     mode = spec.mod,
@@ -100,7 +159,7 @@ public class BuffController : MonoBehaviour
         ListPool<int>.Release(toRemove);
     }
 
-    private IEnumerable<StatsComponent> ResolveTargets(BuffDefinition.StatModSpec spec)
+    private IEnumerable<StatsComponent> ResolveTargets(BuffDefinition.StatModSpec spec, Object specificTarget)
     {
         switch (spec.target)
         {
@@ -136,6 +195,46 @@ public class BuffController : MonoBehaviour
             case BuffTarget.SpecificLimbSlot:
                 foreach (BaseLimbStats l in limbs)
                     if (l != null && l.Slot == spec.limbSlot) yield return l.Stats;
+                yield break;
+
+            case BuffTarget.SpecificObject:
+                if (specificTarget == null) yield break;
+
+                // Allow passing a StatsComponent directly
+                if (specificTarget is StatsComponent sc)
+                {
+                    yield return sc;
+                    yield break;
+                }
+
+                // Or passing a weapon/limb stats wrapper
+                if (specificTarget is BaseWeaponStats ws)
+                {
+                    yield return ws.Stats;
+                    yield break;
+                }
+
+                if (specificTarget is BaseLimbStats ls)
+                {
+                    yield return ls.Stats;
+                    yield break;
+                }
+
+                // Or passing a GameObject / Component
+                if (specificTarget is Component c)
+                {
+                    var found = c.GetComponent<StatsComponent>();
+                    if (found != null) yield return found;
+                    yield break;
+                }
+
+                if (specificTarget is GameObject go)
+                {
+                    var found = go.GetComponent<StatsComponent>();
+                    if (found != null) yield return found;
+                    yield break;
+                }
+
                 yield break;
         }
     }

@@ -15,13 +15,24 @@ public class BaseMech : MonoBehaviour
 
     public bool isDead = false;
 
+    public StatsComponent stats;
+    public BuffController buffController;
+
     // AI variables
     public IReadOnlyList<BaseWeapons> Weapons => weapons;
     protected MechBrain brain;
 
     public virtual void Init()
     {
-        GetWeapons();
+        if(TryGetComponent(out BuffController controller))
+            buffController = controller;
+
+        if (TryGetComponent(out StatsComponent stats))
+            this.stats = stats;
+        else
+            Debug.LogWarning(name + " Does not have any stats!");
+
+            GetWeapons();
 
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
@@ -70,6 +81,34 @@ public class BaseMech : MonoBehaviour
     {
         activeWeapon.Attack(target);
         //AttackManager.instance.AttackEnemy(target, activeWeapon);
+    }
+
+    #endregion
+
+
+    #region Limb Management
+
+    protected virtual void SetUpLimbs()
+    {
+        //Debug.Log("setting up enemy layout");
+
+        spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
+        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
+        spawnedLayout.GetComponent<MechHealthComponent>().SetMaxHealth(stats.Get(StatType.Mech_MaxHealth));
+        limbs = new List<BaseLimb>();
+
+        for (int i = 0; i < layoutPrefab.transform.childCount; ++i)
+        {
+            // Just incase i will add things that arn't limbs to this prefab
+            if (layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>())
+            {
+                limbs.Add(layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>());
+                limbs[i].attachedMech = this;
+            }
+        }
+
+        if (buffController != null)
+            buffController.SetLimbs(limbs);
     }
 
     #endregion

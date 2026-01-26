@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5527021764938944808}
   - component: {fileID: 7131973759617290397}
   - component: {fileID: -7005926294392009980}
+  - component: {fileID: -5939823535845135763}
+  - component: {fileID: -6635349468065631949}
   m_Layer: 0
   m_Name: BasicGun
   m_TagString: Untagged
@@ -57,6 +59,7 @@ MonoBehaviour:
   maxAmmo: 5
   ammoUsedPerShot: 1
   reloadTime: 5
+  baseReloadAmount: 5
 --- !u!114 &-7005926294392009980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,3 +72,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa330e2e170ae704dbadfafb1eeb0016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SingleTargetHitEffect
+--- !u!114 &-5939823535845135763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854632667985969037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00bb840baa7b1fd408cf72ecb7edc7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseWeaponStats
+  tags:
+  - Gun
+  slot: 0
+--- !u!114 &-6635349468065631949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854632667985969037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats: []

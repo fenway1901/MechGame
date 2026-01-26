@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BaseWeapons))]
+[RequireComponent(typeof(BaseWeapons), typeof(StatsComponent))]
 public class BaseWeaponStats : MonoBehaviour
 {
     [SerializeField] protected string[] tags;

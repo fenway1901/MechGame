@@ -76,26 +76,6 @@ public class BasePlayerMech : BaseMech
 
     #region Limb Management
 
-    protected void SetUpLimbs()
-    {
-        Debug.Log("setting up players layout");
-
-        spawnedLayout = Instantiate(layoutPrefab, panel.transform);
-        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
-
-        limbs = new List<BaseLimb>();
-
-        for (int i = 0; i < layoutPrefab.transform.childCount; ++i)
-        {
-            // Just incase i will add things that arn't limbs to this prefab
-            if (layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>())
-            {
-                limbs.Add(layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>());
-                limbs[i].attachedMech = this;
-            }
-        }
-    }
-
     #endregion
 
 
@@ -103,7 +83,7 @@ public class BasePlayerMech : BaseMech
 
     protected virtual void SelectWeapon(BaseWeapons weapon, WeaponDisplay display)
     {
-        Debug.Log(weapon.name + " is Selected!!!");
+        Debug.Log("Player Selected: " + weapon.name);
         activeWeapon = weapon;
         activeDisplay = display;
     }

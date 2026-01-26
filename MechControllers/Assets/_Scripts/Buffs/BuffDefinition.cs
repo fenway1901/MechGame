@@ -30,7 +30,7 @@ public enum WeaponSlot
 public enum LimbSlot 
 { 
     Head, 
-    Torso, 
+    Chest, 
     LeftArm, 
     RightArm, 
     LeftLeg, 
@@ -40,7 +40,7 @@ public enum LimbSlot
 [CreateAssetMenu(menuName = "Combat/Buffs/BuffDefinition")]
 public class BuffDefinition : ScriptableObject
 {
-    [SerializeField]
+    [System.Serializable]
     public class StatModSpec
     {
         public BuffTarget target;

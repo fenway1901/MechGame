@@ -1093,6 +1093,8 @@ GameObject:
   - component: {fileID: 278496276}
   - component: {fileID: 278496275}
   - component: {fileID: 278496274}
+  - component: {fileID: 278496284}
+  - component: {fileID: 278496283}
   m_Layer: 3
   m_Name: EnemyMech
   m_TagString: Untagged
@@ -1249,6 +1251,8 @@ MonoBehaviour:
   layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
   spawnedLayout: {fileID: 0}
   isDead: 0
+  stats: {fileID: 0}
+  buffController: {fileID: 0}
   target: {fileID: 0}
   CurrentObjective: {fileID: 0}
 --- !u!114 &278496281
@@ -1282,6 +1286,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseHealthComponent
   maxHealth: 100
+--- !u!114 &278496283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278496273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats:
+  - stat: 0
+    baseValue: 100
+  - stat: 2
+    baseValue: 100
+--- !u!114 &278496284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278496273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99993c92b1d94e42a5fa5e5a3c6862d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffController
+  mechStats: {fileID: 278496283}
+  weapons: []
+  limbs: []
 --- !u!1 &316072428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1333,8 @@ GameObject:
   - component: {fileID: 316072431}
   - component: {fileID: 316072430}
   - component: {fileID: 316072429}
+  - component: {fileID: 316072437}
+  - component: {fileID: 316072436}
   m_Layer: 3
   m_Name: PlayerMech
   m_TagString: Player
@@ -1456,6 +1494,8 @@ MonoBehaviour:
   layoutPrefab: {fileID: 979817800910060978, guid: b365eced03a33c242b03ca825c5e59a2, type: 3}
   spawnedLayout: {fileID: 0}
   isDead: 0
+  stats: {fileID: 0}
+  buffController: {fileID: 0}
   selectWeapon1:
     m_Name: Select Weapon 1
     m_Type: 0
@@ -1511,6 +1551,38 @@ MonoBehaviour:
   weapon1: {fileID: 1881120724}
   weapon2: {fileID: 2097507598}
   weapon3: {fileID: 1031748065}
+--- !u!114 &316072436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316072428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats:
+  - stat: 0
+    baseValue: 1000
+  - stat: 2
+    baseValue: 100
+--- !u!114 &316072437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316072428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99993c92b1d94e42a5fa5e5a3c6862d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffController
+  mechStats: {fileID: 0}
+  weapons: []
+  limbs: []
 --- !u!1 &441528496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,6 +2515,8 @@ GameObject:
   - component: {fileID: 591513353}
   - component: {fileID: 591513352}
   - component: {fileID: 591513351}
+  - component: {fileID: 591513361}
+  - component: {fileID: 591513360}
   m_Layer: 3
   m_Name: ChargerMech
   m_TagString: Untagged
@@ -2545,6 +2619,8 @@ MonoBehaviour:
   layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
   spawnedLayout: {fileID: 0}
   isDead: 0
+  stats: {fileID: 0}
+  buffController: {fileID: 0}
   target: {fileID: 0}
   CurrentObjective: {fileID: 0}
 --- !u!114 &591513356
@@ -2632,6 +2708,38 @@ Transform:
   - {fileID: 100381598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &591513360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591513350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
+  baseStats:
+  - stat: 0
+    baseValue: 100
+  - stat: 2
+    baseValue: 100
+--- !u!114 &591513361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591513350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99993c92b1d94e42a5fa5e5a3c6862d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuffController
+  mechStats: {fileID: 591513360}
+  weapons: []
+  limbs: []
 --- !u!1 &610747573
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,9 +63,6 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Awake()
     {
-        // Might cause problems in future keep an eye on this
-        currentAmmo = weaponStats.MaxAmmo;
-
         hitEffect = hitEffectBehaviour as IHitEffect;
 
         if (hitEffect == null)
@@ -82,13 +79,13 @@ public class BaseWeapons : MonoBehaviour
             Debug.LogError("The weapon " + name + " did not have a WeaponStat Component!");
             weaponStats = gameObject.AddComponent<BaseWeaponStats>();
         }
+    }
 
-
-        // PROTO: until I get the buff stuff added
-        /*totalDamage = baseDamage;
-        totalAttackSpeed = baseAttackSpeed;
-        totalCooldown = baseCooldown;
-        totalRange = baseRange;*/
+    protected virtual void Start()
+    {
+        // Might cause problems in future keep an eye on this
+        if(usesAmmo)
+            currentAmmo = weaponStats.MaxAmmo;
     }
 
     protected virtual void Update()
@@ -211,7 +208,7 @@ public class BaseWeapons : MonoBehaviour
     public bool GetIsCharging() { return isCharging; }
     public bool GetIsCoolingDown() { return isCoolingDown; }
 
-
+    public BaseWeaponStats GetWeaponStats() { return weaponStats; }
 
     #endregion
 
