@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8e34471bba4234f876532b65a3ee83, type: 3}
   m_Name: ChargerEnemy
   m_EditorClassIdentifier: Assembly-CSharp::AIProfile
-  actions: []
-  aggression: 0
-  bravery: 0
-  reactionDelay: 0
+  actions:
+  - {fileID: 11400000, guid: 4c68aaa2bd60f6047937636048778c0d, type: 2}
+  aggression: 10
+  bravery: 10
+  reactionDelay: 0.05

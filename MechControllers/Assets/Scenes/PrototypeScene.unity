@@ -2444,7 +2444,7 @@ GameObject:
   - component: {fileID: 591513352}
   - component: {fileID: 591513351}
   m_Layer: 3
-  m_Name: EnemyMech (1)
+  m_Name: ChargerMech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBaseMech
   weaponIDs:
-  - BasicLaser
+  - BasicMelee
   limbs: []
   activeWeapon: {fileID: 0}
   layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
