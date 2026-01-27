@@ -22,7 +22,7 @@ public class CombatManager : MonoBehaviour
 
     public void SetUpForCombat()
     {
-        playerPanel = GameObject.Find("Player Mech");
+        playerPanel = GameObject.Find("Player Panel");
         enemyPanel = GameObject.Find("TargetMechPanel");
 
         // Find Mechs in fight
@@ -70,7 +70,12 @@ public class CombatManager : MonoBehaviour
     {
         EnemyCombatDirector.instance.StartCombat();
 
+        foreach (BaseMech mech in mechsInCombat)
+        {
+            mech.EquipWeapons();
+        }
+
         // Test Apply Buff
-        GetComponent<BuffTestScript>().ApplyBuff();
+        //GetComponent<BuffTestScript>().ApplyBuff();
     }
 }

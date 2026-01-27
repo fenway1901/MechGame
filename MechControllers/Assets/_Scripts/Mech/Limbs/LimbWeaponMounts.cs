@@ -12,7 +12,7 @@ public class LimbWeaponMounts : MonoBehaviour
     {
         public WeaponSlot slot;
         public Transform mountPoint; // Use for maybe a visual element of where the weapon is
-        [NonSerialized] public BaseWeapons equipped;
+        public BaseWeapons equipped;
     }
 
     [SerializeField] private List<Mount> mounts = new();
@@ -22,12 +22,12 @@ public class LimbWeaponMounts : MonoBehaviour
     public bool TryEquip(BaseWeapons weapon)
     {
         WeaponSlot ws = weapon.GetWeaponStats().Slot;
+        //Debug.Log(ws + " is the slot trying to connect to " + weapon.GetWeaponStats().Slot + " of weapon " + weapon.displayName);
         Mount m = mounts.FirstOrDefault(x => x.slot == ws && x.equipped == null);
+
+        // if the limb doesnt have weapons to equip
         if(m == null)
-        {
-            Debug.LogWarning("Failed to equip weapon, mount is null");
             return false;
-        }
 
         m.equipped = weapon;
         

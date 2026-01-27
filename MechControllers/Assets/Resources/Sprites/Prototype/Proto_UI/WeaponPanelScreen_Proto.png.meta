@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 519c2963a47b2da41b8580efb6293405
+guid: 848da411a0c575d4280a824281678d94
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7809379378297968640
-    second: tile_0028_0
+      213: 5112273314938755640
+    second: WeaponPanelScreen_Proto_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tile_0028_0
+      name: WeaponPanelScreen_Proto_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 008e940d4d28f9390800000000000000
-      internalID: -7809379378297968640
+      spriteID: 83a12a37e7172f640800000000000000
+      internalID: 5112273314938755640
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6fb96ca5c9fab9842927a85854348555
+    spriteID: 3ab6807f9eea7e1468567d991484174c
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tile_0028_0: -7809379378297968640
+      WeaponPanelScreen_Proto_0: 5112273314938755640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

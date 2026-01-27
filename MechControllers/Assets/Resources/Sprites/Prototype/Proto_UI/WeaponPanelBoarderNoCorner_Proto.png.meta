@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 519c2963a47b2da41b8580efb6293405
+guid: baf00f5c548d8e74386d06a226c5ce39
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7809379378297968640
-    second: tile_0028_0
+      213: 3893164576534448067
+    second: WeaponPanelBoarderNoCorner_Proto_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tile_0028_0
+      name: WeaponPanelBoarderNoCorner_Proto_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 10, y: 10, z: 10, w: 10}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 008e940d4d28f9390800000000000000
-      internalID: -7809379378297968640
+      spriteID: 3c748743e8c470630800000000000000
+      internalID: 3893164576534448067
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6fb96ca5c9fab9842927a85854348555
+    spriteID: 854ae11c35a79db42a5b879cded7b6b6
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tile_0028_0: -7809379378297968640
+      WeaponPanelBoarderNoCorner_Proto_0: 3893164576534448067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

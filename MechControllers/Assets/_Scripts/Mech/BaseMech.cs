@@ -46,8 +46,6 @@ public class BaseMech : MonoBehaviour
 
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
-
-        EquipWeapons();
     }
 
     private void Update()
@@ -71,7 +69,7 @@ public class BaseMech : MonoBehaviour
 
     #region Weapon Management
 
-    protected virtual void EquipWeapons()
+    public virtual void EquipWeapons()
     {
         List<BaseWeapons> remainingWeapons = new List<BaseWeapons>(weapons);
 
@@ -108,7 +106,6 @@ public class BaseMech : MonoBehaviour
         }
 
         List<string> ids = new List<string>();
-        List<WeaponSlot> slots = new List<WeaponSlot>();
 
         foreach(WeaponSlotEntry w in assignedWeapons)
         {
@@ -124,7 +121,7 @@ public class BaseMech : MonoBehaviour
             weapons[i]._AttachedMech = gameObject;
 
             // They are made in the same list so will stay in sync
-            weapons[i].GetWeaponStats().SetSlot(slots[i]);
+            weapons[i].GetWeaponStats().SetSlot(assignedWeapons[i].slot);
         }
     }
 
@@ -142,24 +139,6 @@ public class BaseMech : MonoBehaviour
     protected virtual void SetUpLimbs()
     {
         //Debug.Log("setting up enemy layout");
-
-        spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
-        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
-        spawnedLayout.GetComponent<MechHealthComponent>().SetMaxHealth(stats.Get(StatType.Mech_MaxHealth));
-        limbs = new List<BaseLimb>();
-
-        for (int i = 0; i < spawnedLayout.transform.childCount; ++i)
-        {
-            // Just incase i will add things that arn't limbs to this prefab
-            if (spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>())
-            {
-                limbs.Add(spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>());
-                limbs[i]._AttachedMech = this;
-            }
-        }
-
-        if (buffController != null)
-            buffController.SetLimbs(limbs);
     }
 
     #endregion

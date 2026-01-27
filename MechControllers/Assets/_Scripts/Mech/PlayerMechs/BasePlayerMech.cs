@@ -74,6 +74,28 @@ public class BasePlayerMech : BaseMech
 
     #region Limb Management
 
+    protected override void SetUpLimbs()
+    {
+        spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.playerPanel.transform);
+
+        spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
+        spawnedLayout.GetComponent<MechHealthComponent>().SetMaxHealth(stats.Get(StatType.Mech_MaxHealth));
+        limbs = new List<BaseLimb>();
+
+        for (int i = 0; i < spawnedLayout.transform.childCount; ++i)
+        {
+            // Just incase i will add things that arn't limbs to this prefab
+            if (spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>())
+            {
+                limbs.Add(spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>());
+                limbs[i]._AttachedMech = this;
+            }
+        }
+
+        if (buffController != null)
+            buffController.SetLimbs(limbs);
+    }
+
     #endregion
 
 
