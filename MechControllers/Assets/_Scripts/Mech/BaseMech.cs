@@ -3,10 +3,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.Video;
+
+[System.Serializable]
+public struct WeaponSlotEntry
+{
+    public string id;
+    public WeaponSlot slot;
+}
 
 public class BaseMech : MonoBehaviour
 {
-    public List<string> weaponIDs = new List<string>();
+    public List<WeaponSlotEntry> assignedWeapons = new();
     protected List<BaseWeapons> weapons;
     public List<BaseLimb> limbs;
     public BaseWeapons activeWeapon;
@@ -32,10 +40,14 @@ public class BaseMech : MonoBehaviour
         else
             Debug.LogWarning(name + " Does not have any stats!");
 
-            GetWeapons();
+        SetUpLimbs();
+
+        GetWeapons();
 
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
+
+        EquipWeapons();
     }
 
     private void Update()
@@ -59,21 +71,60 @@ public class BaseMech : MonoBehaviour
 
     #region Weapon Management
 
+    protected virtual void EquipWeapons()
+    {
+        List<BaseWeapons> remainingWeapons = new List<BaseWeapons>(weapons);
+
+        foreach(BaseLimb limb in limbs)
+        {
+            LimbWeaponMounts mount = limb.mount;
+            if (mount == null) continue;
+
+            limb.GetHealthComponent().Damaged += (sender, amount, newCurrent) =>
+            {
+                float stutterSeconds = stats.Get(StatType.Mech_StutterTime);
+                mount.StutterWeapon(stutterSeconds);
+            };
+
+            for(int w = remainingWeapons.Count - 1; w >= 0; --w)
+            {
+                if(mount.TryEquip(remainingWeapons[w]))
+                    remainingWeapons.RemoveAt(w);
+            }
+        }
+    }
+
     public virtual void GetWeapons()
     {
-        if (weaponIDs.Count == 0)
+        if (assignedWeapons.Count == 0)
         {
             Debug.LogWarning(gameObject.name + " does not have any weapons in weaponsIDs, none will be loaded");
             return;
         }
 
-        List<BaseWeapons> foundWeapons = GameManager.singleton.GetWeapons(weaponIDs);
+        if(limbs.Count == 0)
+        {
+            Debug.LogWarning("Calling get weapon before getting limbs, weapons wont be assigned correclty");
+        }
+
+        List<string> ids = new List<string>();
+        List<WeaponSlot> slots = new List<WeaponSlot>();
+
+        foreach(WeaponSlotEntry w in assignedWeapons)
+        {
+            ids.Add(w.id);
+        }
+
+        List<BaseWeapons> foundWeapons = GameManager.singleton.GetWeapons(ids);
         weapons = new List<BaseWeapons>();
 
         for(int i = 0; i < foundWeapons.Count; ++i)
         {
             weapons.Add(Instantiate(foundWeapons[i], transform));
             weapons[i]._AttachedMech = gameObject;
+
+            // They are made in the same list so will stay in sync
+            weapons[i].GetWeaponStats().SetSlot(slots[i]);
         }
     }
 
@@ -97,13 +148,13 @@ public class BaseMech : MonoBehaviour
         spawnedLayout.GetComponent<MechHealthComponent>().SetMaxHealth(stats.Get(StatType.Mech_MaxHealth));
         limbs = new List<BaseLimb>();
 
-        for (int i = 0; i < layoutPrefab.transform.childCount; ++i)
+        for (int i = 0; i < spawnedLayout.transform.childCount; ++i)
         {
             // Just incase i will add things that arn't limbs to this prefab
-            if (layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>())
+            if (spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>())
             {
-                limbs.Add(layoutPrefab.transform.GetChild(i).GetComponent<BaseLimb>());
-                limbs[i].attachedMech = this;
+                limbs.Add(spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>());
+                limbs[i]._AttachedMech = this;
             }
         }
 

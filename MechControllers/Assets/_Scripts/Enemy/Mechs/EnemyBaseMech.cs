@@ -18,8 +18,6 @@ public class EnemyBaseMech : BaseMech
     {
         base.Init();
 
-        SetUpLimbs();
-
         brain = GetComponent<MechBrain>();
 
         if (brain == null)

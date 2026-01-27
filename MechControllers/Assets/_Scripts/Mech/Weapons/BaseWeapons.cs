@@ -278,6 +278,13 @@ public class BaseWeapons : MonoBehaviour
         isCoolingDown = false;
     }
 
+    public virtual void StutterCharge(float seconds)
+    {
+        if(!isAttacking || !isCharging) return;
+        // have visual subscribe to this and invode the action here
+        chargeEndTime += seconds;
+    }
+
     #endregion
 
 

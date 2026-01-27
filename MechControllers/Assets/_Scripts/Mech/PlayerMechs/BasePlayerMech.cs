@@ -31,8 +31,6 @@ public class BasePlayerMech : BaseMech
         base.Init();
 
         panel = GameObject.Find("Player Panel");
-
-        SetUpLimbs();
     }
 
 
@@ -60,9 +58,9 @@ public class BasePlayerMech : BaseMech
                 Debug.Log("Weapon " + activeWeapon.displayName + " currently attacking");
                 return;
             }
-            else if (activeWeapon.GetRange() < GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position))
+            else if (activeWeapon.GetRange() < GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb._AttachedMech.transform.position))
             {
-                Debug.Log(GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb.attachedMech.transform.position));
+                Debug.Log(GameUtils.GetDistance(transform.position, LimbHighlighter.instance.currentLimb._AttachedMech.transform.position));
                 Debug.Log("Weapon of " + gameObject.name + " not in range");
                 return;
             }

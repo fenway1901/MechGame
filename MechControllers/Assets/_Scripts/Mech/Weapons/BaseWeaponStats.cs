@@ -61,4 +61,6 @@ public class BaseWeaponStats : MonoBehaviour
             if (tags[i] == t) return true;
         return false;
     }
+
+    public void SetSlot(WeaponSlot slot) {  this.slot = slot; }
 }

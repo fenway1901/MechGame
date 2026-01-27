@@ -30,4 +30,6 @@ public class BaseLimbStats : MonoBehaviour
             if (tags[i] == t) return true;
         return false;
     }
+
+    public LimbSlot GetLimbSlot() { return slot; }
 }

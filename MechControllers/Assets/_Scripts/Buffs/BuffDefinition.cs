@@ -21,9 +21,10 @@ public enum WeaponSlot
 { 
     LeftArm, 
     RightArm, 
-    ShoulderL, 
-    ShoulderR, 
-    Core 
+    RightShoulder, 
+    LeftShoulder, 
+    Chest,
+    Head
 }
 
 // if new limbs exist add them here

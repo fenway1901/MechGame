@@ -4,6 +4,7 @@ public enum StatType
     Mech_MaxHealth,
     Mech_Speed,
     Mech_Shield,
+    Mech_StutterTime,
 
 
     // Limb Stats

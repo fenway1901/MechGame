@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4222216091793619561}
   - component: {fileID: 1227999559124888374}
   - component: {fileID: 5081588334178253422}
+  - component: {fileID: 2667287346222616571}
   m_Layer: 6
   m_Name: Head
   m_TagString: Enemy
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Head
   armor: 0
   moveSpeed: 0
@@ -118,7 +119,8 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
-  stats: {fileID: 0}
+  stats: {fileID: 5081588334178253422}
+  mount: {fileID: 0}
 --- !u!58 &5412707636198967253
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +203,21 @@ MonoBehaviour:
   tags:
   - Head
   slot: 0
+--- !u!114 &2667287346222616571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452854826404602729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts:
+  - slot: 5
+    mountPoint: {fileID: 0}
 --- !u!1 &1125744571560385840
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +233,7 @@ GameObject:
   - component: {fileID: 4449769119526692780}
   - component: {fileID: 7304978596123953365}
   - component: {fileID: 308796170203332438}
+  - component: {fileID: 3389757388824651368}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Enemy
@@ -309,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Chest
   armor: 0
   moveSpeed: 0
@@ -320,6 +338,7 @@ MonoBehaviour:
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
   stats: {fileID: 0}
+  mount: {fileID: 0}
 --- !u!61 &4835244051170515029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -412,6 +431,21 @@ MonoBehaviour:
   tags:
   - Chest
   slot: 1
+--- !u!114 &3389757388824651368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125744571560385840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts:
+  - slot: 4
+    mountPoint: {fileID: 0}
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +461,7 @@ GameObject:
   - component: {fileID: 6164145871046960234}
   - component: {fileID: 3821662473171111784}
   - component: {fileID: 1266756063552960579}
+  - component: {fileID: 7109320570414535322}
   m_Layer: 6
   m_Name: Left Leg
   m_TagString: Enemy
@@ -520,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Left Leg
   armor: 0
   moveSpeed: 0
@@ -531,6 +566,7 @@ MonoBehaviour:
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
   stats: {fileID: 0}
+  mount: {fileID: 0}
 --- !u!61 &1769736371964790080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -623,6 +659,19 @@ MonoBehaviour:
   tags:
   - Leg
   slot: 4
+--- !u!114 &7109320570414535322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481776505768732721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts: []
 --- !u!1 &3040214340326169676
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +739,7 @@ GameObject:
   - component: {fileID: 7695254523406097312}
   - component: {fileID: 6808640885824997159}
   - component: {fileID: 7544959363242827429}
+  - component: {fileID: 1734834072516682445}
   m_Layer: 6
   m_Name: Right Leg
   m_TagString: Enemy
@@ -783,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Right Leg
   armor: 0
   moveSpeed: 0
@@ -794,6 +844,7 @@ MonoBehaviour:
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
   stats: {fileID: 0}
+  mount: {fileID: 0}
 --- !u!61 &7794294974089471146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -886,6 +937,19 @@ MonoBehaviour:
   tags:
   - Leg
   slot: 5
+--- !u!114 &1734834072516682445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536687926203196233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts: []
 --- !u!1 &4988710182775261688
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +965,7 @@ GameObject:
   - component: {fileID: 5592665041562632273}
   - component: {fileID: 8503984404295703735}
   - component: {fileID: 3821252833988450829}
+  - component: {fileID: 3349087245354719929}
   m_Layer: 6
   m_Name: Left Arm
   m_TagString: Enemy
@@ -994,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Left Arm
   armor: 0
   moveSpeed: 0
@@ -1005,6 +1070,7 @@ MonoBehaviour:
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
   stats: {fileID: 0}
+  mount: {fileID: 0}
 --- !u!61 &7461954448256441002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1097,6 +1163,23 @@ MonoBehaviour:
   tags:
   - Arm
   slot: 2
+--- !u!114 &3349087245354719929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988710182775261688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts:
+  - slot: 0
+    mountPoint: {fileID: 0}
+  - slot: 3
+    mountPoint: {fileID: 0}
 --- !u!1 &5416419350101463734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1195,7 @@ GameObject:
   - component: {fileID: 7306669982294410213}
   - component: {fileID: 3549940681362438854}
   - component: {fileID: 5608421112938852492}
+  - component: {fileID: 317709075823937851}
   m_Layer: 6
   m_Name: Right Arm
   m_TagString: Enemy
@@ -1205,7 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
   isDestroyed: 0
-  attachedMech: {fileID: 0}
+  _AttachedMech: {fileID: 0}
   limbName: Right Arm
   armor: 0
   moveSpeed: 0
@@ -1216,6 +1300,7 @@ MonoBehaviour:
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   health: {fileID: 0}
   stats: {fileID: 0}
+  mount: {fileID: 0}
 --- !u!61 &2259734424155150896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1308,3 +1393,20 @@ MonoBehaviour:
   tags:
   - Arm
   slot: 3
+--- !u!114 &317709075823937851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416419350101463734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts:
+  - slot: 1
+    mountPoint: {fileID: 0}
+  - slot: 2
+    mountPoint: {fileID: 0}

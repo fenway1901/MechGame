@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BaseLimb : MonoBehaviour
 {
     public bool isDestroyed;
 
-    public BaseMech attachedMech;
+    public BaseMech _AttachedMech;
 
     // public varibles
     [Header("Stat Varibles")]
@@ -21,11 +22,14 @@ public class BaseLimb : MonoBehaviour
 
     [SerializeField] protected BaseHealthComponent health;
     [SerializeField] protected BaseLimbStats stats;
+    public LimbWeaponMounts mount;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         health = GetComponent<BaseHealthComponent>();
+        stats = GetComponent<BaseLimbStats>();
+        TryGetComponent<LimbWeaponMounts>(out mount);
     }
 
     private void Reset()
@@ -54,12 +58,21 @@ public class BaseLimb : MonoBehaviour
         sender.Died -= OnHealthDied_Once;   // ensure one-time subscription
     }
 
+    private void LimbRestored()
+    {
+        health.Died += OnHealthDied_Once;
+    }
+
     private void DestroyLimb()
     {
         // your destruction logic
         isDestroyed = true;
         sr.color = destroyColor;
         //Destroy(gameObject);
+
+        LimbWeaponMounts mounts = GetComponent<LimbWeaponMounts>();
+        if (mounts != null)
+            mounts.DisableAllweapons("Attached limb destroyed");
     }
 
     public void SetHovered(bool hovered)
@@ -85,6 +98,7 @@ public class BaseLimb : MonoBehaviour
     #region Get Functions
 
     public BaseLimbStats GetLimbStats() { return stats; }
+    public BaseHealthComponent GetHealthComponent() { return health; }
 
     #endregion
 }

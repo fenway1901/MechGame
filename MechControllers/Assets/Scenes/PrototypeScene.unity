@@ -1244,8 +1244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9600fff9096a94ab5626d61b0fb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBaseMech
-  weaponIDs:
-  - BasicLaser
+  assignedWeapons:
+  - id: BasicMelee
+    slot: 1
   limbs: []
   activeWeapon: {fileID: 0}
   layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
@@ -1303,6 +1304,8 @@ MonoBehaviour:
     baseValue: 100
   - stat: 2
     baseValue: 100
+  - stat: 3
+    baseValue: 1
 --- !u!114 &278496284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,10 +1488,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242f4cc9056a3194e9a82becd5b8cf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasePlayerMech
-  weaponIDs:
-  - BasicGun
-  - BasicLaser
-  - BasicMissile
+  assignedWeapons:
+  - id: BasicGun
+    slot: 5
+  - id: BasicLaser
+    slot: 0
+  - id: BasicMissile
+    slot: 1
   limbs: []
   activeWeapon: {fileID: 0}
   layoutPrefab: {fileID: 979817800910060978, guid: b365eced03a33c242b03ca825c5e59a2, type: 3}
@@ -1568,6 +1574,8 @@ MonoBehaviour:
     baseValue: 1000
   - stat: 2
     baseValue: 100
+  - stat: 3
+    baseValue: 1
 --- !u!114 &316072437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,8 +2620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9600fff9096a94ab5626d61b0fb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBaseMech
-  weaponIDs:
-  - BasicMelee
+  assignedWeapons:
+  - id: BasicMelee
+    slot: 0
   limbs: []
   activeWeapon: {fileID: 0}
   layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
@@ -2725,6 +2734,8 @@ MonoBehaviour:
     baseValue: 100
   - stat: 2
     baseValue: 100
+  - stat: 3
+    baseValue: 1
 --- !u!114 &591513361
 MonoBehaviour:
   m_ObjectHideFlags: 0
