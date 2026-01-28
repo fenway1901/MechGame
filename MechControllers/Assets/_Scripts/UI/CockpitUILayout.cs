@@ -180,8 +180,7 @@ public class CockpitUILayout : MonoBehaviour
             RectFromMinMax(leftXMin, mapYMin, leftXMax, mapYMax));
         SetPanel(map_Root, map_Corner,
             RectFromMinMax(leftXMin, mapYMin, leftXMax, mapYMax));
-        //SetPanel(map_Root, map_Screen,
-        //    RectFromMinMax(leftXMin, mapYMin, leftXMax, mapYMax));
+
         FitQuadToSpriteScreen(mapRenderQuad, mapRenderMesh, map_Corner, mapRenderInset);
 
         // EnemyResize
@@ -191,6 +190,12 @@ public class CockpitUILayout : MonoBehaviour
             RectFromMinMax(rightXMin, rBotYMin, rightXMax, rBotYMax));
         SetPanel(enemySillo_Root, enemySillo_Screen,
             RectFromMinMax(rightXMin, rBotYMin, rightXMax, rBotYMax));
+
+        // Resize Canvases
+        playerStat_Screen.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(playerStat_Screen.size.x, playerStat_Screen.size.y);
+        playerSillo_Screen.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(playerSillo_Screen.size.x, playerSillo_Screen.size.y);
+        mapRenderMesh.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(mapRenderMesh.transform.localScale.x, mapRenderMesh.transform.localScale.y);
+        enemySillo_Screen.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(enemySillo_Screen.size.x, enemySillo_Screen.size.y);
     }
 
     private static Rect RectFromMinMax(float xMin, float yMin, float xMax, float yMax)

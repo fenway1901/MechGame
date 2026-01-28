@@ -55,14 +55,17 @@ public class MoveAndShootAction : AIAction
         if (weapon.GetIsAttacking())
             return;
 
-        if (weapon.GetCurrentAmmo() < weapon.GetAmmoUsedPerShot() || weapon.GetCurrentAmmo() == 0)
+        if (weapon.usesAmmo)
         {
-            Debug.Log(ctx.self.name + " is reloading " + weapon.name);
+            if (weapon.GetCurrentAmmo() < weapon.GetAmmoUsedPerShot() || weapon.GetCurrentAmmo() == 0)
+            {
+                Debug.Log(ctx.self.name + " is reloading " + weapon.name);
 
-            if(!weapon.GetIsReloading())
-                weapon.Reload();
+                if(!weapon.GetIsReloading())
+                    weapon.Reload();
 
-            return;
+                return;
+            }
         }
             
         float weaponRange = weapon.GetRange();

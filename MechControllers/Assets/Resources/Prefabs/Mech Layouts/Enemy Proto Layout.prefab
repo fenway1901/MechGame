@@ -218,6 +218,7 @@ MonoBehaviour:
   mounts:
   - slot: 5
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
 --- !u!1 &1125744571560385840
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +447,7 @@ MonoBehaviour:
   mounts:
   - slot: 4
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +686,7 @@ GameObject:
   - component: {fileID: 8504680840140599689}
   m_Layer: 0
   m_Name: Enemy Proto Layout
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1178,8 +1180,10 @@ MonoBehaviour:
   mounts:
   - slot: 0
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
   - slot: 3
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
 --- !u!1 &5416419350101463734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,5 +1412,7 @@ MonoBehaviour:
   mounts:
   - slot: 1
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
   - slot: 2
     mountPoint: {fileID: 0}
+    equipped: {fileID: 0}
