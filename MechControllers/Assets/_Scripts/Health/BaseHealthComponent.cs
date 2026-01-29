@@ -26,8 +26,6 @@ public class BaseHealthComponent : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0f, maxHealth);
         Damaged?.Invoke(this, amount, CurrentHealth);
 
-        //Debug.Log(name + " " + CurrentHealth);
-
         if (CurrentHealth <= 0f)
         {
             Died?.Invoke(this);
@@ -50,6 +48,7 @@ public class BaseHealthComponent : MonoBehaviour
     public virtual void SetMaxHealth(float health)
     {
         maxHealth = health;
+        FullHeal();
     }
 
     public virtual void FullHeal()

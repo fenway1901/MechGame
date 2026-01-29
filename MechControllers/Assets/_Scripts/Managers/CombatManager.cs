@@ -70,19 +70,7 @@ public class CombatManager : MonoBehaviour
 
     private void SetUpPlayerUI()
     {
-        Debug.Log("Am I here");
-
-        BaseHealthBar[] healthBars = UIManager.instance._PlayerStatPanel.transform.GetComponentsInChildren<BaseHealthBar>();
-
-
-        foreach (BaseHealthBar bar in healthBars)
-        {
-            Debug.Log("Setting up health bar!");
-            // TO DO set it up to the individual limb here
-            // Right now its just gonna be the hull health
-            bar.SetMaxHealth(playerMech.stats.Get(StatType.Mech_MaxHealth));
-            playerMech.GetHealthComponent().Damaged += bar.DamageTaken;
-        }
+        UIManager.instance.CreatePlayerHealthBars(playerMech);
     }
 
 

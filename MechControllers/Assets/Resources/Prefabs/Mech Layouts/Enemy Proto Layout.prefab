@@ -171,10 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
   maxHealth: 100
   mechHealthComponent: {fileID: 0}
-  deathDamage: 0
+  deathDamage: 1000
   killLimbKillsMech: 1
   leakToHullPercent: 0.5
-  overkillToHullPercent: 0
+  overkillToHullPercent: 0.8
 --- !u!114 &1227999559124888374
 MonoBehaviour:
   m_ObjectHideFlags: 0

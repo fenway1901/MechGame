@@ -21,12 +21,18 @@ public class LimbHealthComponent : BaseHealthComponent
 
         limb = GetComponent<BaseLimb>();
         mechHealthComponent = transform.parent.gameObject.GetComponent<MechHealthComponent>();
-    } 
 
+    }
+
+    protected void Start()
+    {
+        SetMaxHealth(limb.GetLimbStats().Stats.Get(StatType.Limb_MaxHealth));
+    }
 
     public override void TakeDamage(float amount)
     {
         if (amount <= 0f || CurrentHealth <= 0f) return;
+
         // TO DO: Currently armor is just a flat negations might want to change or remove
         amount = Mathf.Clamp(amount - limb.armor, 0f, amount);
 

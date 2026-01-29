@@ -169,12 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
-  deathDamage: 0
+  deathDamage: 10000
   killLimbKillsMech: 1
   leakToHullPercent: 0.5
-  overkillToHullPercent: 0
+  overkillToHullPercent: 0.8
 --- !u!114 &1227999559124888374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &5081588334178253422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
   deathDamage: 80
   killLimbKillsMech: 0
@@ -416,7 +418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &308796170203332438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
   deathDamage: 20
   killLimbKillsMech: 0
@@ -645,7 +649,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &1266756063552960579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
   deathDamage: 20
   killLimbKillsMech: 0
@@ -923,7 +929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &7544959363242827429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
   deathDamage: 20
   killLimbKillsMech: 0
@@ -1149,7 +1157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &3821252833988450829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3bbbbbac99364a96a9bc28490a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbHealthComponent
-  maxHealth: 100
+  maxHealth: 0
   mechHealthComponent: {fileID: 0}
   deathDamage: 20
   killLimbKillsMech: 0
@@ -1381,7 +1391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 4
+    baseValue: 100
 --- !u!114 &5608421112938852492
 MonoBehaviour:
   m_ObjectHideFlags: 0

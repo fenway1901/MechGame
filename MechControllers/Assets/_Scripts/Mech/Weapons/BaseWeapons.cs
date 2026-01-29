@@ -130,7 +130,7 @@ public class BaseWeapons : MonoBehaviour
                         FiredWeapon();
                     }
 
-                    //Debug.Log(name + " finished charging and applying damage");
+                    Debug.Log(name + " finished charging and applying damage");
                     //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
                     hitEffect.Apply(this, target, targetTrans.position);
                     isCharging = false;
@@ -226,7 +226,7 @@ public class BaseWeapons : MonoBehaviour
         // Layer 6 is limb layer
         if(target.layer == 6)
         {
-            //Debug.Log("Target a limb");
+            Debug.Log("Target a limb");
             targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
         }
         else
@@ -243,7 +243,7 @@ public class BaseWeapons : MonoBehaviour
             }
         }
 
-        //Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
+        Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);
 
         this.target = target;
         chargeEndTime = Time.time + weaponStats.AttackSpeed;
