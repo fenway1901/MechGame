@@ -2,12 +2,14 @@ using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.Video;
 
 public class BaseWeapons : MonoBehaviour
 {
     [Header("General Variables")]
     [SerializeField] public string displayName;
+    [SerializeField] protected Sprite icon;
     [SerializeField] MonoBehaviour hitEffectBehaviour;
     protected IHitEffect hitEffect;
     [SerializeField] protected float baseDamage;
@@ -53,8 +55,14 @@ public class BaseWeapons : MonoBehaviour
     public int BaseAmmoUsedPerShot => ammoUsedPerShot;
     public int BaseReloadAmount => baseReloadAmount;
 
-    protected BaseWeaponStats weaponStats;
+    [SerializeField] protected BaseWeaponStats weaponStats;
 
+
+    public event Action<BaseWeapons, float> WeaponCharging;
+    public event Action<BaseWeapons, float> WeaponCooling;
+    public event Action<BaseWeapons, float> AmmoFired;
+    public event Action<BaseWeapons, float> Reloaded;
+    public event Action<BaseWeapons> CancelAttack;
 
     //[Header("Melee Variables")]
 
@@ -133,13 +141,16 @@ public class BaseWeapons : MonoBehaviour
                     Debug.Log(name + " finished charging and applying damage");
                     //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
                     hitEffect.Apply(this, target, targetTrans.position);
+                    cooldownEndTime = Time.time + weaponStats.Cooldown;
                     isCharging = false;
                     isCoolingDown = true;
 
+                    WeaponCooling?.Invoke(this, weaponStats.Cooldown);
+
                     // PROTO: Display controled like this for a minute
                     // In future make it a unity event the UI is subcribed to
-                    if (transform.parent.tag == "Player")
-                        AttackManager.instance.CooldownDisplay(weaponStats.Cooldown);
+                    //if (transform.parent.tag == "Player")
+                    //    AttackManager.instance.CooldownDisplay(weaponStats.Cooldown);
                 }
             }
             else if (isCoolingDown)
@@ -148,12 +159,12 @@ public class BaseWeapons : MonoBehaviour
                 if(Time.time >= cooldownEndTime)
                 {
                     //Debug.Log(name + " finshed attack");
-                    
+
                     // PROTO: Display controled like this for a minute
                     // In future make it a unity event the UI is subcribed to
-                    if (transform.parent.tag == "Player")
-                        AttackManager.instance.TurnOffDisplay();
-                    
+                    //if (transform.parent.tag == "Player")
+                    //    AttackManager.instance.TurnOffDisplay();
+
                     FinishedAttack();
                 }
             }
@@ -208,7 +219,9 @@ public class BaseWeapons : MonoBehaviour
     public bool GetIsCharging() { return isCharging; }
     public bool GetIsCoolingDown() { return isCoolingDown; }
 
+
     public BaseWeaponStats GetWeaponStats() { return weaponStats; }
+    public Sprite GetIcon() { return icon; }
 
     #endregion
 
@@ -247,16 +260,19 @@ public class BaseWeapons : MonoBehaviour
 
         this.target = target;
         chargeEndTime = Time.time + weaponStats.AttackSpeed;
-        cooldownEndTime = Time.time + weaponStats.Cooldown;
         
         isAttacking = true;
         isCharging = true;
         isCoolingDown = false;
 
+        //Debug.Log(WeaponCharging);
+
+        WeaponCharging?.Invoke(this, weaponStats.AttackSpeed);
+
         // PROTO: Display controled like this for a minute
         // In future make it a unity event the UI is subcribed to
-        if (transform.parent.tag == "Player")
-            AttackManager.instance.ChargeDisplay(weaponStats.AttackSpeed);
+        //if (transform.parent.tag == "Player")
+        //    AttackManager.instance.ChargeDisplay(weaponStats.AttackSpeed);
     }
 
     public virtual void StopAttack(string reason = "No reason given")
@@ -267,7 +283,9 @@ public class BaseWeapons : MonoBehaviour
         isAttacking = false;
         isCharging = false;
         isCoolingDown = false;
-        AttackManager.instance.TurnOffDisplay();
+
+        CancelAttack?.Invoke(this);
+        //AttackManager.instance.TurnOffDisplay();
     }
 
     protected virtual void FinishedAttack()
@@ -276,6 +294,8 @@ public class BaseWeapons : MonoBehaviour
         isAttacking = false;
         isCharging = false;
         isCoolingDown = false;
+
+        CancelAttack?.Invoke(this);
     }
 
     public virtual void StutterCharge(float seconds)
@@ -293,7 +313,10 @@ public class BaseWeapons : MonoBehaviour
     public virtual void FiredWeapon()
     {
         if (usesAmmo)
+        {
             currentAmmo -= weaponStats.AmmoUsedPerShot;
+            AmmoFired?.Invoke(this, currentAmmo);
+        }
     }
 
     public virtual void Reload()
@@ -315,6 +338,7 @@ public class BaseWeapons : MonoBehaviour
         // FUTURE: when I want to set up a partial reload system right now I will just do max ammo
         //currentAmmo = Mathf.Min(weaponStats.MaxAmmo, currentAmmo + weaponStats.ReloadAmount);
         currentAmmo = weaponStats.MaxAmmo;
+        Reloaded?.Invoke(this, currentAmmo);
     }
 
     #endregion

@@ -48,16 +48,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Laser
+  icon: {fileID: 21300000, guid: 7d0c2a5544268404c9d65f9a69b973ab, type: 3}
   hitEffectBehaviour: {fileID: 9036273903472067507}
-  baseDamage: 10
-  baseRange: 5
-  baseAttackSpeed: 1
+  baseDamage: 50
+  baseRange: 10
+  baseAttackSpeed: 2
   baseCooldown: 3
   _AttachedMech: {fileID: 0}
   isAttacking: 0
   usesAmmo: 0
-  maxAmmo: 1
-  ammoUsedPerShot: 1
+  maxAmmo: 0
+  ammoUsedPerShot: 0
   reloadTime: 0
   baseReloadAmount: 0
 --- !u!114 &9036273903472067507

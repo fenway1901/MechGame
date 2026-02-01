@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Missile
+  icon: {fileID: 21300000, guid: 424c1e089c7a90245bd92686f2a45504, type: 3}
   hitEffectBehaviour: {fileID: 6977666785638617726}
   baseDamage: 10000
   baseRange: 10000

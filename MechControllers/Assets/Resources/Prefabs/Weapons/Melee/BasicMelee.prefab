@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseWeapons
   displayName: Slash
+  icon: {fileID: 21300000, guid: 39f94c2df33d90044af0ef9abb1d5daa, type: 3}
   hitEffectBehaviour: {fileID: -600576507808417107}
   baseDamage: 20
   baseRange: 1.5
@@ -56,8 +57,8 @@ MonoBehaviour:
   _AttachedMech: {fileID: 0}
   isAttacking: 0
   usesAmmo: 0
-  maxAmmo: 1
-  ammoUsedPerShot: 1
+  maxAmmo: 0
+  ammoUsedPerShot: 0
   reloadTime: 0
   baseReloadAmount: 0
 --- !u!114 &-600576507808417107

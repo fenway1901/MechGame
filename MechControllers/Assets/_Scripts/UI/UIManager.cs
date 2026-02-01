@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -13,9 +14,17 @@ public class UIManager : MonoBehaviour
     private GameObject playerStat_LimbSection;
     private GameObject playerStat_HullSection;
 
+    private GameObject weaponPanel;
+    private GameObject weaponIconPanel;
+    private ActiveWeaponScreen activeWeaponPanel;
+
     [Header("Prefabs")]
     [Header("Health UI")]
-    public GameObject limbHealthBarPrefab;
+    [SerializeField] private GameObject limbHealthBarPrefab;
+
+    [Header("Weapon UI")]
+    [SerializeField] private GameObject weaponIconPrefab;
+    private List<WeaponIcon> icons;
 
     private void Awake()
     {
@@ -31,8 +40,14 @@ public class UIManager : MonoBehaviour
         if(!_PlayerSilloPanel)
             _PlayerSilloPanel = GameObject.Find("Player Panel").transform.Find("Screen").GetChild(0).gameObject;
 
-        if(!_LocalMapPanel)
+        if (!_LocalMapPanel)
+        {
             _LocalMapPanel = GameObject.Find("MinimapPanel").transform.Find("Screen").GetChild(0).gameObject;
+            weaponPanel = _LocalMapPanel.transform.Find("Weapon Section").gameObject;
+            weaponIconPanel = weaponPanel.transform.Find("Icon Section").gameObject;
+            activeWeaponPanel = weaponPanel.transform.Find("ActiveWeapon Section").gameObject.GetComponent<ActiveWeaponScreen>();
+        }
+
 
         if(!_EnemySilloPanel)
             _EnemySilloPanel = GameObject.Find("TargetMechPanel").transform.Find("Screen").GetChild(0).gameObject;
@@ -58,6 +73,30 @@ public class UIManager : MonoBehaviour
             limbs[i].GetHealthComponent().Damaged += hb.DamageTaken;
             hb.SetName(limbs[i].limbName);
         }
+    }
+
+    public void CreateWeaponUI(BaseMech mech)
+    {
+        List<BaseWeapons> weps = mech.GetWeapons();
+
+        icons = new List<WeaponIcon>();
+
+        // Set weps[0] here
+        activeWeaponPanel.Init(mech);
+
+        // Double check if they only have one weapon
+        // Later right now it will just highlight it
+        //if (weps.Count == 1)
+        //    return;
+
+        // Starting at 1 bc first weapon will be in active slot
+        for(int i = 0; i < weps.Count; ++i)
+        {
+            WeaponIcon icon = Instantiate(weaponIconPrefab, weaponIconPanel.transform).GetComponent<WeaponIcon>();
+            icon.Init(weps[i], mech);
+            icons.Add(icon);
+        }
+
     }
 
     #endregion

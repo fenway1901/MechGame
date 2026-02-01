@@ -61,9 +61,9 @@ public class LimbHighlighter : MonoBehaviour
             if (!col) continue;
 
             var target = col.GetComponentInParent<BaseLimb>();
-            if (!target || !target.sr) continue;
+            if (!target || !target.boarderSR) continue;
 
-            var r = target.sr;
+            var r = target.boarderSR;
             int layerId = SortingLayer.GetLayerValueFromID(r.sortingLayerID);
             int order = r.sortingOrder;
             float z = -r.transform.position.z;

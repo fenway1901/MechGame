@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class BasePlayerMech : BaseMech
 {
@@ -18,6 +19,8 @@ public class BasePlayerMech : BaseMech
     public WeaponDisplay weapon1;
     public WeaponDisplay weapon2;
     public WeaponDisplay weapon3;
+
+    public event Action<BaseWeapons> WeaponSelected;
 
     private void Awake()
     {
@@ -81,9 +84,12 @@ public class BasePlayerMech : BaseMech
 
     protected virtual void SelectWeapon(BaseWeapons weapon, WeaponDisplay display)
     {
-        Debug.Log("Player Selected: " + weapon.name);
+        //Debug.Log("Player Selected: " + weapon.name);
         activeWeapon = weapon;
         activeDisplay = display;
+        
+        // So all weapons are ready
+        WeaponSelected.Invoke(weapon);
     }
 
     #endregion

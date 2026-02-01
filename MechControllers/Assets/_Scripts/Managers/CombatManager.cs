@@ -71,6 +71,7 @@ public class CombatManager : MonoBehaviour
     private void SetUpPlayerUI()
     {
         UIManager.instance.CreatePlayerHealthBars(playerMech);
+        UIManager.instance.CreateWeaponUI(playerMech);
     }
 
 

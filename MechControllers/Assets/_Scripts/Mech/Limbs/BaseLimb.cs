@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class BaseLimb : MonoBehaviour
 {
-    public bool isDestroyed;
+    [HideInInspector] public bool isDestroyed;
 
-    public BaseMech _AttachedMech;
+    [HideInInspector] public BaseMech _AttachedMech;
 
     // public varibles
     [Header("Stat Varibles")]
@@ -15,14 +15,16 @@ public class BaseLimb : MonoBehaviour
     public float weight;
 
     [Header("Visual Varibles")]
-    [HideInInspector] public SpriteRenderer sr;
+    protected SpriteRenderer sr;
+    public SpriteRenderer boarderSR;
+    [SerializeField] protected Gradient healthGrad;
     [SerializeField] protected Color normalColor;
     [SerializeField] protected Color hoverColor;
     [SerializeField] protected Color destroyColor;
 
-    [SerializeField] protected BaseHealthComponent health;
-    [SerializeField] protected BaseLimbStats stats;
-    public LimbWeaponMounts mount;
+    protected BaseHealthComponent health;
+    protected BaseLimbStats stats;
+    protected LimbWeaponMounts mount;
 
     private void Awake()
     {
@@ -30,6 +32,12 @@ public class BaseLimb : MonoBehaviour
         health = GetComponent<BaseHealthComponent>();
         stats = GetComponent<BaseLimbStats>();
         TryGetComponent<LimbWeaponMounts>(out mount);
+
+        health.Damaged += DamageTaken;
+
+        // TO DO: when connection between levels remove this
+        // Prototype health will be 100% at start
+        sr.color = healthGrad.Evaluate(1f);
     }
 
     private void Reset()
@@ -60,15 +68,20 @@ public class BaseLimb : MonoBehaviour
 
     private void LimbRestored()
     {
-        health.Died += OnHealthDied_Once;
+        // Will be used for when you can repair limbs in or out of combat
+        // Decide if it should be a full amount of add a heal amount? or does the mech have a stat for how much limbs come back at
+    }
+
+    private void DamageTaken(BaseHealthComponent sender, float amount, float currentHealth)
+    {
+        sr.color = healthGrad.Evaluate(currentHealth / stats.Stats.Get(StatType.Limb_MaxHealth));
     }
 
     private void DestroyLimb()
     {
-        // your destruction logic
         isDestroyed = true;
+        boarderSR.color = destroyColor;
         sr.color = destroyColor;
-        //Destroy(gameObject);
 
         LimbWeaponMounts mounts = GetComponent<LimbWeaponMounts>();
         if (mounts != null)
@@ -78,7 +91,7 @@ public class BaseLimb : MonoBehaviour
     public void SetHovered(bool hovered)
     {
         if (!sr) return;
-        sr.color = hovered ? hoverColor : normalColor;
+        boarderSR.color = hovered ? hoverColor : normalColor;
 
         // put here bc of call order of SetCurrent in LimbHilighter.cs
         if (isDestroyed)
@@ -92,13 +105,14 @@ public class BaseLimb : MonoBehaviour
         if (isDestroyed)
             sr.color = destroyColor;
         else
-            sr.color = normalColor;
+            boarderSR.color = normalColor;
     }
 
     #region Get Functions
 
     public BaseLimbStats GetLimbStats() { return stats; }
     public BaseHealthComponent GetHealthComponent() { return health; }
+    public LimbWeaponMounts GetMount() {  return mount; }
 
     #endregion
 }

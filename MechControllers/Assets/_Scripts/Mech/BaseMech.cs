@@ -44,7 +44,7 @@ public class BaseMech : MonoBehaviour
 
         SetUpLimbs();
 
-        GetWeapons();
+        PopulateWeapons();
 
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
@@ -60,7 +60,7 @@ public class BaseMech : MonoBehaviour
 
     public BaseHealthComponent GetHealthComponent() { return healthComp; }
     public MechHealthComponent GetMechHealthComponent() { return healthComp as MechHealthComponent; }
-
+    public List<BaseWeapons> GetWeapons() { return weapons; }
 
     #endregion
 
@@ -79,7 +79,7 @@ public class BaseMech : MonoBehaviour
 
         foreach(BaseLimb limb in limbs)
         {
-            LimbWeaponMounts mount = limb.mount;
+            LimbWeaponMounts mount = limb.GetMount();
             if (mount == null) continue;
 
             limb.GetHealthComponent().Damaged += (sender, amount, newCurrent) =>
@@ -96,7 +96,7 @@ public class BaseMech : MonoBehaviour
         }
     }
 
-    public virtual void GetWeapons()
+    protected virtual void PopulateWeapons()
     {
         if (assignedWeapons.Count == 0)
         {

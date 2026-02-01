@@ -22,7 +22,8 @@ public enum StatType
     Weapon_MaxAmmo,
     Weapon_AmmoUsedPerShot,
     Weapon_ReloadTime,
-    Weapon_ReloadAmount
+    Weapon_ReloadAmount,
+    Weapon_CancelTime
 }
 
 public enum ModifierMode

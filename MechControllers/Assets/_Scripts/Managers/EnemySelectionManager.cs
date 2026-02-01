@@ -29,7 +29,7 @@ public class EnemySelectionManager : MonoBehaviour
         if(mechLayout != target.spawnedLayout && mechLayout != null)
             targetMech.spawnedLayout.SetActive(false);
 
-        Debug.Log("setting current target to " + target.gameObject.name);
+        //Debug.Log("setting current target to " + target.gameObject.name);
 
         targetMech = target;
         
