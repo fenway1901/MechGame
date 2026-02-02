@@ -116,6 +116,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 6531782166741411749}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -365,6 +366,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 3356253592150087341}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -586,7 +588,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -714,6 +716,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 2943945802689198076}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -984,7 +987,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1112,6 +1115,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 1198109225826818589}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -1330,7 +1334,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1458,6 +1462,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 7179309285475786172}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -1720,6 +1725,7 @@ MonoBehaviour:
   moveSpeed: 0
   weight: 0
   boarderSR: {fileID: 3915724774853162013}
+  icon: {fileID: 0}
   healthGrad:
     serializedVersion: 2
     key0: {r: 0.5450981, g: 0, b: 0, a: 1}
@@ -1944,7 +1950,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2034,7 +2040,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2124,7 +2130,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0

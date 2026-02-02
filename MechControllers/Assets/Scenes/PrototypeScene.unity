@@ -203,7 +203,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 7.344}
+  m_Size: {x: 13.381287, y: 7.344}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1178,7 +1178,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12.782223, y: 6.744}
+  m_SizeDelta: {x: 12.781286, y: 6.744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215378539
 MonoBehaviour:
@@ -1906,7 +1906,7 @@ Transform:
   m_GameObject: {fileID: 365123787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7977781, y: 3.7719998, z: 0}
+  m_LocalPosition: {x: -1.7976608, y: 3.7719998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2157,7 +2157,7 @@ Transform:
   m_GameObject: {fileID: 441528496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7911115, y: 2.35, z: 0}
+  m_LocalPosition: {x: 6.790643, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2979,6 +2979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526668847}
   - component: {fileID: 526668848}
+  - component: {fileID: 526668849}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3019,6 +3020,22 @@ MonoBehaviour:
   _EnemySilloPanel: {fileID: 0}
   limbHealthBarPrefab: {fileID: 6301569519520219843, guid: d2dd0dbfc394e70469d565d381087dad, type: 3}
   weaponIconPrefab: {fileID: 3615149403413525608, guid: f36a0118c012e5f459db3a00ad4e521e, type: 3}
+--- !u!114 &526668849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526668846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7bd7dc2dde63a4db302c04ece1aa6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePopupManager
+  targetCamera: {fileID: 519420031}
+  worldCanvas: {fileID: 2009480647}
+  popupPrefab: {fileID: 2778315865089315025, guid: 2287e9d7d55279a4295e7d4476cea688, type: 3}
+  prewarm: 10
 --- !u!1 &533329732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,7 +3275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &591513351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3711,7 +3728,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4827,7 +4844,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5188,7 +5205,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 13.382223, y: 1.6560001}
+  m_SizeDelta: {x: 13.381287, y: 1.6560001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &978017911
 MonoBehaviour:
@@ -5842,7 +5859,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6455,7 +6472,7 @@ Transform:
   m_GameObject: {fileID: 1217959660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7911115, y: -2.35, z: 0}
+  m_LocalPosition: {x: 6.790643, y: -2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6982,7 +6999,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 13.381287, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7013,7 +7030,7 @@ Transform:
   m_GameObject: {fileID: 1326675060}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7977781, y: -0.928, z: 0}
+  m_LocalPosition: {x: -1.7976608, y: -0.928, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7859,7 +7876,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 12.782223, y: 6.744, z: 1}
+  m_LocalScale: {x: 12.781286, y: 6.744, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 215378538}
@@ -8085,7 +8102,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 13.381287, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8309,7 +8326,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 13.381287, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8441,7 +8458,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.3955564, y: 4.5}
+  m_SizeDelta: {x: 3.3953218, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642872993
 MonoBehaviour:
@@ -9095,7 +9112,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9185,7 +9202,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9438,7 +9455,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 3.3953218, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10003,7 +10020,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.3955564, y: 4.5}
+  m_SizeDelta: {x: 3.3953218, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003305399
 MonoBehaviour:
@@ -10638,7 +10655,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 7.344}
+  m_Size: {x: 13.381287, y: 7.344}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10744,6 +10761,10 @@ PrefabInstance:
       propertyPath: panelBoarder
       value: 
       objectReference: {fileID: 1290045864}
+    - target: {fileID: 4652979173119880482, guid: 96a05c440087ce545b3ee8b36218afa4, type: 3}
+      propertyPath: silloBoarder
+      value: 
+      objectReference: {fileID: 1809771446}
     - target: {fileID: 5427556372727530214, guid: 96a05c440087ce545b3ee8b36218afa4, type: 3}
       propertyPath: m_Name
       value: Hull Section

@@ -68,10 +68,8 @@ public class UIManager : MonoBehaviour
         // Create and set up limb healthbars
         for (int i = 0; i < limbs.Count; ++i)
         {
-            BaseHealthBar hb = Instantiate(limbHealthBarPrefab, playerStat_LimbSection.transform).GetComponent<BaseHealthBar>();
-            hb.SetMaxHealth(limbs[i].GetLimbStats().Stats.Get(StatType.Limb_MaxHealth));
-            limbs[i].GetHealthComponent().Damaged += hb.DamageTaken;
-            hb.SetName(limbs[i].limbName);
+            LimbHealthBar hb = Instantiate(limbHealthBarPrefab, playerStat_LimbSection.transform).GetComponent<LimbHealthBar>();
+            hb.Init(limbs[i]);
         }
     }
 

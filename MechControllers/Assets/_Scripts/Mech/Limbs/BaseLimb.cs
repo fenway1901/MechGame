@@ -17,6 +17,7 @@ public class BaseLimb : MonoBehaviour
     [Header("Visual Varibles")]
     protected SpriteRenderer sr;
     public SpriteRenderer boarderSR;
+    public Sprite icon;
     [SerializeField] protected Gradient healthGrad;
     [SerializeField] protected Color normalColor;
     [SerializeField] protected Color hoverColor;
@@ -75,6 +76,8 @@ public class BaseLimb : MonoBehaviour
     private void DamageTaken(BaseHealthComponent sender, float amount, float currentHealth)
     {
         sr.color = healthGrad.Evaluate(currentHealth / stats.Stats.Get(StatType.Limb_MaxHealth));
+
+        GameUtils.ShowDamage(amount, transform.position, Color.red, 1.2f, false, size: 0.8f, startScale: 0.6f, popScale: 1f);
     }
 
     private void DestroyLimb()
@@ -86,6 +89,11 @@ public class BaseLimb : MonoBehaviour
         LimbWeaponMounts mounts = GetComponent<LimbWeaponMounts>();
         if (mounts != null)
             mounts.DisableAllweapons("Attached limb destroyed");
+    }
+
+    private void LimbTargeted()
+    {
+
     }
 
     public void SetHovered(bool hovered)

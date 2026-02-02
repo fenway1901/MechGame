@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: a2bc8c208403ca649990b5e12423b8c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3825304942510114136
+    second: RobotLeg_Proto_0
+  - first:
+      213: 3135823421067232118
+    second: RobotLeg_Proto_1
+  - first:
+      213: 5658979399660779552
+    second: RobotLeg_Proto_2
+  - first:
+      213: -2946563503802631994
+    second: RobotLeg_Proto_3
+  - first:
+      213: 1732156980903223973
+    second: RobotLeg_Proto_4
+  - first:
+      213: 9095272608049147531
+    second: RobotLeg_Proto_5
+  - first:
+      213: -1270267507736761281
+    second: RobotLeg_Proto_6
+  - first:
+      213: -4628461936118950018
+    second: RobotLeg_Proto_7
+  - first:
+      213: -1942174404880082596
+    second: RobotLeg_Proto_8
+  - first:
+      213: 4784770418358884409
+    second: RobotLeg_Proto_9
+  - first:
+      213: 8765095899142587248
+    second: RobotLeg_Proto_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RobotLeg_Proto_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 428
+        width: 106
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8558cdfe396361530800000000000000
+      internalID: 3825304942510114136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 404
+        width: 71
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673001389cea48b20800000000000000
+      internalID: 3135823421067232118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 403
+        width: 229
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028b80c08cbb88e40800000000000000
+      internalID: 5658979399660779552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 327
+        width: 179
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c8b6b7da14bb17d0800000000000000
+      internalID: -2946563503802631994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_4
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 301
+        width: 153
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a223f5c89bd90810800000000000000
+      internalID: 1732156980903223973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 276
+        width: 139
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e2c1a8f36e83e70800000000000000
+      internalID: 9095272608049147531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_6
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 20
+        width: 128
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3c21af8e6a1f5ee0800000000000000
+      internalID: -1270267507736761281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_7
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 20
+        width: 135
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e779639446664cfb0800000000000000
+      internalID: -4628461936118950018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_8
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 102
+        width: 203
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5954493ba20c05e0800000000000000
+      internalID: -1942174404880082596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_9
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 20
+        width: 130
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 938141e385be66240800000000000000
+      internalID: 4784770418358884409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RobotLeg_Proto_10
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 20
+        width: 60
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07380a2e740e3a970800000000000000
+      internalID: 8765095899142587248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RobotLeg_Proto_0: 3825304942510114136
+      RobotLeg_Proto_1: 3135823421067232118
+      RobotLeg_Proto_10: 8765095899142587248
+      RobotLeg_Proto_2: 5658979399660779552
+      RobotLeg_Proto_3: -2946563503802631994
+      RobotLeg_Proto_4: 1732156980903223973
+      RobotLeg_Proto_5: 9095272608049147531
+      RobotLeg_Proto_6: -1270267507736761281
+      RobotLeg_Proto_7: -4628461936118950018
+      RobotLeg_Proto_8: -1942174404880082596
+      RobotLeg_Proto_9: 4784770418358884409
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
