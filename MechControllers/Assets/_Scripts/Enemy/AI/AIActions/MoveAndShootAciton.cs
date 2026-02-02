@@ -46,11 +46,25 @@ public class MoveAndShootAction : AIAction
     public override void Execute(AIContext ctx)
     {
         if (ctx.target == null)
+        {
+            ctx.self.ClearTargetedLimb();
             return;
+        }
 
         BaseWeapons weapon = ctx.self.GetBestWeapon(ctx.target);
         if (weapon == null)
+        {
+            ctx.self.ClearTargetedLimb();
             return;
+        }
+
+        // Get Target Limb and set it
+        BasePlayerMech pMech = ctx.target.GetComponent<BasePlayerMech>();
+        BaseLimb targetLimb = (pMech != null)
+            ? ctx.self.GetTargetLimb(pMech.spawnedLayout.transform)
+            : null;
+
+        ctx.self.SetTargetedLimb(targetLimb);
 
         if (weapon.GetIsAttacking())
             return;
@@ -67,21 +81,15 @@ public class MoveAndShootAction : AIAction
                 return;
             }
         }
-            
-        float weaponRange = weapon.GetRange();
-        float desiredStop = weaponRange * 0.9f; // stand slightly inside max range
-
-        // 1) Move towards the mech-level target for navigation
-        ctx.self.MoveTowards(ctx.target, desiredStop);
-
-        // 2) Choose which limb to actually shoot
-        BaseLimb targetLimb = ctx.self.GetTargetLimb(ctx.target.GetComponent<BasePlayerMech>().spawnedLayout.transform);
-        Debug.Log(targetLimb + " target limb!!");
+        
         Transform aimTransform = targetLimb != null ? targetLimb.transform : ctx.target;
+        float weaponRange = weapon.GetRange();
 
-        // 3) If close enough, shoot at that limb
-        float distance = Vector3.Distance(ctx.self.transform.position,
-                                          ctx.target.position);
+        // Charge at player
+        ctx.self.MoveTowards(ctx.target, weaponRange * 0.9f);
+
+        // once distance is inside then attack
+        float distance = Vector3.Distance(ctx.self.transform.position, ctx.target.position);
 
         if (distance <= weaponRange)
         {

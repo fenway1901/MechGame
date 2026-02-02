@@ -50,7 +50,7 @@ MonoBehaviour:
   displayName: Slash
   icon: {fileID: 21300000, guid: 39f94c2df33d90044af0ef9abb1d5daa, type: 3}
   hitEffectBehaviour: {fileID: -600576507808417107}
-  baseDamage: 20
+  baseDamage: 1
   baseRange: 1.5
   baseAttackSpeed: 1
   baseCooldown: 4
@@ -61,6 +61,7 @@ MonoBehaviour:
   ammoUsedPerShot: 0
   reloadTime: 0
   baseReloadAmount: 0
+  weaponStats: {fileID: 0}
 --- !u!114 &-600576507808417107
 MonoBehaviour:
   m_ObjectHideFlags: 0

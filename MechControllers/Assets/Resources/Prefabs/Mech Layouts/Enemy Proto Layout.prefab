@@ -85,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -150,6 +150,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!58 &5412707636198967253
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -335,7 +337,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -400,6 +402,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!61 &4835244051170515029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -520,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8688820647243749972}
   - component: {fileID: 1198109225826818589}
+  - component: {fileID: 3686158539294064956}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -588,7 +593,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -600,6 +605,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3686158539294064956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196981665893857399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +708,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -750,6 +773,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!61 &1769736371964790080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -919,6 +944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6879512267542631051}
   - component: {fileID: 3915724774853162013}
+  - component: {fileID: 7470610615573150682}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -987,7 +1013,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -999,6 +1025,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7470610615573150682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483540513189825515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1
 --- !u!1 &3536687926203196233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1128,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -1149,6 +1193,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!61 &7794294974089471146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1266,6 +1312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7888177260234864964}
   - component: {fileID: 6531782166741411749}
+  - component: {fileID: 5470996660362560512}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -1334,7 +1381,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1346,6 +1393,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5470996660362560512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608851146524916325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1
 --- !u!1 &4988710182775261688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1496,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -1496,6 +1561,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!61 &7461954448256441002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1694,7 +1761,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   m_FlipX: 0
@@ -1759,6 +1826,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
+  deathDebuffs: []
+  buffToApply: []
 --- !u!61 &2259734424155150896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1882,6 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5753112792073904270}
   - component: {fileID: 3356253592150087341}
+  - component: {fileID: 5167225108578869062}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -1950,7 +2020,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1962,6 +2032,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5167225108578869062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413795684868396111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1
 --- !u!1 &6576956345364476545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +2060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484285209967092745}
   - component: {fileID: 2943945802689198076}
+  - component: {fileID: 6163432300744614350}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -2040,7 +2129,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2052,6 +2141,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6163432300744614350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576956345364476545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1
 --- !u!1 &8649929688386162769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3488042040184058969}
   - component: {fileID: 7179309285475786172}
+  - component: {fileID: 4828237030623115739}
   m_Layer: 6
   m_Name: Boarder
   m_TagString: Untagged
@@ -2130,7 +2238,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2142,3 +2250,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4828237030623115739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649929688386162769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f84e413c5bd0e498409a9435c6aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarderPulse
+  border: {fileID: 0}
+  pulseColor: {r: 0.8627451, g: 0.07843135, b: 0.086270556, a: 1}
+  pulseSpeed: 2
+  minAlpha: 0.35
+  maxAlpha: 1
+  useUnscaledTime: 1

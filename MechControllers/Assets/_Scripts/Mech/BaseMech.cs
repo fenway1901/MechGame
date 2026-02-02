@@ -64,6 +64,12 @@ public class BaseMech : MonoBehaviour
 
     #endregion
 
+    #region Stat Change
+
+
+
+    #endregion
+
 
     #region Movement
 

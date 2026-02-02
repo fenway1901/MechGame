@@ -57,6 +57,8 @@ public class BuffDefinition : ScriptableObject
     }
 
     public string buffName;
+    public Sprite icon;
+    public string description;
     public float durationSeconds = 0f; // IF 0 is INFINITE (or until removed manually)
     public bool refreshDurationOnReapply = true;
 

@@ -16,6 +16,12 @@ public class MechBrain : MonoBehaviour
 
     public BaseMech mech;
 
+    private BaseLimb currentTargetLimb;
+    private int targeterId;
+
+
+    #region Unity Function
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,12 +35,22 @@ public class MechBrain : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
+        targeterId = GetInstanceID();
     }
 
     void Start()
     {
         StartCoroutine(ThinkLoop());
     }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    #endregion
+
+    #region Thinking Functions
 
     // TO DO update this do be in Update() so  a lag spike dosnt slow down the thinking time (or maybe not, might make lag worse)
     IEnumerator ThinkLoop()
@@ -100,6 +116,9 @@ public class MechBrain : MonoBehaviour
         }
     }
 
+    #endregion
+
+
     #region Attack Functions
 
     public void AttackWithDesiredWeapon(BaseWeapons weapon, Transform target, bool stopMovement = false)
@@ -145,12 +164,16 @@ public class MechBrain : MonoBehaviour
         if (limbs == null || limbs.Length == 0)
             return null;
 
+        // Testing target legs
+        return limbs[4];
+        
+        /*
         // Simple prototype: first non-destroyed limb
         foreach (var l in limbs)
         {
             if (!l.isDestroyed)
                 return l;
-        }
+        }*/
 
         // All limbs destroyed; return any as fallback (or null if you want to stop)
         return limbs[0];
@@ -223,6 +246,29 @@ public class MechBrain : MonoBehaviour
         if (agent == null) return;
         agent.isStopped = true;
         agent.ResetPath();
+    }
+
+    #endregion
+
+
+    #region Targeting Functions
+
+    public void SetTargetedLimb(BaseLimb limb)
+    {
+        if (currentTargetLimb == limb) return;
+
+        if(currentTargetLimb != null)
+            currentTargetLimb.RemoveTargeter(targeterId);
+
+        currentTargetLimb = limb;
+
+        if(currentTargetLimb != null)
+            currentTargetLimb.AddTargeter(targeterId);
+    }
+
+    public void ClearTargetedLimb()
+    {
+        SetTargetedLimb(null);
     }
 
     #endregion
