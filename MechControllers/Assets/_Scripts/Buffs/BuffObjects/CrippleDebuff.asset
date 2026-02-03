@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 436a54ec0de757543a4d06ff78ff31f7, type: 3}
-  m_Name: DebuffSpeed
+  m_Name: CrippleDebuff
   m_EditorClassIdentifier: Assembly-CSharp::BuffDefinition
   buffName: Cripple
   icon: {fileID: 21300000, guid: af4012ec44b843b4c8cdf0df5b2c0bd9, type: 3}

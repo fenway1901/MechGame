@@ -773,7 +773,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
-  deathDebuffs: []
+  deathDebuffs:
+  - {fileID: 11400000, guid: 6e16a85d5199bc74487049f717a4974c, type: 2}
   buffToApply: []
 --- !u!61 &1769736371964790080
 BoxCollider2D:
@@ -1193,7 +1194,8 @@ MonoBehaviour:
   normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
-  deathDebuffs: []
+  deathDebuffs:
+  - {fileID: 11400000, guid: 6e16a85d5199bc74487049f717a4974c, type: 2}
   buffToApply: []
 --- !u!61 &7794294974089471146
 BoxCollider2D:
