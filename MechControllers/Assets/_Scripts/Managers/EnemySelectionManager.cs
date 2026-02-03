@@ -26,8 +26,11 @@ public class EnemySelectionManager : MonoBehaviour
         if (target == null) return;
         if (target == targetMech) return;
 
-        if(mechLayout != target.spawnedLayout && mechLayout != null)
+        if (mechLayout != target.spawnedLayout && mechLayout != null)
+        {
+            (targetMech as EnemyBaseMech).DeSelected();
             targetMech.spawnedLayout.SetActive(false);
+        }
 
         //Debug.Log("setting current target to " + target.gameObject.name);
 
@@ -35,5 +38,6 @@ public class EnemySelectionManager : MonoBehaviour
         
         mechLayout = targetMech.spawnedLayout;
         mechLayout.SetActive(true);
+        (targetMech as EnemyBaseMech).Selected();
     }
 }

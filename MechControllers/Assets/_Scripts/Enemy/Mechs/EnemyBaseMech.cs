@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class EnemyBaseMech : BaseMech
 {
-    public GameObject target; // keep GameObject incase I want to make them target freindlies
-
     public Objective CurrentObjective;
 
-    [Header("Health Varaibles")]
+    [Header("Health Variables")]
     [SerializeField] protected GameObject enemyCanvas;
     [SerializeField] protected Image healthIndicator;
     [SerializeField] protected Gradient healthGradient;
 
+    [Header("Visual Variables")]
+    [SerializeField] protected GameObject selectedIndicator;
+
     private void Awake()
     {
-        target = GameObject.Find("Player Mech");
+        if (selectedIndicator)
+            selectedIndicator.SetActive(false);
     }
 
     public override void Init()
@@ -51,6 +53,8 @@ public class EnemyBaseMech : BaseMech
         healthIndicator.color = healthGradient.Evaluate(currentHealth / stats.Get(StatType.Mech_MaxHealth));
     }
 
+    public void Selected() { selectedIndicator.SetActive(true); }
+    public void DeSelected() { selectedIndicator.SetActive(false); }
 
     #region Limb Management
 
