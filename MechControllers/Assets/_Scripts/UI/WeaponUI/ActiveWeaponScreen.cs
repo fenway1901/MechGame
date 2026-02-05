@@ -14,6 +14,8 @@ public class ActiveWeaponScreen : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private Image icon;
     [SerializeField] private Image boardercolor;
+    [SerializeField] private GameObject ammoTxtCounter;
+    [SerializeField] private GameObject infinitySymbol;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI statusTxt;
     [SerializeField] private TextMeshProUGUI currentAmmo;
@@ -29,8 +31,6 @@ public class ActiveWeaponScreen : MonoBehaviour
     private float cooldownDuration;
     private bool cooling;
 
-    private bool cancelAttack;
-
     public void Init(BaseMech mech)
     {
         (mech as BasePlayerMech).WeaponSelected += SetNewWeapon;
@@ -39,10 +39,6 @@ public class ActiveWeaponScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cancelAttack)
-        {
-            // Do cancel stuff here
-        }
 
         if (charging)
         {
@@ -81,8 +77,19 @@ public class ActiveWeaponScreen : MonoBehaviour
 
         icon.sprite = assignedWeapon.GetIcon();
         title.text = assignedWeapon.displayName;
-        maxAmmo.text = assignedWeapon.BaseMaxAmmo.ToString();
-        currentAmmo.text = assignedWeapon.GetCurrentAmmo().ToString();
+
+        if (assignedWeapon.usesAmmo)
+        {
+            ammoTxtCounter.SetActive(true);
+            infinitySymbol.SetActive(false);
+            maxAmmo.text = assignedWeapon.BaseMaxAmmo.ToString();
+            currentAmmo.text = assignedWeapon.GetCurrentAmmo().ToString();
+        }
+        else
+        {
+            ammoTxtCounter.SetActive(false);
+            infinitySymbol.SetActive(true);
+        }
 
         assignedWeapon.Reloaded += UpdateAmmo;
         assignedWeapon.AmmoFired += UpdateAmmo;
@@ -143,6 +150,9 @@ public class ActiveWeaponScreen : MonoBehaviour
         slider.value = 0;
         statusTxt.text = "Stand By";
         boardercolor.color = standbyColor;
+        charging = false;
+        cooling = false;
+        fill.fillAmount = 0;
     }
 
     // Should also do a reload timer here

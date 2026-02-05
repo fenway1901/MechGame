@@ -22,11 +22,13 @@ public class BaseMech : MonoBehaviour
     public GameObject spawnedLayout;
 
     public bool isDead = false;
+    protected bool isMoving;
 
     public StatsComponent stats;
     public BuffController buffController;
 
     protected BaseHealthComponent healthComp;
+
 
     // AI variables
     public IReadOnlyList<BaseWeapons> Weapons => weapons;
@@ -56,13 +58,23 @@ public class BaseMech : MonoBehaviour
     }
 
 
-    #region Get
+    #region Get Functions
 
     public BaseHealthComponent GetHealthComponent() { return healthComp; }
     public MechHealthComponent GetMechHealthComponent() { return healthComp as MechHealthComponent; }
     public List<BaseWeapons> GetWeapons() { return weapons; }
 
+    public bool GetisMoving() { return isMoving; }
+
     #endregion
+
+
+    #region Set Functions
+
+    public void SetisMoving(bool state) { isMoving = state; }
+
+    #endregion
+
 
     #region Stat Change
 
@@ -128,7 +140,7 @@ public class BaseMech : MonoBehaviour
         for(int i = 0; i < foundWeapons.Count; ++i)
         {
             weapons.Add(Instantiate(foundWeapons[i], transform));
-            weapons[i]._AttachedMech = gameObject;
+            weapons[i].SetAttachedMech(gameObject);
 
             // They are made in the same list so will stay in sync
             weapons[i].GetWeaponStats().SetSlot(assignedWeapons[i].slot);
@@ -148,10 +160,12 @@ public class BaseMech : MonoBehaviour
 
     protected virtual void SetUpLimbs()
     {
-        if(layoutPrefab.tag == "Player")
+        if (layoutPrefab.tag == "Player")
             spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.playerPanel.transform);
         else
             spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
+        
+        spawnedLayout.transform.localPosition = new Vector3(spawnedLayout.transform.localPosition.x, -0.16f, spawnedLayout.transform.localPosition.z);
 
         healthComp = spawnedLayout.GetComponent<MechHealthComponent>();
         (healthComp as MechHealthComponent)._AttachedMech = gameObject;

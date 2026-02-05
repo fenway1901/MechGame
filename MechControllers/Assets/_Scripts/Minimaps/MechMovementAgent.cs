@@ -6,6 +6,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MechMovementAgent : MonoBehaviour
 {
+    BaseMech attachedMech;
+
     [SerializeField] Transform visual2D;   // your 2D sprite root
     [SerializeField] float navPlaneY = 0f; // Y-height of your baked NavMesh
 
@@ -14,12 +16,28 @@ public class MechMovementAgent : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        attachedMech = GetComponent<BaseMech>();
         if (!visual2D) visual2D = transform;
 
         agent.updateRotation = false;
         agent.updatePosition = true;   // let agent simulate
         // Built-in NavMesh is Y-up. Keep that. We mirror positions below.
     }
+
+    private void Update()
+    {
+        if (agent.velocity.sqrMagnitude > 0.01f)
+        {
+            if(!attachedMech.GetisMoving())
+                attachedMech.SetisMoving(true);
+        }
+        else
+        {
+            if(attachedMech.GetisMoving())
+                attachedMech.SetisMoving(false);
+        }
+    }
+
 
     void LateUpdate()
     {

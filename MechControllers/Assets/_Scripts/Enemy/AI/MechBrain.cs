@@ -164,8 +164,15 @@ public class MechBrain : MonoBehaviour
         if (limbs == null || limbs.Length == 0)
             return null;
 
+        int num = 4;
+
         // Testing target legs
-        return limbs[4];
+        if (limbs[4].isDestroyed)
+        {
+            num = 5;
+        }
+
+        return limbs[num];
         
         /*
         // Simple prototype: first non-destroyed limb

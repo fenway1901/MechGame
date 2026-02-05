@@ -17,17 +17,12 @@ public class BaseWeapons : MonoBehaviour
     [SerializeField] protected float baseAttackSpeed;
     [SerializeField] protected float baseCooldown;
 
-    // probably delete
-    /*protected float totalDamage;
-    protected float totalAttackSpeed;
-    protected float totalCooldown;
-    protected float totalRange;*/
+    [HideInInspector] public GameObject _AttachedMech;
+    protected BaseMech mechComp;
 
-
-
-    public GameObject _AttachedMech;
-
+    [SerializeField] protected bool canMoveWhileCharging;
     [SerializeField] protected bool isAttacking;
+    
     protected bool isCharging;
     protected bool isCoolingDown;
     protected float chargeEndTime;
@@ -118,6 +113,11 @@ public class BaseWeapons : MonoBehaviour
 
             if (isCharging)
             {
+                if (!canMoveWhileCharging && mechComp.GetisMoving())
+                {
+                    StopAttack("Mech moved during charging");
+                }
+
                 // Time to damage enemy
                 if(Time.time >= chargeEndTime)
                 {
@@ -196,6 +196,11 @@ public class BaseWeapons : MonoBehaviour
 
     public void SetIsAttacking(bool attack) { isAttacking = attack; }
     public void SetIsRelaoding(bool reload) { reloading = reload; }
+    public void SetAttachedMech(GameObject mech)
+    {
+        _AttachedMech = mech;
+        mechComp = mech.GetComponent<BaseMech>();
+    }
 
     #endregion
 
@@ -277,7 +282,7 @@ public class BaseWeapons : MonoBehaviour
 
     public virtual void StopAttack(string reason = "No reason given")
     {
-        Debug.Log("Manually stopped attack because: " + reason);
+        Debug.Log("Stopped attack because: " + reason);
 
         target = null;
         isAttacking = false;

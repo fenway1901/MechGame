@@ -4,7 +4,6 @@ public class EnemySelectionManager : MonoBehaviour
 {
     public static EnemySelectionManager instance;
 
-    private Transform targetPanel;
     public BaseMech targetMech;
     private GameObject mechLayout;
 
@@ -14,8 +13,6 @@ public class EnemySelectionManager : MonoBehaviour
             instance = this;
         else
             Destroy(instance);
-
-        targetPanel = GameObject.Find("TargetMechPanel").transform; // def make this better
     }
 
     // each character will have a prefab for its layout

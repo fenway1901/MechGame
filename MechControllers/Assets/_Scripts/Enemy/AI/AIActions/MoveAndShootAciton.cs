@@ -65,9 +65,22 @@ public class MoveAndShootAction : AIAction
             : null;
 
         ctx.self.SetTargetedLimb(targetLimb);
+        
+        // once distance is inside then attack
+        float distance = Vector3.Distance(ctx.self.transform.position, ctx.target.position);
+        float weaponRange = weapon.GetRange();
 
         if (weapon.GetIsAttacking())
-            return;
+        {
+            if (distance >= weaponRange)
+            {
+                weapon.StopAttack("Player out of range");
+            }
+            else
+            {
+                return;
+            }
+        }
 
         if (weapon.usesAmmo)
         {
@@ -83,13 +96,10 @@ public class MoveAndShootAction : AIAction
         }
         
         Transform aimTransform = targetLimb != null ? targetLimb.transform : ctx.target;
-        float weaponRange = weapon.GetRange();
 
         // Charge at player
         ctx.self.MoveTowards(ctx.target, weaponRange * 0.9f);
 
-        // once distance is inside then attack
-        float distance = Vector3.Distance(ctx.self.transform.position, ctx.target.position);
 
         if (distance <= weaponRange)
         {

@@ -56,13 +56,10 @@ public class CombatManager : MonoBehaviour
             mechsInCombat[i].Init();
         }
 
-        // Disable all layouts in TargetPanel
-        if (enemyPanel.transform.childCount >= 2)
+        for (int i = 1; i < enemyPanel.transform.childCount; ++i)
         {
-            for (int i = 1; i < enemyPanel.transform.childCount; ++i)
-            {
+            if(enemyPanel.transform.GetChild(i).name.Contains("Layout"))
                 enemyPanel.transform.GetChild(i).gameObject.SetActive(false);
-            }
         }
 
         SetUpPlayerUI();

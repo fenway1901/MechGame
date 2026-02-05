@@ -50,7 +50,7 @@ MonoBehaviour:
   displayName: Laser
   icon: {fileID: 21300000, guid: 7d0c2a5544268404c9d65f9a69b973ab, type: 3}
   hitEffectBehaviour: {fileID: 9036273903472067507}
-  baseDamage: 50
+  baseDamage: 60
   baseRange: 10
   baseAttackSpeed: 2
   baseCooldown: 3
@@ -61,6 +61,7 @@ MonoBehaviour:
   ammoUsedPerShot: 0
   reloadTime: 0
   baseReloadAmount: 0
+  weaponStats: {fileID: 0}
 --- !u!114 &9036273903472067507
 MonoBehaviour:
   m_ObjectHideFlags: 0

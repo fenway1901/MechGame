@@ -67,7 +67,7 @@ public class BuffController : MonoBehaviour
 
     public int Apply(BuffDefinition def, Object source)
     {
-        // Optional: if you want “reapply refreshes duration” behavior, search existing by def+source.
+        // Optional: “reapply refreshes duration” behavior, search existing by def+source.
         int id = _nextInstanceId++;
         BuffInstance inst = new BuffInstance
         {
@@ -81,9 +81,9 @@ public class BuffController : MonoBehaviour
 
         foreach (var spec in def.statMods)
         {
-            foreach (var targetStats in ResolveTargets(spec, null))
+            foreach (StatsComponent targetStats in ResolveTargets(spec, null))
             {
-                var mod = new StatModifier
+                StatModifier mod = new StatModifier
                 {
                     stat = spec.stat,
                     mode = spec.mod,
@@ -138,8 +138,8 @@ public class BuffController : MonoBehaviour
 
         // Remove from all routed stats holders.
         mechStats.RemoveModifiersByInstanceId(instanceId);
-        foreach (var w in weapons) w.Stats.RemoveModifiersByInstanceId(instanceId);
-        foreach (var l in limbs) l.Stats.RemoveModifiersByInstanceId(instanceId);
+        foreach (BaseWeaponStats w in weapons) w.Stats.RemoveModifiersByInstanceId(instanceId);
+        foreach (BaseLimbStats l in limbs) l.Stats.RemoveModifiersByInstanceId(instanceId);
 
         _active.Remove(instanceId);
     }
@@ -148,14 +148,14 @@ public class BuffController : MonoBehaviour
     {
         // Fast approach: remove modifiers directly, then clear active list entries that match.
         mechStats.RemoveModifiersBySource(source);
-        foreach (var w in weapons) w.Stats.RemoveModifiersBySource(source);
-        foreach (var l in limbs) l.Stats.RemoveModifiersBySource(source);
+        foreach (BaseWeaponStats w in weapons) w.Stats.RemoveModifiersBySource(source);
+        foreach (BaseLimbStats l in limbs) l.Stats.RemoveModifiersBySource(source);
 
         var toRemove = ListPool<int>.Get();
         foreach (var kvp in _active)
             if (kvp.Value.source == source) toRemove.Add(kvp.Key);
 
-        foreach (var id in toRemove) _active.Remove(id);
+        foreach (int id in toRemove) _active.Remove(id);
         ListPool<int>.Release(toRemove);
     }
 
@@ -223,14 +223,14 @@ public class BuffController : MonoBehaviour
                 // Or passing a GameObject / Component
                 if (specificTarget is Component c)
                 {
-                    var found = c.GetComponent<StatsComponent>();
+                    StatsComponent found = c.GetComponent<StatsComponent>();
                     if (found != null) yield return found;
                     yield break;
                 }
 
                 if (specificTarget is GameObject go)
                 {
-                    var found = go.GetComponent<StatsComponent>();
+                    StatsComponent found = go.GetComponent<StatsComponent>();
                     if (found != null) yield return found;
                     yield break;
                 }
