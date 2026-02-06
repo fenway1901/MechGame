@@ -42,7 +42,7 @@ public class BaseHealthComponent : MonoBehaviour
 
     protected virtual void Death(BaseHealthComponent sender)
     {
-        Debug.Log(name + " has died!");
+        //Debug.Log(name + " has died!");
     }
 
     public virtual void SetMaxHealth(float health)

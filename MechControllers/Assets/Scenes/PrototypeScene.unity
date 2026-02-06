@@ -684,6 +684,7 @@ GameObject:
   - component: {fileID: 100381598}
   - component: {fileID: 100381600}
   - component: {fileID: 100381599}
+  - component: {fileID: 100381601}
   m_Layer: 8
   m_Name: Mech Icon
   m_TagString: Untagged
@@ -777,6 +778,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &100381601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100381597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245206412f6e4904b92b5eb6a4e8fc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MechIconComponent
+  baseIcon: {fileID: 0}
+  diedIcon: {fileID: 21300000, guid: 33f9bb94c89b9404997b22ac4767b434, type: 3}
 --- !u!1 &149612678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &278496274
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2096,7 +2111,15 @@ MonoBehaviour:
     m_Id: 62d2d7e9-49e2-4f25-b89d-67ba56d5f0cf
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: bce0397a-5276-414d-97fe-e3124236cc2a
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reload
+      m_Flags: 0
     m_Flags: 0
   activeDisplay: {fileID: 0}
   weapon1: {fileID: 1881120724}
@@ -2796,6 +2819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491346148}
   - component: {fileID: 491346149}
+  - component: {fileID: 491346150}
   m_Layer: 8
   m_Name: Mech Icon
   m_TagString: Untagged
@@ -2876,6 +2900,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &491346150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491346147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245206412f6e4904b92b5eb6a4e8fc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MechIconComponent
+  baseIcon: {fileID: 0}
+  diedIcon: {fileID: 21300000, guid: 33f9bb94c89b9404997b22ac4767b434, type: 3}
 --- !u!1 &492852815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,7 +4010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &591513351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6624,7 +6662,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1090245769
 GameObject:
@@ -8217,6 +8255,7 @@ GameObject:
   - component: {fileID: 1259701592}
   - component: {fileID: 1259701594}
   - component: {fileID: 1259701593}
+  - component: {fileID: 1259701595}
   m_Layer: 8
   m_Name: Mech Icon
   m_TagString: Untagged
@@ -8310,6 +8349,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1259701595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259701591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245206412f6e4904b92b5eb6a4e8fc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MechIconComponent
+  baseIcon: {fileID: 0}
+  diedIcon: {fileID: 21300000, guid: 33f9bb94c89b9404997b22ac4767b434, type: 3}
 --- !u!1 &1290045862
 GameObject:
   m_ObjectHideFlags: 0
@@ -12055,7 +12108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2009480645
 MonoBehaviour:
   m_ObjectHideFlags: 0

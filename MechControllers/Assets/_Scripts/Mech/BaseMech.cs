@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 [System.Serializable]
@@ -15,11 +16,12 @@ public struct WeaponSlotEntry
 public class BaseMech : MonoBehaviour
 {
     public List<WeaponSlotEntry> assignedWeapons = new();
+
     protected List<BaseWeapons> weapons;
-    public List<BaseLimb> limbs;
-    public BaseWeapons activeWeapon;
+    [HideInInspector] public List<BaseLimb> limbs;
+    [HideInInspector] public BaseWeapons activeWeapon;
     public GameObject layoutPrefab;
-    public GameObject spawnedLayout;
+    [HideInInspector] public GameObject spawnedLayout;
 
     public bool isDead = false;
     protected bool isMoving;
@@ -28,6 +30,8 @@ public class BaseMech : MonoBehaviour
     public BuffController buffController;
 
     protected BaseHealthComponent healthComp;
+
+    protected MechIconComponent iconComp;
 
 
     // AI variables
@@ -50,6 +54,9 @@ public class BaseMech : MonoBehaviour
 
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
+
+        iconComp = GetComponentInChildren<MechIconComponent>();
+        healthComp.Died += iconComp.Died;
     }
 
     private void Update()
@@ -169,6 +176,7 @@ public class BaseMech : MonoBehaviour
 
         healthComp = spawnedLayout.GetComponent<MechHealthComponent>();
         (healthComp as MechHealthComponent)._AttachedMech = gameObject;
+        healthComp.Died += Died;
         spawnedLayout.GetComponent<MechHealthComponent>()._AttachedMech = gameObject;
         spawnedLayout.GetComponent<MechHealthComponent>().SetMaxHealth(stats.Get(StatType.Mech_MaxHealth));
         limbs = new List<BaseLimb>();
@@ -185,6 +193,24 @@ public class BaseMech : MonoBehaviour
 
         if (buffController != null)
             buffController.SetLimbs(limbs);
+    }
+
+    #endregion
+
+
+    #region Death Managment
+
+    protected virtual void Died(BaseHealthComponent healthComp)
+    {
+        isDead = true;
+
+        for (int i = 0; i < limbs.Count; ++i)
+        {
+            if (!limbs[i].isDestroyed)
+            {
+                limbs[i].DestroyLimb();
+            }
+        }
     }
 
     #endregion

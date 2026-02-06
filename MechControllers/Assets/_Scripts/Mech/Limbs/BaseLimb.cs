@@ -88,7 +88,7 @@ public class BaseLimb : MonoBehaviour
         GameUtils.ShowDamage(amount, transform.position, Color.red, 1.2f, false, size: 1f, startScale: 0.7f, popScale: 1.2f);
     }
 
-    protected virtual void DestroyLimb()
+    public virtual void DestroyLimb()
     {
         isDestroyed = true;
         targetPulse.ClearAllTargeters();

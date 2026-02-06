@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -40,7 +41,7 @@ public class MechBrain : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ThinkLoop());
+
     }
 
     private void OnDisable()
@@ -53,9 +54,9 @@ public class MechBrain : MonoBehaviour
     #region Thinking Functions
 
     // TO DO update this do be in Update() so  a lag spike dosnt slow down the thinking time (or maybe not, might make lag worse)
-    IEnumerator ThinkLoop()
+    public IEnumerator ThinkLoop()
     {
-        while (true)
+        while (!mech.isDead)
         {
             Think();
             yield return new WaitForSeconds(thinkInterval);

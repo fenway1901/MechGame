@@ -33,6 +33,8 @@ public class EnemyBaseMech : BaseMech
 
         brain.mech = this;
 
+        StartCoroutine(brain.ThinkLoop());
+
         // Set up enemy heatlh indicator
         // To do make this fade away until mouse over (unless damaged then always be dispalyed?)
         // plan to only have like 2-3 enemies at once, should be tough to kill that many
@@ -56,7 +58,14 @@ public class EnemyBaseMech : BaseMech
     public void Selected() { selectedIndicator.SetActive(true); }
     public void DeSelected() { selectedIndicator.SetActive(false); }
 
-    #region Limb Management
+    #region Death Management
+
+    protected override void Died(BaseHealthComponent healthComp)
+    {
+        base.Died(healthComp);
+
+
+    }
 
     #endregion
 }
