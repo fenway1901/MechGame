@@ -89,6 +89,8 @@ public class ActiveWeaponScreen : MonoBehaviour
         if (weapon != assignedWeapon) return;
 
         currentAmmo.text = ammo.ToString();
+
+        AttackHasStopped(weapon);
     }
 
     private void ReloadingGun(BaseWeapons weapon, float time)

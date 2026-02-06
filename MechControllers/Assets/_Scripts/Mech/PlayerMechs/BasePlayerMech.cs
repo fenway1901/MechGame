@@ -28,6 +28,7 @@ public class BasePlayerMech : BaseMech
         selectWeapon1.Enable();
         selectWeapon2.Enable();
         selectWeapon3.Enable();
+        reload.Enable();
     }
 
     public override void Init()
@@ -52,16 +53,14 @@ public class BasePlayerMech : BaseMech
         if (selectWeapon3.WasPressedThisFrame())
             SelectWeapon(weapons[2], weapon3);
 
-        if (reload.WasPressedThisFrame() && activeWeapon != null)
+        // Reload Sequence
+        if (reload.WasPressedThisFrame() && activeWeapon != null && !activeWeapon.GetIsAttacking())
         {
             if (activeWeapon.usesAmmo && activeWeapon.GetCurrentAmmo() != activeWeapon.GetMaxAmmo())
                 activeWeapon.Reload();
         }
 
-
-        //if (activeWeapon != null)
-        //    Debug.Log(activeWeapon.GetIsAttacking());
-
+        // Target selection sequence
         if (Mouse.current.leftButton.wasReleasedThisFrame && activeWeapon != null && LimbHighlighter.instance.currentLimb != null && !activeWeapon.GetIsAttacking())
         {
             if (activeWeapon.GetIsAttacking())

@@ -243,6 +243,12 @@ public class BaseWeapons : MonoBehaviour
             return;
         }
 
+        if (reloading)
+        {
+            Debug.Log("Still reloading cant shoot");
+            return;
+        }
+
         // Layer 6 is limb layer
         if(target.layer == 6)
         {
@@ -334,6 +340,8 @@ public class BaseWeapons : MonoBehaviour
             Debug.LogWarning("Tried to call reload when already reloading");
             return;
         }
+
+        Debug.Log("attempting to relaod");
 
         reloading = true;
         reloadEndTime = Time.time + weaponStats.ReloadTime;
