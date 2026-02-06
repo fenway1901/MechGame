@@ -57,6 +57,7 @@ public class BaseWeapons : MonoBehaviour
     public event Action<BaseWeapons, float> WeaponCooling;
     public event Action<BaseWeapons, float> AmmoFired;
     public event Action<BaseWeapons, float> Reloaded;
+    public event Action<BaseWeapons, float> Reloading;
     public event Action<BaseWeapons> CancelAttack;
 
     //[Header("Melee Variables")]
@@ -217,6 +218,7 @@ public class BaseWeapons : MonoBehaviour
     //public int GetMaxAmmo() { return weaponStats.; }
     public int GetCurrentAmmo() { return currentAmmo; }
     public int GetAmmoUsedPerShot() { return ammoUsedPerShot; }
+    public int GetMaxAmmo() { return maxAmmo; }
 
     // bool gets
     public bool GetIsAttacking() { return isAttacking; }
@@ -335,6 +337,8 @@ public class BaseWeapons : MonoBehaviour
 
         reloading = true;
         reloadEndTime = Time.time + weaponStats.ReloadTime;
+
+        Reloading?.Invoke(this, weaponStats.ReloadTime);
     }
 
     protected virtual void FinishedReload()

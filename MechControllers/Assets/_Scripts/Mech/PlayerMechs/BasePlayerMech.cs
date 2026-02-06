@@ -12,6 +12,7 @@ public class BasePlayerMech : BaseMech
     [SerializeField] private InputAction selectWeapon1;
     [SerializeField] private InputAction selectWeapon2;
     [SerializeField] private InputAction selectWeapon3;
+    [SerializeField] private InputAction reload;
 
 
     [Header("PROTOTYPE VARIBLES")]
@@ -50,6 +51,13 @@ public class BasePlayerMech : BaseMech
         // Weapon 3
         if (selectWeapon3.WasPressedThisFrame())
             SelectWeapon(weapons[2], weapon3);
+
+        if (reload.WasPressedThisFrame() && activeWeapon != null)
+        {
+            if (activeWeapon.usesAmmo && activeWeapon.GetCurrentAmmo() != activeWeapon.GetMaxAmmo())
+                activeWeapon.Reload();
+        }
+
 
         //if (activeWeapon != null)
         //    Debug.Log(activeWeapon.GetIsAttacking());

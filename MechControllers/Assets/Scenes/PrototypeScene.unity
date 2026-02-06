@@ -1613,7 +1613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &278496274
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2089,6 +2089,15 @@ MonoBehaviour:
       m_Action: Select Weapon 3
       m_Flags: 0
     m_Flags: 0
+  reload:
+    m_Name: Reload
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 62d2d7e9-49e2-4f25-b89d-67ba56d5f0cf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   activeDisplay: {fileID: 0}
   weapon1: {fileID: 1881120724}
   weapon2: {fileID: 2097507598}
@@ -2380,9 +2389,11 @@ MonoBehaviour:
   slider: {fileID: 852064092}
   chargeColor: {r: 0, g: 0.7490196, b: 1, a: 1}
   cooldownColor: {r: 1, g: 0.6470588, b: 0, a: 1}
+  reloadColor: {r: 0.31764707, g: 0.37254903, b: 0.41960785, a: 1}
   standbyColor: {r: 0.46666667, g: 0.5529412, b: 0.62352943, a: 1}
   chargeText: Charging
   cooldownText: Cooling
+  reloadText: Reloading
   fill: {fileID: 1424171991}
   icon: {fileID: 1090245771}
   boardercolor: {fileID: 35424787}
@@ -3961,7 +3972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &591513351
 NavMeshAgent:
   m_ObjectHideFlags: 0

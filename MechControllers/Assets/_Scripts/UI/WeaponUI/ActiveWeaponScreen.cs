@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class ActiveWeaponScreen : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private Color chargeColor;
     [SerializeField] private Color cooldownColor;
+    [SerializeField] private Color reloadColor;
     [SerializeField] private Color standbyColor;
     [SerializeField] private string chargeText;
     [SerializeField] private string cooldownText;
+    [SerializeField] private string reloadText;
 
     [SerializeField] private Image fill;
     [SerializeField] private Image icon;
@@ -23,13 +26,9 @@ public class ActiveWeaponScreen : MonoBehaviour
 
     private BaseWeapons assignedWeapon = new BaseWeapons();
 
-    private float chargeEndTime;
-    private float chargeDuration;
-    private bool charging;
-
-    private float cooldownEndTime;
-    private float cooldownDuration;
-    private bool cooling;
+    private float endTime;
+    private float duration;
+    private bool counting;
 
     public void Init(BaseMech mech)
     {
@@ -39,28 +38,14 @@ public class ActiveWeaponScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (charging)
+        if (counting)
         {
-            float elapsed = chargeDuration - (chargeEndTime - Time.time);
-            slider.value = Mathf.Clamp(elapsed, 0f, chargeDuration);
+            float elapsed = duration - (endTime - Time.time);
+            slider.value = Mathf.Clamp(elapsed, 0f, duration);
 
-            if (Time.time >= chargeEndTime)
+            if (Time.time >= endTime)
             {
-                charging = false;
-                slider.value = chargeDuration;
-            }
-        }
-
-        if (cooling)
-        {
-            float remaining = cooldownEndTime - Time.time;
-            slider.value = Mathf.Clamp(remaining, 0f, cooldownDuration);
-
-            if (Time.time >= cooldownEndTime)
-            {
-                cooling = false;
-                slider.value = 0f;
+                slider.value = duration;
             }
         }
     }
@@ -92,6 +77,7 @@ public class ActiveWeaponScreen : MonoBehaviour
         }
 
         assignedWeapon.Reloaded += UpdateAmmo;
+        assignedWeapon.Reloading += ReloadingGun;
         assignedWeapon.AmmoFired += UpdateAmmo;
         assignedWeapon.WeaponCharging += ChargingWeapon;
         assignedWeapon.WeaponCooling += CoolingWeapon;
@@ -105,40 +91,40 @@ public class ActiveWeaponScreen : MonoBehaviour
         currentAmmo.text = ammo.ToString();
     }
 
+    private void ReloadingGun(BaseWeapons weapon, float time)
+    {
+        if (weapon != assignedWeapon) return;
+
+        SetUpBarAndText(reloadColor, reloadText, time);
+    }
+
     private void ChargingWeapon(BaseWeapons weapon, float time)
     {
         if (weapon != assignedWeapon) return;
 
-        fill.color = chargeColor;
-        boardercolor.color = chargeColor;
-        statusTxt.text = chargeText;
-        
-        chargeDuration = time;
-        chargeEndTime = Time.time + time;
-
-        slider.maxValue = time;
-        slider.value = 0f;
-
-        charging = true;
-        cooling = false;
+        SetUpBarAndText(chargeColor, chargeText, time);
     }
 
     private void CoolingWeapon(BaseWeapons weapon, float time)
     {
         if (weapon != assignedWeapon) return;
 
-        fill.color = cooldownColor;
-        boardercolor.color = cooldownColor;
-        statusTxt.text = cooldownText;
+        SetUpBarAndText(cooldownColor, cooldownText, time);
+    }
 
-        cooldownDuration = time;
-        cooldownEndTime = Time.time + time;
+    private void SetUpBarAndText(Color color, string text, float time)
+    {
+        fill.color = color;
+        boardercolor.color = color;
+        statusTxt.text = text;
+
+        duration = time;
+        endTime = time + Time.time;
 
         slider.maxValue = time;
-        slider.value = 0;
-        
-        cooling = true;
-        charging = false;
+        slider.value = 0f;
+
+        counting = true;
     }
 
     private void AttackHasStopped(BaseWeapons weapon)
@@ -150,8 +136,7 @@ public class ActiveWeaponScreen : MonoBehaviour
         slider.value = 0;
         statusTxt.text = "Stand By";
         boardercolor.color = standbyColor;
-        charging = false;
-        cooling = false;
+        counting = false;
         fill.fillAmount = 0;
     }
 
