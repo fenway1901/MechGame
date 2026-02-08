@@ -172,7 +172,7 @@ public class BaseMech : MonoBehaviour
         else
             spawnedLayout = Instantiate(layoutPrefab, CombatManager.instance.enemyPanel.transform);
         
-        spawnedLayout.transform.localPosition = new Vector3(spawnedLayout.transform.localPosition.x, -0.16f, spawnedLayout.transform.localPosition.z);
+        spawnedLayout.transform.localPosition = new Vector3(spawnedLayout.transform.localPosition.x, -0.28f, spawnedLayout.transform.localPosition.z);
 
         healthComp = spawnedLayout.GetComponent<MechHealthComponent>();
         (healthComp as MechHealthComponent)._AttachedMech = gameObject;

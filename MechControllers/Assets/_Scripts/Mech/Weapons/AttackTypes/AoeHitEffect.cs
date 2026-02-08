@@ -43,7 +43,8 @@ public class AoeHitEffect : MonoBehaviour, IHitEffect
                 damage *= falloff.Evaluate(t);
             }
 
-            health.TakeDamage(damage);
+            // Applying weapon pen bc for AOE attacks it counts for the fragmentation
+            health.TakeDamage(damage, weapon.GetWeaponStats().ArmorPen);
         }
     }
 

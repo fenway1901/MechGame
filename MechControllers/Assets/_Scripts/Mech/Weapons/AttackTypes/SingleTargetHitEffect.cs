@@ -10,16 +10,17 @@ public class SingleTargetHitEffect : MonoBehaviour, IHitEffect
             return;
         }
 
-        Debug.Log("Weapon target is " + target.name);
+
+        //Debug.Log(weapon.displayName + " is firing");
+        //Debug.Log("Weapon target is " + target.name);
 
         BaseHealthComponent hp = target.GetComponent<BaseHealthComponent>();
 
-        Debug.Log(hp);
+        //Debug.Log(hp);
 
         if (hp)
         {
-            Debug.Log("so im here???");
-            hp.TakeDamage(weapon.GetDamage());
+            hp.TakeDamage(weapon.GetDamage(), weapon.GetWeaponStats().ArmorPen);
         }
         else 
             Debug.Log(weapon.name + " target does not have a BaseHealthComponent");

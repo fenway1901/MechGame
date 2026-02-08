@@ -17,9 +17,9 @@ public class BaseLimbStats : MonoBehaviour
         Stats = GetComponent<StatsComponent>();
         limb = GetComponent<BaseLimb>();
 
-        Stats.SetBase(StatType.Limb_Armor, limb.armor);
-        Stats.SetBase(StatType.Limb_Speed, limb.moveSpeed);
-        Stats.SetBase(StatType.Limb_Weight, limb.weight);
+        //Stats.SetBase(StatType.Limb_Armor, limb.armor);
+        //Stats.SetBase(StatType.Limb_Speed, limb.moveSpeed);
+        //Stats.SetBase(StatType.Limb_Weight, limb.weight);
 
     }
 

@@ -5,7 +5,7 @@ public enum StatType
     Mech_Speed,
     Mech_Shield,
     Mech_StutterTime,
-
+    Mech_Accuracy,
 
     // Limb Stats
     Limb_MaxHealth,
@@ -23,7 +23,8 @@ public enum StatType
     Weapon_AmmoUsedPerShot,
     Weapon_ReloadTime,
     Weapon_ReloadAmount,
-    Weapon_CancelTime
+    Weapon_CancelTime,
+    Weapon_ArmorPenPercent
 }
 
 public enum ModifierMode

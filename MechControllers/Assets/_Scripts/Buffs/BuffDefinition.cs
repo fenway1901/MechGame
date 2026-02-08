@@ -22,7 +22,7 @@ public enum WeaponSlot
     LeftArm, 
     RightArm, 
     RightShoulder, 
-    LeftShoulder, 
+    LeftShoulder,
     Chest,
     Head
 }
@@ -31,7 +31,8 @@ public enum WeaponSlot
 public enum LimbSlot 
 { 
     Head, 
-    Chest, 
+    Chest,
+    Core,
     LeftArm, 
     RightArm, 
     LeftLeg, 

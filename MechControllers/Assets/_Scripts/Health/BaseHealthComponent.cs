@@ -19,7 +19,7 @@ public class BaseHealthComponent : MonoBehaviour
         Died += Death;
     }
 
-    public virtual void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount, float armorPen = 0.0f)
     {
         if (amount <= 0f || CurrentHealth <= 0f) return;
 
@@ -49,6 +49,11 @@ public class BaseHealthComponent : MonoBehaviour
     {
         maxHealth = health;
         FullHeal();
+    }
+
+    public virtual void ManuallyDestroy()
+    {
+        Died.Invoke(this);
     }
 
     public virtual void FullHeal()

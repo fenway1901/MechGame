@@ -21,3 +21,5 @@ MonoBehaviour:
     prefab: {fileID: 5439625688542587019, guid: b282eec8685ef0d48af31ba847dc9226, type: 3}
   - id: BasicMelee
     prefab: {fileID: 5714444719683885495, guid: 67b2df8736859d24d9caa8fd27b98fca, type: 3}
+  - id: BasicArmorPenitrator
+    prefab: {fileID: 7131973759617290397, guid: 1c6d5f9631329b34abca082aecb4d4cc, type: 3}

@@ -43,6 +43,8 @@ public class GameUtils : MonoBehaviour
             return;
         }
 
+        Debug.Log("trying to show numbers");
+
         string text = FormatNumber(amount, decimals, trimTrailingZeros);
 
         DamagePopupManager.Instance.Spawn(

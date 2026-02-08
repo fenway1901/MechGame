@@ -19,12 +19,10 @@ public class StatsComponent : MonoBehaviour
 
     public void Awake()
     {
-        if (_map.Count > 0) return;
-
-        //_map.Clear();
-        foreach(BaseStat bs in baseStats)
+        foreach (BaseStat bs in baseStats)
         {
-            _map[bs.stat] = new StatInstance(bs.baseValue);
+            if (!_map.ContainsKey(bs.stat))
+                _map[bs.stat] = new StatInstance(bs.baseValue);
         }
     }
 

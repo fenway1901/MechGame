@@ -29,23 +29,37 @@ public class LimbHealthComponent : BaseHealthComponent
         SetMaxHealth(limb.GetLimbStats().Stats.Get(StatType.Limb_MaxHealth));
     }
 
-    public override void TakeDamage(float amount)
+    public override void TakeDamage(float amount, float armorPen = 0.0f)
     {
         if (amount <= 0f || CurrentHealth <= 0f) return;
 
         // TO DO: Currently armor is just a flat negations might want to change or remove
-        amount = Mathf.Clamp(amount - limb.armor, 0f, amount);
+        if (armorPen > 0.0f)
+        {
+            float effectiveArmor = limb.GetLimbStats().Stats.Get(StatType.Limb_Armor) * (1f - armorPen);
+            amount = Mathf.Clamp(amount - effectiveArmor, 0f, amount);
+        }
+        else
+        {
+            amount = Mathf.Clamp(amount - limb.GetLimbStats().Stats.Get(StatType.Limb_Armor), 0f, amount);
+        }
+
+
+        Debug.Log("total amount of damage: " + amount);
 
         float leak = Mathf.Clamp01(leakToHullPercent);
         float hullDamage = amount * leak;
         float limbDamage = amount - hullDamage;
+
+        Debug.Log("hull damage: " + hullDamage);
+        Debug.Log("limb damage: " + limbDamage);
 
 
         // apply damage to limb
         float before = CurrentHealth;
         base.TakeDamage(limbDamage);
 
-        Debug.Log("limb damaged " + CurrentHealth);
+        //Debug.Log("limb damaged " + CurrentHealth);
 
         // leak damage to hull
         if (hullDamage > 0f)
@@ -73,11 +87,11 @@ public class LimbHealthComponent : BaseHealthComponent
     {
         base.Death(sender);
 
+        if (killLimbKillsMech)
+            mechHealthComponent.ManuallyDestroy();
+
         if(deathDamage > 0f)
             mechHealthComponent.TakeDamage(deathDamage);
-
-        if (killLimbKillsMech)
-            mechHealthComponent.Kill();
 
         limb.DestroyedLimb(true);
     }

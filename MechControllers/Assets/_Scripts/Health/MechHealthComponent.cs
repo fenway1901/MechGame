@@ -15,7 +15,7 @@ public class MechHealthComponent : BaseHealthComponent
         base.Death(sender);
     }
 
-    public override void TakeDamage(float amount)
+    public override void TakeDamage(float amount, float armorPen = 0.0f)
     {
         base.TakeDamage(amount);
 

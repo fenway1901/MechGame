@@ -7,7 +7,7 @@ public class BaseWeaponStats : MonoBehaviour
     [SerializeField] protected WeaponSlot slot;
 
     private BaseWeapons weapon;
-    private StatsComponent stats;
+    [SerializeField] private StatsComponent stats;
 
     private void Awake()
     {
@@ -45,6 +45,7 @@ public class BaseWeaponStats : MonoBehaviour
     public float AttackSpeed => stats.Get(StatType.Weapon_AttackSpeed);
     public float Cooldown => stats.Get(StatType.Weapon_Cooldown);
     public float ReloadTime => stats.Get(StatType.Weapon_ReloadTime);
+    public float ArmorPen => stats.Get(StatType.Weapon_ArmorPenPercent);
 
     
     public int MaxAmmo => stats.GetInt(StatType.Weapon_MaxAmmo);

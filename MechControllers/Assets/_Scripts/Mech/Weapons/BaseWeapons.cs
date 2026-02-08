@@ -52,7 +52,6 @@ public class BaseWeapons : MonoBehaviour
 
     [SerializeField] protected BaseWeaponStats weaponStats;
 
-
     public event Action<BaseWeapons, float> WeaponCharging;
     public event Action<BaseWeapons, float> WeaponCooling;
     public event Action<BaseWeapons, float> AmmoFired;
