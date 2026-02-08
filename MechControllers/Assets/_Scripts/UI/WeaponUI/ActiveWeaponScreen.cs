@@ -24,7 +24,7 @@ public class ActiveWeaponScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentAmmo;
     [SerializeField] private TextMeshProUGUI maxAmmo;
 
-    private BaseWeapons assignedWeapon = new BaseWeapons();
+    private BaseWeapons assignedWeapon;
 
     private float endTime;
     private float duration;
@@ -58,6 +58,8 @@ public class ActiveWeaponScreen : MonoBehaviour
             return;
         }
 
+        UnhookWeapon(weapon);
+
         assignedWeapon = weapon;
 
         icon.sprite = assignedWeapon.GetIcon();
@@ -82,6 +84,8 @@ public class ActiveWeaponScreen : MonoBehaviour
         assignedWeapon.WeaponCharging += ChargingWeapon;
         assignedWeapon.WeaponCooling += CoolingWeapon;
         assignedWeapon.CancelAttack += AttackHasStopped;
+
+        SyncToWeaponState();
     }
 
     private void UpdateAmmo(BaseWeapons weapon, float ammo)
@@ -139,8 +143,74 @@ public class ActiveWeaponScreen : MonoBehaviour
         statusTxt.text = "Stand By";
         boardercolor.color = standbyColor;
         counting = false;
-        fill.fillAmount = 0;
     }
 
-    // Should also do a reload timer here
+    #region Syncing weapon phase
+
+    private void UnhookWeapon(BaseWeapons weapon)
+    {
+        if (weapon == null) return;
+
+        weapon.Reloaded -= UpdateAmmo;
+        weapon.Reloading -= ReloadingGun;
+        weapon.AmmoFired -= UpdateAmmo;
+        weapon.WeaponCharging -= ChargingWeapon;
+        weapon.WeaponCooling -= CoolingWeapon;
+        weapon.CancelAttack -= AttackHasStopped;
+    }
+
+    private void SyncToWeaponState()
+    {
+        if (assignedWeapon == null)
+        {
+            AttackHasStopped(null);
+            return;
+        }
+
+        BaseWeapons.WeaponUIPhase phase = assignedWeapon.GetUIPhase(out float phaseDuration, out float phaseEndTime);
+
+        switch (phase)
+        {
+            case BaseWeapons.WeaponUIPhase.Reloading:
+                StartBarAtCurrentProgress(reloadColor, reloadText, phaseDuration, phaseEndTime);
+                break;
+
+            case BaseWeapons.WeaponUIPhase.Charging:
+                StartBarAtCurrentProgress(chargeColor, chargeText, phaseDuration, phaseEndTime);
+                break;
+
+            case BaseWeapons.WeaponUIPhase.CoolingDown:
+                StartBarAtCurrentProgress(cooldownColor, cooldownText, phaseDuration, phaseEndTime);
+                break;
+
+            default:
+                AttackHasStopped(assignedWeapon);
+                break;
+        }
+    }
+
+    private void StartBarAtCurrentProgress(Color color, string text, float ducationSec, float endTimeSec)
+    {
+        fill.color = color;
+        boardercolor.color = color;
+        statusTxt.text = text;
+
+        duration = Mathf.Max(0.0001f, ducationSec);
+        endTime = endTimeSec;
+
+        slider.maxValue = duration;
+
+        float remaining = Mathf.Max(0f, endTime - Time.time);
+        float elapsed = duration - remaining;
+        slider.value = Mathf.Clamp(elapsed, 0f, duration);
+
+        counting = Time.time < endTime;
+        if (!counting)
+        {
+            // phase already ended, fall back to standby
+            AttackHasStopped(assignedWeapon);
+        }
+    }
+
+    #endregion
 }

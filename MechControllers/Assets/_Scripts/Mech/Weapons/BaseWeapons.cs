@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
-using System;
 using UnityEngine.Video;
+using static BaseWeapons;
 
 public class BaseWeapons : MonoBehaviour
 {
@@ -59,8 +60,13 @@ public class BaseWeapons : MonoBehaviour
     public event Action<BaseWeapons, float> Reloading;
     public event Action<BaseWeapons> CancelAttack;
 
-    //[Header("Melee Variables")]
-
+    public enum WeaponUIPhase
+    {
+        Standby,
+        Charging,
+        CoolingDown,
+        Reloading
+    }
 
     #region Unity Functions
 
@@ -359,5 +365,48 @@ public class BaseWeapons : MonoBehaviour
 
     #endregion
 
+
+    #region UI Functions
+
+    public WeaponUIPhase GetUIPhase(out float duration, out float phaseEndTime)
+    {
+        if (reloading)
+        {
+            duration = weaponStats.ReloadTime;
+            phaseEndTime = reloadEndTime;
+            return WeaponUIPhase.Reloading;
+        }
+
+        if (isAttacking && isCharging)
+        {
+            duration = weaponStats.AttackSpeed;
+            phaseEndTime = chargeEndTime;
+            return WeaponUIPhase.Charging;
+        }
+
+        if (isAttacking && isCoolingDown)
+        {
+            duration = weaponStats.Cooldown;
+            phaseEndTime = cooldownEndTime;
+            return WeaponUIPhase.CoolingDown;
+        }
+
+        duration = 0f;
+        phaseEndTime = 0f;
+        return WeaponUIPhase.Standby;
+    }
+
+    // 0 if in stand by mode
+    public float GetUIPhaseProgress()
+    {
+        WeaponUIPhase phase = GetUIPhase(out float duration, out float endTime);
+        if (phase == WeaponUIPhase.Standby || duration <= 0f) return 0f;
+
+        float remaining = Mathf.Max(0f, endTime - Time.time);
+        float elapsed = duration - remaining;
+        return Mathf.Clamp01(elapsed / duration);
+    }
+
+    #endregion
 
 }
