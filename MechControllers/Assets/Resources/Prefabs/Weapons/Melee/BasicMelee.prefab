@@ -55,6 +55,7 @@ MonoBehaviour:
   baseAttackSpeed: 1
   baseCooldown: 4
   _AttachedMech: {fileID: 0}
+  canMoveWhileCharging: 0
   isAttacking: 0
   usesAmmo: 0
   maxAmmo: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
   tags:
   - Melee
   slot: 0
+  stats: {fileID: 0}
 --- !u!114 &1809046074335560206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,4 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 19
+    baseValue: 1

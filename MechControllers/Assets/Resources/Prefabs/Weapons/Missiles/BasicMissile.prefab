@@ -55,12 +55,14 @@ MonoBehaviour:
   baseAttackSpeed: 0.5
   baseCooldown: 1
   _AttachedMech: {fileID: 0}
+  canMoveWhileCharging: 0
   isAttacking: 0
   usesAmmo: 1
   maxAmmo: 1000
   ammoUsedPerShot: 1
   reloadTime: 1
   baseReloadAmount: 0
+  weaponStats: {fileID: 0}
 --- !u!114 &6977666785638617726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +119,7 @@ MonoBehaviour:
   tags:
   - Missile
   slot: 0
+  stats: {fileID: 0}
 --- !u!114 &-6611509170760135001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,4 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10a9a390cbe4644da968abd9d3c0eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
-  baseStats: []
+  baseStats:
+  - stat: 19
+    baseValue: 1

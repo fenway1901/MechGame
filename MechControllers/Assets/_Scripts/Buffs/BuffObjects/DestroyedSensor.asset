@@ -18,7 +18,7 @@ MonoBehaviour:
   durationSeconds: 0
   refreshDurationOnReapply: 1
   statMods:
-  - target: 8
+  - target: 2
     targetTag: 
     stat: 4
     mod: 4

@@ -46,6 +46,7 @@ public class BaseWeaponStats : MonoBehaviour
     public float Cooldown => stats.Get(StatType.Weapon_Cooldown);
     public float ReloadTime => stats.Get(StatType.Weapon_ReloadTime);
     public float ArmorPen => stats.Get(StatType.Weapon_ArmorPenPercent);
+    public float Accuracy => stats.Get(StatType.Weapon_Accuracy);
 
     
     public int MaxAmmo => stats.GetInt(StatType.Weapon_MaxAmmo);

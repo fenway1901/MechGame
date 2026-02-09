@@ -19,6 +19,7 @@ public enum BuffTarget
 // If I new weapon Slot or names here
 public enum WeaponSlot 
 { 
+    Any = -1,
     LeftArm, 
     RightArm, 
     RightShoulder, 
@@ -30,6 +31,7 @@ public enum WeaponSlot
 // if new limbs exist add them here
 public enum LimbSlot 
 { 
+    Any = -1,
     Head, 
     Chest,
     Core,

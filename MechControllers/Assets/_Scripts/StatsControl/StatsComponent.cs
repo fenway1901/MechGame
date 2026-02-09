@@ -55,6 +55,43 @@ public class StatsComponent : MonoBehaviour
         OnStatChanged?.Invoke();
     }
 
+    public float GetBase(StatType stat)
+    {
+        if (_map.TryGetValue(stat, out StatInstance inst)) return inst.BaseValue;
+        Debug.Log("Failed to get base stat " + stat);
+        return 0f;
+    }
+
+    public bool TryGet(StatType stat, out float value)
+    {
+        if (_map.TryGetValue(stat, out StatInstance inst))
+        {
+            value = inst.GetValue();
+            return true;
+        }
+        value = 0f;
+        return false;
+    }
+
+    public void AddModifier(
+        StatType stat,
+        ModifierMode mode,
+        float value,
+        UnityEngine.Object source = null,
+        int instanceId = 0,
+        int priority = 0)
+    {
+        AddModifier(new StatModifier
+        {
+            stat = stat,
+            mode = mode,
+            value = value,
+            source = source,
+            instanceId = instanceId,
+            priority = priority
+        });
+    }
+
     public void AddModifier(StatModifier modifier)
     {
         if(!_map.TryGetValue(modifier.stat, out StatInstance inst))

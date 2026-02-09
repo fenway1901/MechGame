@@ -42,6 +42,8 @@ public class BaseWeapons : MonoBehaviour
     [SerializeField] protected int baseReloadAmount;
     protected float reloadEndTime;
 
+    protected float baseAccuracy;
+
     public float BaseDamage => baseDamage;
     public float BaseRange => baseRange;
     public float BaseAttackSpeed => baseAttackSpeed;
@@ -59,6 +61,7 @@ public class BaseWeapons : MonoBehaviour
     public event Action<BaseWeapons, float> Reloaded;
     public event Action<BaseWeapons, float> Reloading;
     public event Action<BaseWeapons> CancelAttack;
+    public event Action<BaseWeapons, float> WeaponMissed;
 
     public enum WeaponUIPhase
     {
@@ -92,6 +95,7 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Start()
     {
+        baseAccuracy = weaponStats.Accuracy;
         // Might cause problems in future keep an eye on this
         if(usesAmmo)
             currentAmmo = weaponStats.MaxAmmo;
@@ -133,6 +137,11 @@ public class BaseWeapons : MonoBehaviour
                         return;
                     }
 
+                    float hitChance = ComputeHitChance01(target, targetTrans.position);
+                    bool hit = RollHit(hitChance);
+
+                    Debug.Log(" hit chance!!!: " + weaponStats.Accuracy + " FOR " + name);
+
                     if (usesAmmo)
                     {
                         if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
@@ -144,16 +153,25 @@ public class BaseWeapons : MonoBehaviour
                         FiredWeapon();
                     }
 
-                    Debug.Log(name + " finished charging and applying damage");
-                    //target.GetComponent<BaseHealthComponent>().TakeDamage(baseDamage);
-                    hitEffect.Apply(this, target, targetTrans.position);
+                    if (hit)
+                    {
+                        //Debug.Log(name + " attack hit");
+                        hitEffect.Apply(this, target, targetTrans.position);
+                    }
+                    else
+                    {
+                        Debug.Log(name + " attack missed");
+                        WeaponMissed?.Invoke(this, hitChance);
+                        // Call visuals here? or off the Invoke call
+                    }
+
                     cooldownEndTime = Time.time + weaponStats.Cooldown;
                     isCharging = false;
                     isCoolingDown = true;
 
                     WeaponCooling?.Invoke(this, weaponStats.Cooldown);
 
-                    if (target.layer == 6)
+                    if (target.layer == 6 && target.tag == "Enemy")
                     {
                         target.GetComponent<EnemyLimb>().TurnOffIndicator(this);
                     }
@@ -165,11 +183,6 @@ public class BaseWeapons : MonoBehaviour
                 if(Time.time >= cooldownEndTime)
                 {
                     //Debug.Log(name + " finshed attack");
-
-                    // PROTO: Display controled like this for a minute
-                    // In future make it a unity event the UI is subcribed to
-                    //if (transform.parent.tag == "Player")
-                    //    AttackManager.instance.TurnOffDisplay();
 
                     FinishedAttack();
                 }
@@ -218,6 +231,8 @@ public class BaseWeapons : MonoBehaviour
     public float GetRange() { return weaponStats.Range; }
     public float GetAttackSpeed() { return weaponStats.AttackSpeed; }
     public float GetCoolDown() { return weaponStats.Cooldown; }
+    public float GetAccuracy() { return weaponStats.Accuracy; }
+    public float GetArmorPen() { return weaponStats.ArmorPen; }
 
     // int gets
     //public int GetMaxAmmo() { return weaponStats.; }
@@ -268,7 +283,9 @@ public class BaseWeapons : MonoBehaviour
         {
             Debug.Log("Target a limb");
             targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
-            target.GetComponent<EnemyLimb>().TurnOnIndicator(this);
+
+            if(target.tag == "Enemy")
+                target.GetComponent<EnemyLimb>().TurnOnIndicator(this);
         }
         else
         {
@@ -287,11 +304,6 @@ public class BaseWeapons : MonoBehaviour
         //Debug.Log(WeaponCharging);
 
         WeaponCharging?.Invoke(this, weaponStats.AttackSpeed);
-
-        // PROTO: Display controled like this for a minute
-        // In future make it a unity event the UI is subcribed to
-        //if (transform.parent.tag == "Player")
-        //    AttackManager.instance.ChargeDisplay(weaponStats.AttackSpeed);
     }
 
     public virtual void StopAttack(string reason = "No reason given")
@@ -322,6 +334,21 @@ public class BaseWeapons : MonoBehaviour
         if(!isAttacking || !isCharging) return;
         // have visual subscribe to this and invode the action here
         chargeEndTime += seconds;
+    }
+
+    protected virtual float ComputeHitChance01(GameObject targetObj, Vector3 targetPoint)
+    {
+        return Mathf.Clamp01(weaponStats.Accuracy * weaponStats.Stats.GetBase(StatType.Weapon_Accuracy));
+    }
+
+    protected virtual bool RollHit(float hitChance01)
+    {
+        return UnityEngine.Random.value <= hitChance01;
+    }
+
+    protected virtual void DoMissFX(Vector3 from, Vector3 to, float hitChance01)
+    {
+        // Optional: tracer to a slightly offset point, sound, decal, etc.
     }
 
     #endregion

@@ -221,9 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &5081588334178253422
 MonoBehaviour:
@@ -487,9 +487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &308796170203332438
 MonoBehaviour:
@@ -1078,9 +1078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &1266756063552960579
 MonoBehaviour:
@@ -1617,9 +1617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &7544959363242827429
 MonoBehaviour:
@@ -1988,9 +1988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &3821252833988450829
 MonoBehaviour:
@@ -2363,9 +2363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 0
 --- !u!114 &5608421112938852492
 MonoBehaviour:
@@ -3375,9 +3375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 5
+  - stat: 4
     baseValue: 100
-  - stat: 7
+  - stat: 6
     baseValue: 80
 --- !u!114 &843248922932533890
 MonoBehaviour:

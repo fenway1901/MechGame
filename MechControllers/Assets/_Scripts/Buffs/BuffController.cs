@@ -46,18 +46,24 @@ public class BuffController : MonoBehaviour
     public void SetLimbs(List<BaseLimb> limbs)
     {
         this.limbs.Clear();
-        foreach(BaseLimb l in limbs)
+        if (limbs == null) return;
+
+        foreach (BaseLimb w in limbs)
         {
-            this.limbs.Add(l.GetLimbStats());
+            if (w != null)
+                this.limbs.Add(w.GetLimbStats());
         }
     }
     public void SetWeapons(List<BaseWeaponStats> weapons) { this.weapons = weapons; }
     public void SetWeapons(List<BaseWeapons> weapons)
     {
         this.weapons.Clear();
-        foreach(BaseWeapons w in weapons)
+        if (weapons == null) return;
+
+        foreach (BaseWeapons w in weapons)
         {
-            this.weapons.Add(w.GetWeaponStats());
+            if (w != null)
+                this.weapons.Add(w.GetWeaponStats());
         }
     }
 

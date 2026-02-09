@@ -45,14 +45,14 @@ public class LimbHealthComponent : BaseHealthComponent
         }
 
 
-        Debug.Log("total amount of damage: " + amount);
+        //Debug.Log("total amount of damage: " + amount);
 
         float leak = Mathf.Clamp01(leakToHullPercent);
         float hullDamage = amount * leak;
         float limbDamage = amount - hullDamage;
 
-        Debug.Log("hull damage: " + hullDamage);
-        Debug.Log("limb damage: " + limbDamage);
+        //Debug.Log("hull damage: " + hullDamage);
+        //Debug.Log("limb damage: " + limbDamage);
 
 
         // apply damage to limb

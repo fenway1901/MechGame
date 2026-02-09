@@ -52,6 +52,12 @@ public class BaseMech : MonoBehaviour
 
         PopulateWeapons();
 
+        if (buffController != null)
+        {
+            buffController.SetLimbs(limbs);
+            buffController.SetWeapons(weapons);
+        }
+
         if (layoutPrefab == null)
             Debug.LogError(gameObject.name + " layout is null, nothing will show!");
 
@@ -186,14 +192,10 @@ public class BaseMech : MonoBehaviour
             // Just incase i will add things that arn't limbs to this prefab
             if (spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>())
             {
-                Debug.Log(spawnedLayout.transform.GetChild(i).name);
                 limbs.Add(spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>());
                 limbs[limbs.Count - 1]._AttachedMech = this;
             }
         }
-
-        if (buffController != null)
-            buffController.SetLimbs(limbs);
     }
 
     #endregion

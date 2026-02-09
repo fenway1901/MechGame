@@ -17,6 +17,8 @@ public class StatInstance
         _dirty = true;
     }
 
+    public float GetBase() => BaseValue;
+
     public void SetBase(float baseValue)
     {
         BaseValue = baseValue;
