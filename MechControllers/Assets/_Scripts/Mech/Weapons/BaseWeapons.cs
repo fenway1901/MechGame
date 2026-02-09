@@ -153,10 +153,10 @@ public class BaseWeapons : MonoBehaviour
 
                     WeaponCooling?.Invoke(this, weaponStats.Cooldown);
 
-                    // PROTO: Display controled like this for a minute
-                    // In future make it a unity event the UI is subcribed to
-                    //if (transform.parent.tag == "Player")
-                    //    AttackManager.instance.CooldownDisplay(weaponStats.Cooldown);
+                    if (target.layer == 6)
+                    {
+                        target.GetComponent<EnemyLimb>().TurnOffIndicator(this);
+                    }
                 }
             }
             else if (isCoolingDown)
@@ -254,17 +254,6 @@ public class BaseWeapons : MonoBehaviour
             return;
         }
 
-        // Layer 6 is limb layer
-        if(target.layer == 6)
-        {
-            Debug.Log("Target a limb");
-            targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
-        }
-        else
-        {
-            targetTrans = target.transform;
-        }
-
         if (usesAmmo)
         {
             if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
@@ -272,6 +261,18 @@ public class BaseWeapons : MonoBehaviour
                 Debug.LogWarning(_AttachedMech.name + " is trying to fire " + name + " with not enough ammo");
                 return;
             }
+        }
+
+        // Layer 6 is limb layer
+        if (target.layer == 6)
+        {
+            Debug.Log("Target a limb");
+            targetTrans = target.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform;
+            target.GetComponent<EnemyLimb>().TurnOnIndicator(this);
+        }
+        else
+        {
+            targetTrans = target.transform;
         }
 
         Debug.Log(_AttachedMech.name + " is starting attack against: " + target.name + " with: " + name);

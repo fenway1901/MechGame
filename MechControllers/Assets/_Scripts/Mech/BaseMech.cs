@@ -18,7 +18,7 @@ public class BaseMech : MonoBehaviour
     public List<WeaponSlotEntry> assignedWeapons = new();
 
     protected List<BaseWeapons> weapons;
-    [HideInInspector] public List<BaseLimb> limbs;
+    public List<BaseLimb> limbs;
     [HideInInspector] public BaseWeapons activeWeapon;
     public GameObject layoutPrefab;
     [HideInInspector] public GameObject spawnedLayout;
@@ -186,8 +186,9 @@ public class BaseMech : MonoBehaviour
             // Just incase i will add things that arn't limbs to this prefab
             if (spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>())
             {
+                Debug.Log(spawnedLayout.transform.GetChild(i).name);
                 limbs.Add(spawnedLayout.transform.GetChild(i).GetComponent<BaseLimb>());
-                limbs[i]._AttachedMech = this;
+                limbs[limbs.Count - 1]._AttachedMech = this;
             }
         }
 

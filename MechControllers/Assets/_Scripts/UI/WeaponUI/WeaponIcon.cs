@@ -89,10 +89,7 @@ public class WeaponIcon : MonoBehaviour
         if (weapon == null)
             return;
 
-        if (weapon == connectedWeapon)
-            boarderColors.gameObject.SetActive(true);
-        else
-            boarderColors.gameObject.SetActive(false);
+        boarderColors.color = (weapon == connectedWeapon) ? activeColor : deactiveColor;
     }
 
     private void SetIcon(Sprite image) 

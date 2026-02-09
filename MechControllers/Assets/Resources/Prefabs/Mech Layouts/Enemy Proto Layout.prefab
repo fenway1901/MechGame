@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4390003737943930028}
   - component: {fileID: 3650193580581456687}
-  - component: {fileID: 910537493680101802}
+  - component: {fileID: 5895026379978238542}
   - component: {fileID: 5412707636198967253}
   - component: {fileID: 4222216091793619561}
   - component: {fileID: 1227999559124888374}
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &910537493680101802
+--- !u!114 &5895026379978238542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,9 +106,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 452854826404602729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Head
@@ -148,11 +148,12 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs:
   - {fileID: 11400000, guid: 4cb4e6804d127b3459b403d2466046bc, type: 2}
   buffToApply: []
+  targetIndicator: {fileID: 6795343867589152322}
 --- !u!58 &5412707636198967253
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -265,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2285753891081049940}
   - component: {fileID: 5018401333518955317}
-  - component: {fileID: 4815502377766848031}
+  - component: {fileID: 8236638770224551610}
   - component: {fileID: 4835244051170515029}
   - component: {fileID: 4449769119526692780}
   - component: {fileID: 7304978596123953365}
@@ -352,7 +353,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4815502377766848031
+--- !u!114 &8236638770224551610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,9 +362,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1125744571560385840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Chest
@@ -403,11 +404,12 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs:
   - {fileID: 11400000, guid: bb7e83619b6be67489ddc7115112fcda, type: 2}
   buffToApply: []
+  targetIndicator: {fileID: 5233803226436337731}
 --- !u!61 &4835244051170515029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -738,6 +740,113 @@ MonoBehaviour:
   minAlpha: 0.35
   maxAlpha: 1
   useUnscaledTime: 1
+--- !u!1 &1477983978069480225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7051445444399145810}
+  - component: {fileID: 9428990993277280}
+  - component: {fileID: 3853029171932196816}
+  m_Layer: 6
+  m_Name: TargetIndicator_RightLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7051445444399145810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477983978069480225}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.367, y: -1.202, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &9428990993277280
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477983978069480225}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3853029171932196816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477983978069480225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
 --- !u!1 &2481776505768732721
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6764898877940700969}
   - component: {fileID: 3105109060268225934}
-  - component: {fileID: 5687577684273443438}
+  - component: {fileID: 7177931643091742920}
   - component: {fileID: 1769736371964790080}
   - component: {fileID: 6164145871046960234}
   - component: {fileID: 3821662473171111784}
@@ -770,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 2481776505768732721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35550022, y: -1.2, z: 0}
+  m_LocalPosition: {x: -0.3660002, y: -1.2, z: 0}
   m_LocalScale: {x: 0.36850446, y: 1.2455472, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -835,7 +944,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5687577684273443438
+--- !u!114 &7177931643091742920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -844,9 +953,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2481776505768732721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Left Leg
@@ -886,11 +995,12 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs:
   - {fileID: 11400000, guid: 6e16a85d5199bc74487049f717a4974c, type: 2}
   buffToApply: []
+  targetIndicator: {fileID: 8791525336816384850}
 --- !u!61 &1769736371964790080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1030,6 +1140,13 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2968126018965744126}
+  - {fileID: 8130274829343909210}
+  - {fileID: 9132548701111950605}
+  - {fileID: 142619418934763790}
+  - {fileID: 5959056996218694372}
+  - {fileID: 4791900444709003563}
+  - {fileID: 7051445444399145810}
   - {fileID: 4390003737943930028}
   - {fileID: 494077677321574515}
   - {fileID: 2285753891081049940}
@@ -1053,6 +1170,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MechHealthComponent
   maxHealth: 100
   _AttachedMech: {fileID: 0}
+--- !u!1 &3079000606208334134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5959056996218694372}
+  - component: {fileID: 240965168961660671}
+  - component: {fileID: 2869712772962133572}
+  m_Layer: 6
+  m_Name: TargetIndicator_RightArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5959056996218694372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079000606208334134}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.032, y: 0.454, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &240965168961660671
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079000606208334134}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2869712772962133572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079000606208334134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
 --- !u!1 &3483540513189825515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7840110998181039952}
   - component: {fileID: 1261793901959870668}
-  - component: {fileID: 6558681552639297120}
+  - component: {fileID: 7651511122441845911}
   - component: {fileID: 7794294974089471146}
   - component: {fileID: 7695254523406097312}
   - component: {fileID: 6808640885824997159}
@@ -1259,7 +1483,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6558681552639297120
+--- !u!114 &7651511122441845911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1268,9 +1492,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3536687926203196233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Right Leg
@@ -1310,11 +1534,12 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs:
   - {fileID: 11400000, guid: 6e16a85d5199bc74487049f717a4974c, type: 2}
   buffToApply: []
+  targetIndicator: {fileID: 1477983978069480225}
 --- !u!61 &7794294974089471146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1543,7 +1768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7987061790435656784}
   - component: {fileID: 904488844557338095}
-  - component: {fileID: 599907133407541442}
+  - component: {fileID: 7361599129422745421}
   - component: {fileID: 7461954448256441002}
   - component: {fileID: 5592665041562632273}
   - component: {fileID: 8503984404295703735}
@@ -1630,7 +1855,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &599907133407541442
+--- !u!114 &7361599129422745421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1639,9 +1864,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4988710182775261688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Left Arm
@@ -1681,10 +1906,11 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs: []
   buffToApply: []
+  targetIndicator: {fileID: 6645686699446432068}
 --- !u!61 &7461954448256441002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1800,6 +2026,113 @@ MonoBehaviour:
   - slot: 3
     mountPoint: {fileID: 0}
     equipped: {fileID: 0}
+--- !u!1 &5233803226436337731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9132548701111950605}
+  - component: {fileID: 2225563179819260012}
+  - component: {fileID: 3628986618353053865}
+  m_Layer: 6
+  m_Name: TargetIndicator_Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9132548701111950605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233803226436337731}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.086, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2225563179819260012
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233803226436337731}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3628986618353053865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233803226436337731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
 --- !u!1 &5416419350101463734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +2143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5040187295077128031}
   - component: {fileID: 1175999258479038854}
-  - component: {fileID: 2187659173674263638}
+  - component: {fileID: 6984266397555789203}
   - component: {fileID: 2259734424155150896}
   - component: {fileID: 7306669982294410213}
   - component: {fileID: 3549940681362438854}
@@ -1897,7 +2230,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2187659173674263638
+--- !u!114 &6984266397555789203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1906,9 +2239,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416419350101463734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Right Arm
@@ -1948,10 +2281,11 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs: []
   buffToApply: []
+  targetIndicator: {fileID: 3079000606208334134}
 --- !u!61 &2259734424155150896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2285,6 +2619,327 @@ MonoBehaviour:
   minAlpha: 0.35
   maxAlpha: 1
   useUnscaledTime: 1
+--- !u!1 &6645686699446432068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 142619418934763790}
+  - component: {fileID: 1647365475539803490}
+  - component: {fileID: 6095671125386789531}
+  m_Layer: 6
+  m_Name: TargetIndicator_LeftArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &142619418934763790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645686699446432068}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.032, y: 0.454, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1647365475539803490
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645686699446432068}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &6095671125386789531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645686699446432068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
+--- !u!1 &6795343867589152322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2968126018965744126}
+  - component: {fileID: 4627794933031950691}
+  - component: {fileID: 2703488438195228079}
+  m_Layer: 6
+  m_Name: TargetIndicator_Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2968126018965744126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795343867589152322}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4627794933031950691
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795343867589152322}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2703488438195228079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795343867589152322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
+--- !u!1 &7226668809714095058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8130274829343909210}
+  - component: {fileID: 3417180120331283658}
+  - component: {fileID: 3535442331271115868}
+  m_Layer: 6
+  m_Name: TargetIndicator_Core
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8130274829343909210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226668809714095058}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.564, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3417180120331283658
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226668809714095058}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3535442331271115868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226668809714095058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
 --- !u!1 &8649929688386162769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,6 +3049,113 @@ MonoBehaviour:
   minAlpha: 0.35
   maxAlpha: 1
   useUnscaledTime: 1
+--- !u!1 &8791525336816384850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4791900444709003563}
+  - component: {fileID: 2968685061768224458}
+  - component: {fileID: 9003902424768797888}
+  m_Layer: 6
+  m_Name: TargetIndicator_LeftLeg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4791900444709003563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791525336816384850}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.367, y: -1.202, z: 0}
+  m_LocalScale: {x: 0.49, y: 0.49, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9092358952075482358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2968685061768224458
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791525336816384850}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: eb9fb1bdabf36a54c81e76c3aec83ce5, type: 3}
+  m_Color: {r: 0.8627451, g: 0.078431375, b: 0.08627451, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &9003902424768797888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791525336816384850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cba749134c033489d4b74e2f3fe729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLimbIndicator
+  rotationSpeed: -90
+  scaleSpeed: 0.5
+  minScale: 0.9
+  maxScale: 1
 --- !u!1 &9107645568343402088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,7 +3166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494077677321574515}
   - component: {fileID: 8670749613732228625}
-  - component: {fileID: 6544368683515178957}
+  - component: {fileID: 4948770204443097920}
   - component: {fileID: 4112694120946038102}
   - component: {fileID: 2048271467351444171}
   - component: {fileID: 4571988737114004725}
@@ -2490,7 +3252,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6544368683515178957
+--- !u!114 &4948770204443097920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2499,9 +3261,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9107645568343402088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98df2976ab1e3c041ab13db006adf8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: e34bded9c7b42e047a90e8b00f9408d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseLimb
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLimb
   isDestroyed: 0
   _AttachedMech: {fileID: 0}
   limbName: Core
@@ -2541,10 +3303,11 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   normalColor: {r: 0, g: 0, b: 0, a: 1}
-  hoverColor: {r: 1, g: 0.9333334, b: 0.5490196, a: 1}
+  hoverColor: {r: 1, g: 0.9333334, b: 0.54901963, a: 1}
   destroyColor: {r: 0, g: 0, b: 0, a: 1}
   deathDebuffs: []
   buffToApply: []
+  targetIndicator: {fileID: 7226668809714095058}
 --- !u!58 &4112694120946038102
 CircleCollider2D:
   m_ObjectHideFlags: 0
