@@ -5,13 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 using static BaseWeapons;
+using static LimbWeaponMounts;
 
 public class BaseWeapons : MonoBehaviour
 {
     [Header("General Variables")]
     [SerializeField] public string displayName;
     [SerializeField] protected Sprite icon;
-    [SerializeField] MonoBehaviour hitEffectBehaviour;
+    [SerializeField] protected MonoBehaviour hitEffectBehaviour;
     protected IHitEffect hitEffect;
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseRange;
@@ -140,8 +141,6 @@ public class BaseWeapons : MonoBehaviour
                     float hitChance = ComputeHitChance01(target, targetTrans.position);
                     bool hit = RollHit(hitChance);
 
-                    Debug.Log(" hit chance!!!: " + weaponStats.Accuracy + " FOR " + name);
-
                     if (usesAmmo)
                     {
                         if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
@@ -161,8 +160,8 @@ public class BaseWeapons : MonoBehaviour
                     else
                     {
                         Debug.Log(name + " attack missed");
+                        GameUtils.ShowText("Miss", target.transform.position, Color.red, 1.2f, false, size: .9f, startScale: 0.6f, popScale: 1.1f);
                         WeaponMissed?.Invoke(this, hitChance);
-                        // Call visuals here? or off the Invoke call
                     }
 
                     cooldownEndTime = Time.time + weaponStats.Cooldown;

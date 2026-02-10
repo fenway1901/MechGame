@@ -6,7 +6,7 @@ public class AttackManager : MonoBehaviour
 {
     public static AttackManager instance;
 
-
+    // CURRENTLY NOT USED ANYMORE
 
     void Awake()
     {
@@ -23,31 +23,6 @@ public class AttackManager : MonoBehaviour
     }
 
     #region AttackSequence
-
-    //PROTO: will show UI displays until i set up the offical ones
-    public void ChargeDisplay(float time)
-    {
-        WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
-
-        display.timerTxt.gameObject.SetActive(true);
-        display.SetTimer(time);
-        display.timerTxt.color = Color.white;
-    }
-
-    public void CooldownDisplay(float time)
-    {
-        WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
-
-        display.timerTxt.gameObject.SetActive(true);
-        display.SetTimer(time);
-        display.timerTxt.color = Color.darkRed;
-    }
-
-    public void TurnOffDisplay()
-    {
-        WeaponDisplay display = CombatManager.instance.playerMech.activeDisplay;
-        display.timerTxt.gameObject.SetActive(false);
-    }
 
     public void AttackEnemy(GameObject target, BaseWeapons weapon, WeaponDisplay display = null)
     {

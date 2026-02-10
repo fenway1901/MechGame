@@ -20,9 +20,9 @@ MonoBehaviour:
   statMods:
   - target: 2
     targetTag: 
-    stat: 4
+    stat: 19
     mod: 4
-    value: 40
+    value: 0
     priority: 100
-    weaponSlot: 0
+    weaponSlot: -1
     limbSlot: 0

@@ -14,13 +14,6 @@ public class BasePlayerMech : BaseMech
     [SerializeField] private InputAction selectWeapon3;
     [SerializeField] private InputAction reload;
 
-
-    [Header("PROTOTYPE VARIBLES")]
-    public WeaponDisplay activeDisplay;
-    public WeaponDisplay weapon1;
-    public WeaponDisplay weapon2;
-    public WeaponDisplay weapon3;
-
     public event Action<BaseWeapons> WeaponSelected;
 
     private void Awake()
@@ -36,6 +29,8 @@ public class BasePlayerMech : BaseMech
         base.Init();
 
         panel = GameObject.Find("Player Panel");
+
+        healthComp.Damaged += DamageTaken;
     }
 
 
@@ -43,15 +38,15 @@ public class BasePlayerMech : BaseMech
     {
         // Weapon 1
         if (selectWeapon1.WasPressedThisFrame())
-            SelectWeapon(weapons[0], weapon1);
+            SelectWeapon(weapons[0]);
 
         // Weapon 2
         if (selectWeapon2.WasPressedThisFrame())
-            SelectWeapon(weapons[1], weapon2);
+            SelectWeapon(weapons[1]);
 
         // Weapon 3
         if (selectWeapon3.WasPressedThisFrame())
-            SelectWeapon(weapons[2], weapon3);
+            SelectWeapon(weapons[2]);
 
         // Reload Sequence
         if (reload.WasPressedThisFrame() && activeWeapon != null && !activeWeapon.GetIsAttacking())
@@ -81,6 +76,28 @@ public class BasePlayerMech : BaseMech
 
     }
 
+    private Coroutine shakeRoutine;
+    private Vector3 camOriginalLocalPos;
+
+    protected virtual void DamageTaken(BaseHealthComponent comp, float damage, float currentHealth)
+    {
+        if (currentHealth <= 0) return;
+
+        Transform camT = Camera.main.transform;
+
+        if (shakeRoutine == null)
+            camOriginalLocalPos = camT.localPosition;
+
+        if (shakeRoutine != null)
+        {
+            StopCoroutine(shakeRoutine);
+            camT.localPosition = camOriginalLocalPos;
+            shakeRoutine = null;
+        }
+
+        shakeRoutine = StartCoroutine(GameUtils.ShakeTransform(camT, 0.08f, 0.08f));
+    }
+
 
     #region Limb Management
 
@@ -89,11 +106,10 @@ public class BasePlayerMech : BaseMech
 
     #region Weapon Management
 
-    protected virtual void SelectWeapon(BaseWeapons weapon, WeaponDisplay display)
+    protected virtual void SelectWeapon(BaseWeapons weapon)
     {
         //Debug.Log("Player Selected: " + weapon.name);
         activeWeapon = weapon;
-        activeDisplay = display;
         
         // So all weapons are ready
         WeaponSelected.Invoke(weapon);

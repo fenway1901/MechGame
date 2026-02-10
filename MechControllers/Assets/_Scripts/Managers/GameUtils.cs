@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameUtils : MonoBehaviour
 {
@@ -10,6 +11,84 @@ public class GameUtils : MonoBehaviour
         float distance = Vector3.Distance(a, b);
         return distance;
     }
+
+    public static float Pulse01(float timeSeconds, float pulsesPerSecond)
+    {
+        // Clean, deterministic 0–1 oscillation
+        return (Mathf.Sin(timeSeconds * pulsesPerSecond * Mathf.PI * 2f) + 1f) * 0.5f;
+    }
+
+    public static float Pulse01Perlin(float timeSeconds, float pulsesPerSecond, float seed = 0f)
+    {
+        return Mathf.PerlinNoise(timeSeconds * pulsesPerSecond, seed);
+    }
+
+
+    #region Color Functions 
+
+    public static Color PulseColor(
+    Color a,
+    Color b,
+    float timeSeconds,
+    float pulsesPerSecond,
+    bool usePerlin = false,
+    float perlinSeed = 0f)
+    {
+        float t = usePerlin
+            ? Pulse01Perlin(timeSeconds, pulsesPerSecond, perlinSeed)
+            : Pulse01(timeSeconds, pulsesPerSecond);
+
+        return Color.LerpUnclamped(a, b, t);
+    }
+
+    public static void PulseGraphic(
+    UnityEngine.UI.Graphic graphic,
+    Color a,
+    Color b,
+    float timeSeconds,
+    float pulsesPerSecond,
+    bool usePerlin = false)
+    {
+        if (!graphic) return;
+
+        graphic.color = PulseColor(
+            a,
+            b,
+            timeSeconds,
+            pulsesPerSecond,
+            usePerlin,
+            graphic.GetInstanceID()
+        );
+    }
+
+    // Set up for material
+    // static readonly int ColorID = Shader.PropertyToID("_Color");
+    public static void PulseRendererColor(
+    Renderer renderer,
+    int colorPropertyId,
+    Color a,
+    Color b,
+    float timeSeconds,
+    float pulsesPerSecond,
+    bool usePerlin = false)
+    {
+        if (!renderer) return;
+
+        MaterialPropertyBlock block = new();
+        renderer.GetPropertyBlock(block);
+
+        block.SetColor(
+            colorPropertyId,
+            PulseColor(a, b, timeSeconds, pulsesPerSecond, usePerlin, renderer.GetInstanceID())
+        );
+
+        renderer.SetPropertyBlock(block);
+    }
+
+    #endregion
+
+
+    #region Text Functions
 
     /// <summary>
     /// Minimal call: shows a white number for 1s that floats up.
@@ -59,6 +138,41 @@ public class GameUtils : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Full Color text popup
+    /// </summary>
+    public static void ShowText(
+        string text,
+        Vector3 worldPos,
+        Color color,
+        float duration = 1.0f,
+        bool floatUp = true,
+        float floatSpeed = 1.5f,
+        float size = 36f,
+        Vector3 worldOffset = default,
+        float startScale = 0.9f,
+        float popScale = 1.2f)
+    {
+        if (DamagePopupManager.Instance == null)
+        {
+            Debug.LogWarning("GameUtils.ShowText: No DamagePopupManager found in scene.");
+            return;
+        }
+
+        DamagePopupManager.Instance.Spawn(
+            value: text,
+            worldPos: worldPos,
+            color: color,
+            duration: duration,
+            floatUp: floatUp,
+            floatSpeed: floatSpeed,
+            size: size,
+            worldOffset: worldOffset,
+            startScale: startScale,
+            endScale: popScale
+        );
+    }
+
     private static string FormatNumber(float value, int decimals, bool trimZeros)
     {
         decimals = Mathf.Clamp(decimals, 0, 6);
@@ -73,6 +187,9 @@ public class GameUtils : MonoBehaviour
         if (s.EndsWith(".")) s = s.TrimEnd('.');
         return s;
     }
+
+    #endregion
+
 
     #region Object Transform Effects
 
@@ -145,6 +262,39 @@ public class GameUtils : MonoBehaviour
 
         float mul = PulseScalar(timeSeconds, pulsesPerSecond, minMul, maxMul);
         t.localScale = baseScale * mul;
+    }
+
+    /// <summary>
+    /// Shakes a transform locally for a duration.
+    /// Safe: always restores original local position.
+    /// </summary>
+    public static IEnumerator ShakeTransform(
+        Transform target,
+        float duration,
+        float strength,
+        float frequency = 60f)
+    {
+        if (target == null || duration <= 0f || strength <= 0f)
+            yield break;
+
+        Vector3 originalLocalPos = target.localPosition;
+        float elapsed = 0f;
+
+        float interval = 1f / frequency;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float damper = 1f - Mathf.Clamp01(elapsed / duration);
+
+            Vector2 offset = Random.insideUnitCircle * strength * damper;
+            target.localPosition = originalLocalPos + (Vector3)offset;
+
+            yield return new WaitForSeconds(interval);
+        }
+
+        target.localPosition = originalLocalPos;
     }
 
     #endregion
