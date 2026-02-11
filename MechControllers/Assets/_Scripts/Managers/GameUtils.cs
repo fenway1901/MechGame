@@ -298,4 +298,26 @@ public class GameUtils : MonoBehaviour
     }
 
     #endregion
+
+
+    #region Number Randomization
+
+    /// <summary>
+    /// Returns two distinct random indices in range [0, max).
+    /// </summary>
+    public static (int a, int b) GetTwoRandomDistinct(int max)
+    {
+        if (max < 2)
+            throw new System.ArgumentException("max must be at least 2.");
+
+        int a = Random.Range(0, max);
+        int b = Random.Range(0, max - 1);
+
+        if (b >= a)
+            b += 1;
+
+        return (a, b);
+    }
+
+    #endregion
 }

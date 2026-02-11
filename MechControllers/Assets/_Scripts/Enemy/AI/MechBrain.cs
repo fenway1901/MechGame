@@ -165,7 +165,7 @@ public class MechBrain : MonoBehaviour
         if (limbs == null || limbs.Length == 0)
             return null;
 
-        int num = 4;
+        /*int num = 4;
 
         // Testing target legs
         if (limbs[4].isDestroyed)
@@ -173,15 +173,14 @@ public class MechBrain : MonoBehaviour
             num = 5;
         }
 
-        return limbs[num];
+        return limbs[num];*/
         
-        /*
         // Simple prototype: first non-destroyed limb
-        foreach (var l in limbs)
+        foreach (BaseLimb l in limbs)
         {
-            if (!l.isDestroyed)
+            if (!l.isDestroyed && l.limbName != "Core")
                 return l;
-        }*/
+        }
 
         // All limbs destroyed; return any as fallback (or null if you want to stop)
         return limbs[0];

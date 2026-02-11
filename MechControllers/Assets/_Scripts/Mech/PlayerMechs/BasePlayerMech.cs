@@ -16,6 +16,9 @@ public class BasePlayerMech : BaseMech
 
     public event Action<BaseWeapons> WeaponSelected;
 
+    private Coroutine shakeRoutine;
+    private Vector3 camOriginalLocalPos;
+
     private void Awake()
     {
         selectWeapon1.Enable();
@@ -76,13 +79,17 @@ public class BasePlayerMech : BaseMech
 
     }
 
-    private Coroutine shakeRoutine;
-    private Vector3 camOriginalLocalPos;
-
     protected virtual void DamageTaken(BaseHealthComponent comp, float damage, float currentHealth)
     {
         if (currentHealth <= 0) return;
 
+        ShakeCamera(0.08f, 0.08f);
+
+        EffectsManager.instance.PlayEffects();
+    }
+
+    public virtual void ShakeCamera(float duration, float strength)
+    {
         Transform camT = Camera.main.transform;
 
         if (shakeRoutine == null)
@@ -95,9 +102,7 @@ public class BasePlayerMech : BaseMech
             shakeRoutine = null;
         }
 
-        shakeRoutine = StartCoroutine(GameUtils.ShakeTransform(camT, 0.08f, 0.08f));
-
-        EffectsManager.instance.PlaySparks();
+        shakeRoutine = StartCoroutine(GameUtils.ShakeTransform(camT, duration, strength));
     }
 
 
@@ -114,7 +119,7 @@ public class BasePlayerMech : BaseMech
         activeWeapon = weapon;
         
         // So all weapons are ready
-        WeaponSelected.Invoke(weapon);
+        WeaponSelected?.Invoke(weapon);
     }
 
     #endregion

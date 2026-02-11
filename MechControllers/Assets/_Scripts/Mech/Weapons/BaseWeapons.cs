@@ -20,6 +20,7 @@ public class BaseWeapons : MonoBehaviour
     [SerializeField] protected float baseCooldown;
 
     [HideInInspector] public GameObject _AttachedMech;
+    protected BaseMech attachedMech;
     protected BaseMech mechComp;
 
     [SerializeField] protected bool canMoveWhileCharging;
@@ -151,6 +152,9 @@ public class BaseWeapons : MonoBehaviour
 
                         FiredWeapon();
                     }
+
+                    if (_AttachedMech.tag == "Player")
+                        (mechComp as BasePlayerMech).ShakeCamera(0.06f, 0.06f);
 
                     if (hit)
                     {

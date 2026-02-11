@@ -54,7 +54,13 @@ public class ActiveWeaponScreen : MonoBehaviour
     {
         if (weapon == null)
         {
-            Debug.LogWarning("Trying to assign a null weapon to active panel");
+            // TO DO: come back to this might not have a need to de select weapons
+            if (assignedWeapon != null)
+            {
+                UnhookWeapon(assignedWeapon);
+            }
+
+
             return;
         }
 
