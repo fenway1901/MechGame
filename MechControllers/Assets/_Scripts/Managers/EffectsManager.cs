@@ -7,6 +7,7 @@ public class EffectsManager : MonoBehaviour
 
     [SerializeField] private List<ParticleSystem> sparksInScene;
     [SerializeField] private List<ScreenGlitchDriver> glitchEffects;
+    [SerializeField] private List<ScreenGlare> glareEffects;
 
     void Awake()
     {
@@ -19,12 +20,20 @@ public class EffectsManager : MonoBehaviour
                 glitchEffects[i].gameObject.SetActive(false);
             }
         }
+
+        if (glareEffects.Count > 0)
+        {
+            for (int i = 0; i < glareEffects.Count; ++i)
+            {
+                glareEffects[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void PlayEffects()
     {
         // Spark effects
-        if (sparksInScene.Count >= 0)
+        if (sparksInScene.Count > 0)
         {
             var (i1, i2) = GameUtils.GetTwoRandomDistinct(sparksInScene.Count);
 
@@ -33,12 +42,21 @@ public class EffectsManager : MonoBehaviour
         }
 
         // Glitch Effects
-        if (glitchEffects.Count >= 0)
+        if (glitchEffects.Count > 0)
         {
             for (int i = 0; i < glitchEffects.Count; ++i)
             {
                 glitchEffects[i].gameObject.SetActive(true);
                 glitchEffects[i].TriggerHit();
+            }
+        }
+
+        // Glare Effects
+        if (glareEffects.Count > 0)
+        {
+            for (int i = 0; i < glareEffects.Count; ++i)
+            {
+                glareEffects[i].TriggerHitPulse(1f);
             }
         }
     }
