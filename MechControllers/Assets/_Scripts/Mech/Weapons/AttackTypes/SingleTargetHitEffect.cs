@@ -20,7 +20,10 @@ public class SingleTargetHitEffect : MonoBehaviour, IHitEffect
 
         if (hp)
         {
-            hp.TakeDamage(weapon.GetDamage(), weapon.GetArmorPen());
+            if (weapon.GetArmorPen() > 0)
+                hp.TakeDamage(weapon.GetDamage(), weapon.GetArmorPen());
+            else
+                hp.TakeDamage(weapon.GetDamage());
         }
         else 
             Debug.Log(weapon.name + " target does not have a BaseHealthComponent");

@@ -96,6 +96,8 @@ public class BasePlayerMech : BaseMech
         }
 
         shakeRoutine = StartCoroutine(GameUtils.ShakeTransform(camT, 0.08f, 0.08f));
+
+        EffectsManager.instance.PlaySparks();
     }
 
 
