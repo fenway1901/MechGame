@@ -44,8 +44,6 @@ public class BaseWeapons : MonoBehaviour
     [SerializeField] protected int baseReloadAmount;
     protected float reloadEndTime;
 
-    protected float baseAccuracy;
-
     public float BaseDamage => baseDamage;
     public float BaseRange => baseRange;
     public float BaseAttackSpeed => baseAttackSpeed;
@@ -56,6 +54,8 @@ public class BaseWeapons : MonoBehaviour
     public int BaseReloadAmount => baseReloadAmount;
 
     [SerializeField] protected BaseWeaponStats weaponStats;
+    protected AmmoStash ammoStash;
+    [SerializeField] protected AmmoType ammoType;
 
     public event Action<BaseWeapons, float> WeaponCharging;
     public event Action<BaseWeapons, float> WeaponCooling;
@@ -98,7 +98,6 @@ public class BaseWeapons : MonoBehaviour
 
     protected virtual void Start()
     {
-        baseAccuracy = weaponStats.Accuracy;
         // Might cause problems in future keep an eye on this
         if(usesAmmo)
             currentAmmo = weaponStats.MaxAmmo;
@@ -223,6 +222,7 @@ public class BaseWeapons : MonoBehaviour
     {
         _AttachedMech = mech;
         mechComp = mech.GetComponent<BaseMech>();
+        ammoStash = mechComp.ammoStash;
     }
 
     #endregion
@@ -391,9 +391,17 @@ public class BaseWeapons : MonoBehaviour
     protected virtual void FinishedReload()
     {
         reloading = false;
-        // FUTURE: when I want to set up a partial reload system right now I will just do max ammo
-        //currentAmmo = Mathf.Min(weaponStats.MaxAmmo, currentAmmo + weaponStats.ReloadAmount);
-        currentAmmo = weaponStats.MaxAmmo;
+
+        int missing = weaponStats.MaxAmmo - currentAmmo;
+        if (missing <= 0) return;
+
+        // want = how much you load this reload
+        int want = weaponStats.ReloadAmount > 0 ? Mathf.Min(missing, weaponStats.ReloadAmount) : missing;
+
+        int taken = ammoStash ? ammoStash.Take(ammoType, want) : want; // fallback if no stash
+
+        currentAmmo += taken;
+        
         Reloaded?.Invoke(this, currentAmmo);
     }
 

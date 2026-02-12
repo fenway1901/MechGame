@@ -22,6 +22,7 @@ public class BaseMech : MonoBehaviour
     [HideInInspector] public BaseWeapons activeWeapon;
     public GameObject layoutPrefab;
     [HideInInspector] public GameObject spawnedLayout;
+    [HideInInspector] public AmmoStash ammoStash;
 
     public bool isDead = false;
     protected bool isMoving;
@@ -47,6 +48,8 @@ public class BaseMech : MonoBehaviour
             this.stats = stats;
         else
             Debug.LogWarning(name + " Does not have any stats!");
+
+        ammoStash = GetComponent<AmmoStash>();
 
         SetUpLimbs();
 

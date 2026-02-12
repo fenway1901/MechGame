@@ -5,26 +5,28 @@ public enum StatType
     Mech_Speed,
     Mech_Shield,
     Mech_StutterTime,
+    Mech_MaxAmmo,
+    Mech_MaxEnergy,
+    Mech_MaxMissiles,
 
     // Limb Stats
-    Limb_MaxHealth,
-    Limb_Speed,
-    Limb_Armor,
-    Limb_Weight,
+    Limb_MaxHealth = 100,
+    Limb_Speed = 101,
+    Limb_Armor = 102,
+    Limb_Weight = 103,
 
     // Weapon Stats
-    Weapon_Damage,
-    Weapon_AttackSpeed,
-    Weapon_Cooldown,
-    Weapon_Range,
-    Weapon_Radius,
-    Weapon_MaxAmmo,
-    Weapon_AmmoUsedPerShot,
-    Weapon_ReloadTime,
-    Weapon_ReloadAmount,
-    Weapon_CancelTime,
-    Weapon_ArmorPenPercent,
-    Weapon_Accuracy
+    Weapon_Damage = 200,
+    Weapon_AttackSpeed = 201,
+    Weapon_Cooldown = 202,
+    Weapon_Range = 203,
+    Weapon_Radius = 204,
+    Weapon_MaxAmmo = 205,
+    Weapon_AmmoUsedPerShot = 206,
+    Weapon_ReloadTime = 207,
+    Weapon_ReloadAmount = 208,
+    Weapon_ArmorPenPercent = 209,
+    Weapon_Accuracy = 210
 }
 
 public enum ModifierMode

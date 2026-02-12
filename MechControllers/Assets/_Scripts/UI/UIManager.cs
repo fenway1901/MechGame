@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     private GameObject weaponPanel;
     private GameObject weaponIconPanel;
     private ActiveWeaponScreen activeWeaponPanel;
+    [SerializeField] private AmmoPoolUI bulletPanel;
 
     [Header("Prefabs")]
     [Header("Health UI")]
@@ -81,6 +82,8 @@ public class UIManager : MonoBehaviour
 
         // Set weps[0] here
         activeWeaponPanel.Init(mech);
+        bulletPanel.Init(mech.ammoStash);
+        
 
         // Double check if they only have one weapon
         // Later right now it will just highlight it

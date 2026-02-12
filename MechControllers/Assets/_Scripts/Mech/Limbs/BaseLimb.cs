@@ -1,6 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
+public struct LimbDebuffs
+{
+    public BuffDefinition debuff;
+    [Range(0f, 1f)]
+    public float percentHealth;
+    public bool applied;
+
+    public void SetApplied(bool set)
+    {
+        this.applied = set;
+    }
+}
+
 public class BaseLimb : MonoBehaviour
 {
     [HideInInspector] public bool isDestroyed;
@@ -29,7 +43,7 @@ public class BaseLimb : MonoBehaviour
     protected LimbWeaponMounts mount;
 
     [Header("Death Variables")]
-    [SerializeField] protected List<BuffDefinition> deathDebuffs;
+    [SerializeField] protected List<LimbDebuffs> deathDebuffs;
     [SerializeField] protected List<BuffDefinition> buffToApply;
 
     protected virtual void Awake()
@@ -83,7 +97,12 @@ public class BaseLimb : MonoBehaviour
 
     protected virtual void DamageTaken(BaseHealthComponent sender, float amount, float currentHealth)
     {
-        sr.color = healthGrad.Evaluate(currentHealth / stats.Stats.Get(StatType.Limb_MaxHealth));
+        float percent = currentHealth / stats.Stats.Get(StatType.Limb_MaxHealth);
+
+        sr.color = healthGrad.Evaluate(percent);
+
+        if(deathDebuffs.Count > 0)
+            ApplyDebuffs(percent);
 
         GameUtils.ShowDamage(amount, transform.position, Color.red, 1.2f, false, size: 1f, startScale: 0.7f, popScale: 1.2f);
     }
@@ -101,13 +120,16 @@ public class BaseLimb : MonoBehaviour
             mounts.DisableAllweapons("Attached limb destroyed");
 
         if (deathDebuffs.Count > 0)
-            ApplyDebuffs();
+            ApplyDebuffs(0f); // apply any remaining
     }
-    protected virtual void ApplyDebuffs()
+    protected virtual void ApplyDebuffs(float percent)
     {
         for (int i = 0; i < deathDebuffs.Count; ++i)
         {
-            _AttachedMech.buffController.Apply(deathDebuffs[i], this, _AttachedMech.stats);
+            if (deathDebuffs[i].applied) continue;
+            if (deathDebuffs[i].percentHealth < percent) continue;
+
+            _AttachedMech.buffController.Apply(deathDebuffs[i].debuff, this, _AttachedMech.stats);
         }
     }
 

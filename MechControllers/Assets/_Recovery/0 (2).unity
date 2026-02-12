@@ -203,7 +203,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 7.344}
+  m_Size: {x: 9.826667, y: 7.344}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1428,7 +1428,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12.782223, y: 6.744}
+  m_SizeDelta: {x: 9.226666, y: 6.744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215378539
 MonoBehaviour:
@@ -1623,7 +1623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &278496274
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1774,7 +1774,7 @@ MonoBehaviour:
     slot: 1
   limbs: []
   activeWeapon: {fileID: 0}
-  layoutPrefab: {fileID: 3040214340326169676, guid: 437c11eb8b3a25444a78166b3a70f60f, type: 3}
+  layoutPrefab: {fileID: 3040214340326169676, guid: 3966e5683cf4ed64fac73971f078da5e, type: 3}
   spawnedLayout: {fileID: 0}
   ammoStash: {fileID: 0}
   isDead: 0
@@ -1952,14 +1952,13 @@ GameObject:
   - component: {fileID: 316072434}
   - component: {fileID: 316072433}
   - component: {fileID: 316072432}
-  - component: {fileID: 316072436}
   - component: {fileID: 316072435}
-  - component: {fileID: 316072437}
+  - component: {fileID: 316072431}
   - component: {fileID: 316072430}
   - component: {fileID: 316072429}
-  - component: {fileID: 316072431}
+  - component: {fileID: 316072437}
+  - component: {fileID: 316072436}
   - component: {fileID: 316072438}
-  - component: {fileID: 316072439}
   m_Layer: 3
   m_Name: PlayerMech
   m_TagString: Player
@@ -2220,7 +2219,7 @@ MonoBehaviour:
   - stat: 5
     baseValue: 50
   - stat: 6
-    baseValue: 5
+    baseValue: 10
 --- !u!114 &316072437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2249,32 +2248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavMeshAgentStatBinder
   moveSpeedStat: 1
---- !u!114 &316072439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316072428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b99536aca037b6c4aa900ba4c3134ef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AmmoStash
-  pools:
-  - type: 0
-    maxAmmo: 4
-    startFull: 1
-    startAmount: 0
-  - type: 1
-    maxAmmo: 5
-    startFull: 1
-    startAmount: 0
-  - type: 2
-    maxAmmo: 6
-    startFull: 1
-    startAmount: 0
-  maxPollInterval: 0.25
 --- !u!1 &338733669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2559,7 @@ Transform:
   m_GameObject: {fileID: 365123787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7977781, y: 3.7719998, z: 0}
+  m_LocalPosition: {x: -1.3533335, y: 3.7719998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3025,7 +2998,7 @@ Transform:
   m_GameObject: {fileID: 441528496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7911115, y: 2.35, z: 0}
+  m_LocalPosition: {x: 5.0133333, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13968,7 +13941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &591513351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14534,7 +14507,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -14597,7 +14570,6 @@ GameObject:
   m_Component:
   - component: {fileID: 642693469}
   - component: {fileID: 642693470}
-  - component: {fileID: 642693471}
   m_Layer: 0
   m_Name: AmmoSupplyIcon
   m_TagString: Untagged
@@ -14637,22 +14609,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642693468}
   m_CullTransparentMesh: 1
---- !u!114 &642693471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642693468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a8cf923753dd134e9192f19f28ad506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AmmoPoolUI
-  stash: {fileID: 0}
-  ammoType: 0
-  fill: {fileID: 0}
-  amountText: {fileID: 0}
 --- !u!1 &647693674
 GameObject:
   m_ObjectHideFlags: 0
@@ -16003,7 +15959,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -16261,7 +16217,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 1.45, y: 0.31016}
+  m_CellSize: {x: 1.22, y: 0.31016}
   m_Spacing: {x: 0.4, y: 0.25}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -16303,7 +16259,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 13.382223, y: 1.6560001}
+  m_SizeDelta: {x: 9.826667, y: 1.6560001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &978017911
 MonoBehaviour:
@@ -17071,7 +17027,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -17489,7 +17445,7 @@ Transform:
   m_GameObject: {fileID: 1217959660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7911115, y: -2.35, z: 0}
+  m_LocalPosition: {x: 5.0133333, y: -2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23065,7 +23021,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 9.826667, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -23171,7 +23127,7 @@ Transform:
   m_GameObject: {fileID: 1326675060}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7977781, y: -0.928, z: 0}
+  m_LocalPosition: {x: -1.3533335, y: -0.928, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24054,7 +24010,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 12.782223, y: 6.744, z: 1}
+  m_LocalScale: {x: 9.226666, y: 6.744, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 215378538}
@@ -24387,7 +24343,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 9.826667, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -24853,7 +24809,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 1.6560001}
+  m_Size: {x: 9.826667, y: 1.6560001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -24999,7 +24955,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.3955564, y: 4.5}
+  m_SizeDelta: {x: 2.506667, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642872993
 MonoBehaviour:
@@ -25793,7 +25749,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -25883,7 +25839,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -26085,7 +26041,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3.3955564, y: 4.5}
+  m_Size: {x: 2.506667, y: 4.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -31624,7 +31580,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3.3955564, y: 4.5}
+  m_SizeDelta: {x: 2.506667, y: 4.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003305399
 MonoBehaviour:
@@ -32312,7 +32268,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 13.382223, y: 7.344}
+  m_Size: {x: 9.826667, y: 7.344}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

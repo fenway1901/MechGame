@@ -133,7 +133,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
-  - stat: 19
-    baseValue: 1
-  - stat: 17
+  - stat: 210
     baseValue: 1
