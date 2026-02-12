@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     private GameObject weaponIconPanel;
     private ActiveWeaponScreen activeWeaponPanel;
     [SerializeField] private AmmoPoolUI bulletPanel;
+    [SerializeField] private AmmoPoolUI missilePanel;
+    [SerializeField] private AmmoPoolUI energyPanel;
 
     [Header("Prefabs")]
     [Header("Health UI")]
@@ -83,6 +85,8 @@ public class UIManager : MonoBehaviour
         // Set weps[0] here
         activeWeaponPanel.Init(mech);
         bulletPanel.Init(mech.ammoStash);
+        missilePanel.Init(mech.ammoStash);
+        energyPanel.Init(mech.ammoStash);
         
 
         // Double check if they only have one weapon

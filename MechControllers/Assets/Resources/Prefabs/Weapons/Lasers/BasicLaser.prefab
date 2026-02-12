@@ -50,19 +50,21 @@ MonoBehaviour:
   displayName: Laser
   icon: {fileID: 21300000, guid: 7d0c2a5544268404c9d65f9a69b973ab, type: 3}
   hitEffectBehaviour: {fileID: 9036273903472067507}
-  baseDamage: 60
-  baseRange: 10
+  baseDamage: 20
+  baseRange: 3
   baseAttackSpeed: 2
   baseCooldown: 3
   _AttachedMech: {fileID: 0}
   canMoveWhileCharging: 0
   isAttacking: 0
   usesAmmo: 0
+  ammoUsedPershot: 1
   maxAmmo: 0
-  ammoUsedPerShot: 0
+  ammoUsedPerShot: 10
   reloadTime: 0
   baseReloadAmount: 0
   weaponStats: {fileID: 0}
+  ammoType: 1
 --- !u!114 &9036273903472067507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +108,5 @@ MonoBehaviour:
   baseStats:
   - stat: 210
     baseValue: 1
+  - stat: 209
+    baseValue: 0

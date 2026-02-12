@@ -23,7 +23,7 @@ public class BaseWeaponStats : MonoBehaviour
         stats.SetBase(StatType.Weapon_Cooldown, weapon.BaseCooldown);
         //stats.SetBase(StatType.Weapon_Radius, weapon.);
 
-        if (weapon.usesAmmo)
+        if (weapon.usesAmmo || weapon.ammoUsedPershot)
         {
             stats.SetBase(StatType.Weapon_MaxAmmo, weapon.BaseMaxAmmo);
             stats.SetBase(StatType.Weapon_AmmoUsedPerShot, weapon.BaseAmmoUsedPerShot);

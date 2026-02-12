@@ -32,8 +32,10 @@ public class AmmoPoolUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (type != ammoType) return;
 
-        if (fill) fill.fillAmount = (max <= 0) ? 0f : (float)current / max;
-        if (amountText) amountText.text = $"{current}/{max}";
+        float currentF = stash.GetCurrentFloat(ammoType);
+        fill.fillAmount = (max <= 0) ? 0f : (currentF / max);
+
+        if (amountText) amountText.text = $"{current}";
     }
 
     public void OnPointerEnter(PointerEventData eventData)

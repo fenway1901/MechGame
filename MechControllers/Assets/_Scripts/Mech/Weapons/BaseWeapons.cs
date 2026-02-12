@@ -36,6 +36,8 @@ public class BaseWeapons : MonoBehaviour
 
     [Header("Ranged Variables (usesAmmo REMEMBER usesAmmo)")]
     public bool usesAmmo;
+    [Tooltip("Dont need to check Uses ammo for this to work")]
+    public bool ammoUsedPershot;
     protected bool reloading;
     [SerializeField] protected int maxAmmo;
     protected int currentAmmo;
@@ -141,17 +143,8 @@ public class BaseWeapons : MonoBehaviour
 
                     float hitChance = ComputeHitChance01(target, targetTrans.position);
                     bool hit = RollHit(hitChance);
-
-                    if (usesAmmo)
-                    {
-                        if (currentAmmo == 0 || currentAmmo < ammoUsedPerShot)
-                        {
-                            StopAttack("Not enough ammo to shoot " + currentAmmo);
-                            return;
-                        }
-
-                        FiredWeapon();
-                    }
+                    
+                    FiredWeapon();
 
                     if (_AttachedMech.tag == "Player")
                         (mechComp as BasePlayerMech).ShakeCamera(0.06f, 0.06f);
@@ -282,6 +275,14 @@ public class BaseWeapons : MonoBehaviour
             }
         }
 
+        if (ammoUsedPershot)
+        {
+            if (weaponStats.AmmoUsedPerShot > ammoStash.GetCurrent(ammoType))
+            {
+                Debug.LogWarning(_AttachedMech.name + " is trying to fire " + name + " but its ammo stash dosnt have enough");
+            }
+        }
+
         // Layer 6 is limb layer
         if (target.layer == 6)
         {
@@ -369,6 +370,11 @@ public class BaseWeapons : MonoBehaviour
             currentAmmo -= weaponStats.AmmoUsedPerShot;
             AmmoFired?.Invoke(this, currentAmmo);
         }
+
+        if (ammoUsedPershot)
+        {
+            ammoStash.Take(ammoType, weaponStats.AmmoUsedPerShot);
+        }
     }
 
     public virtual void Reload()
@@ -379,8 +385,6 @@ public class BaseWeapons : MonoBehaviour
             Debug.LogWarning("Tried to call reload when already reloading");
             return;
         }
-
-        Debug.Log("attempting to relaod");
 
         reloading = true;
         reloadEndTime = Time.time + weaponStats.ReloadTime;
@@ -398,7 +402,7 @@ public class BaseWeapons : MonoBehaviour
         // want = how much you load this reload
         int want = weaponStats.ReloadAmount > 0 ? Mathf.Min(missing, weaponStats.ReloadAmount) : missing;
 
-        int taken = ammoStash ? ammoStash.Take(ammoType, want) : want; // fallback if no stash
+        int taken = ammoStash ? ammoStash.Take(ammoType, want) : want;
 
         currentAmmo += taken;
         

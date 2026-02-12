@@ -3180,6 +3180,7 @@ GameObject:
   - component: {fileID: 2048271467351444171}
   - component: {fileID: 4571988737114004725}
   - component: {fileID: 843248922932533890}
+  - component: {fileID: 5606596704350098979}
   m_Layer: 6
   m_Name: Core
   m_TagString: Enemy
@@ -3403,6 +3404,19 @@ MonoBehaviour:
   tags:
   - Core
   slot: 2
+--- !u!114 &5606596704350098979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9107645568343402088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46389c1762a906349ba9e0e7c3c21af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
+  mounts: []
 --- !u!1001 &3968080476696790691
 PrefabInstance:
   m_ObjectHideFlags: 0

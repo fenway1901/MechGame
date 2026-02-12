@@ -58,11 +58,13 @@ MonoBehaviour:
   canMoveWhileCharging: 0
   isAttacking: 0
   usesAmmo: 1
+  ammoUsedPershot: 0
   maxAmmo: 5
   ammoUsedPerShot: 1
   reloadTime: 5
   baseReloadAmount: 5
   weaponStats: {fileID: 0}
+  ammoType: 0
 --- !u!114 &-7005926294392009980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +108,5 @@ MonoBehaviour:
   baseStats:
   - stat: 210
     baseValue: 1
+  - stat: 209
+    baseValue: 0

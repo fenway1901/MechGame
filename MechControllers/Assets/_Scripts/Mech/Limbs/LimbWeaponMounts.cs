@@ -52,7 +52,7 @@ public class LimbWeaponMounts : MonoBehaviour
         // Turn off icons here
         foreach (Mount m in mounts)
             if (m.equipped != null)
-                m.icon.WeaponDestroyed();
+                m.icon?.WeaponDestroyed();
     }
 
     public void StutterWeapon(float seconds)

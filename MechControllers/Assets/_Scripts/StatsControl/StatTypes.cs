@@ -8,6 +8,7 @@ public enum StatType
     Mech_MaxAmmo,
     Mech_MaxEnergy,
     Mech_MaxMissiles,
+    Mech_EnergyChargeRate,
 
     // Limb Stats
     Limb_MaxHealth = 100,

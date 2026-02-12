@@ -6,13 +6,13 @@ using System;
 
 public class BasePlayerMech : BaseMech
 {
-    private GameObject panel;
-
     [Header("Inputs")]
     [SerializeField] private InputAction selectWeapon1;
     [SerializeField] private InputAction selectWeapon2;
     [SerializeField] private InputAction selectWeapon3;
     [SerializeField] private InputAction reload;
+
+    [SerializeField] private RangeIndicator rangeIndicator;
 
     public event Action<BaseWeapons> WeaponSelected;
 
@@ -25,13 +25,13 @@ public class BasePlayerMech : BaseMech
         selectWeapon2.Enable();
         selectWeapon3.Enable();
         reload.Enable();
+
+        rangeIndicator = GetComponentInChildren<RangeIndicator>();
     }
 
     public override void Init()
     {
         base.Init();
-
-        panel = GameObject.Find("Player Panel");
 
         healthComp.Damaged += DamageTaken;
     }
@@ -119,6 +119,12 @@ public class BasePlayerMech : BaseMech
         //Debug.Log("Player Selected: " + weapon.name);
         activeWeapon = weapon;
         
+        if (rangeIndicator != null && activeWeapon != null)
+        {
+            rangeIndicator.SetRange(activeWeapon.GetRange());
+            rangeIndicator.SetVisible(true);
+        }
+
         // So all weapons are ready
         WeaponSelected?.Invoke(weapon);
     }
