@@ -106,3 +106,5 @@ MonoBehaviour:
   baseStats:
   - stat: 19
     baseValue: 1
+  - stat: 17
+    baseValue: 1

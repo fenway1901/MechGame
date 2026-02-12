@@ -11,7 +11,7 @@ public class LimbWeaponMounts : MonoBehaviour
     public class Mount
     {
         public WeaponSlot slot;
-        public Transform mountPoint; // Use for maybe a visual element of where the weapon is
+        public MountIcon icon; // Use for maybe a visual element of where the weapon is
         public BaseWeapons equipped;
     }
 
@@ -30,9 +30,13 @@ public class LimbWeaponMounts : MonoBehaviour
             return false;
 
         m.equipped = weapon;
-        
-        //TO DO: place the visual to the transform of the limb or something here
-        // need to set up how I want to visualize weapons first
+
+        if (m.icon != null && m.slot == weapon.GetWeaponStats().Slot)
+        {
+            weapon.WeaponStuttered += m.icon.WeaponStuttered;
+
+            m.icon.SetWeaponImage(weapon.GetIcon());
+        }
 
         return true;
     }
@@ -44,6 +48,11 @@ public class LimbWeaponMounts : MonoBehaviour
             if(w.GetIsAttacking())
                 w.StopAttack(reason);
         }
+
+        // Turn off icons here
+        foreach (Mount m in mounts)
+            if (m.equipped != null)
+                m.icon.WeaponDestroyed();
     }
 
     public void StutterWeapon(float seconds)

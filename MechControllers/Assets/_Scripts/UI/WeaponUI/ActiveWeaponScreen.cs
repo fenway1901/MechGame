@@ -90,6 +90,7 @@ public class ActiveWeaponScreen : MonoBehaviour
         assignedWeapon.WeaponCharging += ChargingWeapon;
         assignedWeapon.WeaponCooling += CoolingWeapon;
         assignedWeapon.CancelAttack += AttackHasStopped;
+        assignedWeapon.WeaponStuttered += StutterWeapon;
 
         SyncToWeaponState();
     }
@@ -122,6 +123,11 @@ public class ActiveWeaponScreen : MonoBehaviour
         if (weapon != assignedWeapon) return;
 
         SetUpBarAndText(cooldownColor, cooldownText, time);
+    }
+
+    private void StutterWeapon(float seconds)
+    {
+        endTime += seconds;
     }
 
     private void SetUpBarAndText(Color color, string text, float time)

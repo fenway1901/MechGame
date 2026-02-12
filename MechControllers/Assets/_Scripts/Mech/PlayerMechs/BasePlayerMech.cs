@@ -85,7 +85,8 @@ public class BasePlayerMech : BaseMech
 
         ShakeCamera(0.08f, 0.08f);
 
-        EffectsManager.instance.PlayEffects();
+        if (EffectsManager.instance != null)
+            EffectsManager.instance.PlayEffects();
     }
 
     public virtual void ShakeCamera(float duration, float strength)

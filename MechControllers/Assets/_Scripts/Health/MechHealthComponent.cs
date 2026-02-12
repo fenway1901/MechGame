@@ -19,7 +19,7 @@ public class MechHealthComponent : BaseHealthComponent
     {
         base.TakeDamage(amount);
 
-        Debug.Log(CurrentHealth + " " + name + " current heatlh");
+        //Debug.Log(CurrentHealth + " " + name + " current heatlh");
     }
 
     public void Kill()

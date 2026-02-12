@@ -341,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 5
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &1125744571560385840
 GameObject:
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 4
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &1606072148692670892
 GameObject:
@@ -1087,6 +1087,9 @@ Transform:
   - {fileID: 5040187295077128031}
   - {fileID: 6764898877940700969}
   - {fileID: 7840110998181039952}
+  - {fileID: 3629011264338368684}
+  - {fileID: 4444222148963860398}
+  - {fileID: 7709790513756179788}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8504680840140599689
@@ -2196,10 +2199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 0
-    mountPoint: {fileID: 0}
+    icon: {fileID: 8990145291598687547}
     equipped: {fileID: 0}
   - slot: 3
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &5416419350101463734
 GameObject:
@@ -2431,7 +2434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
   - stat: 4
-    baseValue: 100
+    baseValue: 1000
 --- !u!114 &5608421112938852492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,10 +2464,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 1
-    mountPoint: {fileID: 0}
+    icon: {fileID: 8300894396338768441}
     equipped: {fileID: 0}
   - slot: 2
-    mountPoint: {fileID: 0}
+    icon: {fileID: 2621396908747880667}
     equipped: {fileID: 0}
 --- !u!1 &5832360573714144522
 GameObject:
@@ -3075,3 +3078,222 @@ MonoBehaviour:
   minAlpha: 0.35
   maxAlpha: 1
   useUnscaledTime: 1
+--- !u!1001 &2684226620475422257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9092358952075482358}
+    m_Modifications:
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.789
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488776982749840074, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_Name
+      value: MountIcon_LA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+--- !u!4 &3629011264338368684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 2684226620475422257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8990145291598687547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6450034692492516106, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 2684226620475422257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa56d95323a7a8429e59ee0758950bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountIcon
+--- !u!1001 &3076401752719479091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9092358952075482358}
+    m_Modifications:
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.789
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488776982749840074, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_Name
+      value: MountIcon_RA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+--- !u!4 &4444222148963860398 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 3076401752719479091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8300894396338768441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6450034692492516106, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 3076401752719479091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa56d95323a7a8429e59ee0758950bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountIcon
+--- !u!1001 &9070868642422268881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9092358952075482358}
+    m_Modifications:
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.194
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488776982749840074, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_Name
+      value: MountIcon_RS
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+--- !u!114 &2621396908747880667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6450034692492516106, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 9070868642422268881}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa56d95323a7a8429e59ee0758950bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountIcon
+--- !u!4 &7709790513756179788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 9070868642422268881}
+  m_PrefabAsset: {fileID: 0}

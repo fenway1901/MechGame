@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 5
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &1125744571560385840
 GameObject:
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 4
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &1196981665893857399
 GameObject:
@@ -1154,6 +1154,7 @@ Transform:
   - {fileID: 5040187295077128031}
   - {fileID: 6764898877940700969}
   - {fileID: 7840110998181039952}
+  - {fileID: 2309760896492038206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8504680840140599689
@@ -2021,10 +2022,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 0
-    mountPoint: {fileID: 0}
+    icon: {fileID: 7967523369712786857}
     equipped: {fileID: 0}
   - slot: 3
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &5233803226436337731
 GameObject:
@@ -2396,10 +2397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LimbWeaponMounts
   mounts:
   - slot: 1
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
   - slot: 2
-    mountPoint: {fileID: 0}
+    icon: {fileID: 0}
     equipped: {fileID: 0}
 --- !u!1 &6413795684868396111
 GameObject:
@@ -3394,3 +3395,76 @@ MonoBehaviour:
   tags:
   - Core
   slot: 2
+--- !u!1001 &3968080476696790691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9092358952075482358}
+    m_Modifications:
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.789
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488776982749840074, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+      propertyPath: m_Name
+      value: MountIcon_LA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+--- !u!4 &2309760896492038206 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1665381228071759517, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 3968080476696790691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7967523369712786857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6450034692492516106, guid: 3f4fa35f5c1b88448b18cba296bd4a28, type: 3}
+  m_PrefabInstance: {fileID: 3968080476696790691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa56d95323a7a8429e59ee0758950bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountIcon

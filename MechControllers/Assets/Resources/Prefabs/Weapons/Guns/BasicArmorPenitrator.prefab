@@ -52,7 +52,7 @@ MonoBehaviour:
   hitEffectBehaviour: {fileID: -7005926294392009980}
   baseDamage: 50
   baseRange: 10
-  baseAttackSpeed: 1
+  baseAttackSpeed: 10
   baseCooldown: 3
   _AttachedMech: {fileID: 0}
   canMoveWhileCharging: 0
@@ -107,4 +107,6 @@ MonoBehaviour:
   - stat: 18
     baseValue: 1
   - stat: 19
-    baseValue: 0
+    baseValue: 1
+  - stat: 17
+    baseValue: 1

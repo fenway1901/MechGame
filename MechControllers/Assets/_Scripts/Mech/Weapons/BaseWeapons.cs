@@ -64,6 +64,7 @@ public class BaseWeapons : MonoBehaviour
     public event Action<BaseWeapons, float> Reloading;
     public event Action<BaseWeapons> CancelAttack;
     public event Action<BaseWeapons, float> WeaponMissed;
+    public event Action<float> WeaponStuttered;
 
     public enum WeaponUIPhase
     {
@@ -337,6 +338,8 @@ public class BaseWeapons : MonoBehaviour
         if(!isAttacking || !isCharging) return;
         // have visual subscribe to this and invode the action here
         chargeEndTime += seconds;
+
+        WeaponStuttered?.Invoke(seconds);
     }
 
     protected virtual float ComputeHitChance01(GameObject targetObj, Vector3 targetPoint)

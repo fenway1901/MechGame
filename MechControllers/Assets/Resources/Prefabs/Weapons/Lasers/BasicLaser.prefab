@@ -52,7 +52,7 @@ MonoBehaviour:
   hitEffectBehaviour: {fileID: 9036273903472067507}
   baseDamage: 60
   baseRange: 10
-  baseAttackSpeed: 2
+  baseAttackSpeed: 1
   baseCooldown: 3
   _AttachedMech: {fileID: 0}
   canMoveWhileCharging: 0
@@ -105,4 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   baseStats:
   - stat: 19
+    baseValue: 1
+  - stat: 17
     baseValue: 1
