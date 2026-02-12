@@ -8,6 +8,7 @@ public class AoeHitEffect : MonoBehaviour, IHitEffect
     [SerializeField] private LayerMask damageMask;
     [SerializeField] private bool useFalloff = true;
     [SerializeField] AnimationCurve falloff = AnimationCurve.Linear(0, 1, 1, 0);
+    [SerializeField] private GameObject aoeIndicatorPrefab;
 
     public void Apply(BaseWeapons weapon, GameObject primaryTarget, Vector3 impactPoint)
     {
@@ -19,6 +20,9 @@ public class AoeHitEffect : MonoBehaviour, IHitEffect
         {
             impactPoint = primaryTarget.transform.parent.GetComponent<MechHealthComponent>()._AttachedMech.transform.position;
         }
+
+        GameObject indicator = Instantiate(aoeIndicatorPrefab, impactPoint, Quaternion.Euler(90f, 0f, 0f));
+        indicator.GetComponent<AOEIndicator>().Init(baseRadius);
 
         Collider[] hits = Physics.OverlapSphere(impactPoint, totalRadius, damageMask);
 
